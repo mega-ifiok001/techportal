@@ -312,7 +312,7 @@ export default function TechPortalLanding() {
     {
       title: "Digital Education & Automation",
       description:
-        "Master AI automation, faceless YouTube systems, web & app development, and digital marketing through real-world projects and guided mentorship.",
+        "Master AI automation, faceless YouTube systems, web & app development, and digital marketing, Cyber Security through real-world projects and guided mentorship.",
       tag: "Learn & Automate",
       metric: "1,200+ Students",
       icon: "fa-solid fa-brain",
