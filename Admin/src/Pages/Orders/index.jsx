@@ -216,7 +216,7 @@ const Orders = () => {
                         </span>
                       </td>
                       <td className="px-6 py-4 font-medium">{order?.delivery_address?.pincode}</td>
-                      <td className="px-6 py-4 font-medium">{order?.totalAmt?.toLocaleString('en-US', { style: 'currency', currency: 'INR' })}</td>
+                      <td className="px-6 py-4 font-medium">{order?.totalAmt?.toLocaleString('en-US', { style: 'currency', currency: 'NGN' })}</td>
                       <td className="px-6 py-4 font-medium">{order?.userId?.email}</td>
                       <td className="px-6 py-4 font-medium">
                         <span className='text-primary'>{order?.userId?._id}</span>
@@ -315,8 +315,8 @@ const Orders = () => {
                                               className='w-10 h-10 object-cover rounded-md' />
                                           </td>
                                           <td className="px-6 py-4 font-medium">{item?.quantity}</td>
-                                          <td className="px-6 py-4 font-medium">{item?.price?.toLocaleString('en-US', { style: 'currency', currency: 'INR' })}</td>
-                                          <td className="px-6 py-4 font-medium">{item?.subTotal?.toLocaleString('en-US', { style: 'currency', currency: 'INR' })}</td>
+                                          <td className="px-6 py-4 font-medium">{item?.price?.toLocaleString('en-US', { style: 'currency', currency: 'NGN' })}</td>
+                                          <td className="px-6 py-4 font-medium">{item?.subTotal?.toLocaleString('en-US', { style: 'currency', currency: 'NGN' })}</td>
 
 
                                         </tr>

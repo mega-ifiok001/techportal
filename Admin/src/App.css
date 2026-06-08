@@ -3,7 +3,7 @@ body {
     background: #f1f1f1;
 }
 .MuiBadge-badge {
-    background: #ff5252 !important;
+    background: #02071e !important;
 }
 
 .text-primary {
@@ -159,7 +159,7 @@ input[type="text"]:disabled, input[type="email"]:disabled {
 }
 
 .zoomProductSliderThumbs .swiper-button-prev:hover, .zoomProductSliderThumbs .swiper-button-next:hover{
-    background: #ff5252 !important;
+    background: #01065d !important;
 }
 .swiper-slide .iiz {
     height: 400px !important;

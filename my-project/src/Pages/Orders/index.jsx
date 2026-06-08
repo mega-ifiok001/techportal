@@ -1,209 +1,274 @@
-import React, { useEffect, useState } from 'react'
-import AccountSidebar from '../../components/AccountSidebar';
-import Button from '@mui/material/Button';
-import { FaAngleDown, FaAngleUp } from 'react-icons/fa';
-import Badge from '../../components/Badge';
-import { fetchDataFromApi } from '../../utils/api';
+import React, { useEffect, useState } from "react";
+import AccountSidebar from "../../components/AccountSidebar";
+import Button from "@mui/material/Button";
+import { FaAngleDown, FaAngleUp } from "react-icons/fa";
+import Badge from "../../components/Badge";
+import { fetchDataFromApi } from "../../utils/api";
 
 const Orders = () => {
+  const [isOpenOrderdProduct, setIsOpenOrderdProduct] = useState(null);
+  const [orders, setOrders] = useState([]);
 
-    const [isOpenOrderdProduct, setIsOpenOrderdProduct] = useState(null);
-    const [orders, setOrders] = useState([])
-
-    const isShowOrderdProduct = (index) => {
-        if (isOpenOrderdProduct === index) {
-            setIsOpenOrderdProduct(null);
-        } else {
-            setIsOpenOrderdProduct(index);
-        }
+  const isShowOrderdProduct = (index) => {
+    if (isOpenOrderdProduct === index) {
+      setIsOpenOrderdProduct(null);
+    } else {
+      setIsOpenOrderdProduct(index);
     }
+  };
 
-    useEffect(() => {
-        fetchDataFromApi('/api/order/order-list').then((res) => {
-            if(res?.error === false){
-                setOrders(res?.data)
-            } 
-        })
-    }, [])
+  useEffect(() => {
+    fetchDataFromApi("/api/order/order-list").then((res) => {
+      if (res?.error === false) {
+        setOrders(res?.data);
+      }
+    });
+  }, []);
 
-    return (
-        <section className='py-3 lg:py-10 w-full'>
-            <div className='container flex flex-col lg:flex-row gap-5'>
-                <div className='col1 w-full lg:w-[20%] hidden lg:block '>
-                    <AccountSidebar />
-                </div>
+  return (
+    <section className="py-3 lg:py-10 w-full">
+      <div className="container flex flex-col lg:flex-row gap-5">
+        <div className="col1 w-full lg:w-[20%] hidden lg:block ">
+          <AccountSidebar />
+        </div>
 
+        <div className="col2 w-full lg:w-[80%]">
+          <div className="shadow-md rounded-md bg-white">
+            <div className="py-2 px-3 border-b border-[rgba(0,0,0,0.1)]">
+              <h2>My Orders</h2>
+              <p className="mt-0">
+                There are{" "}
+                <span className="font-bold text-primary">
+                  {orders?.length + " "}
+                </span>
+                Orders
+              </p>
 
-                <div className='col2 w-full lg:w-[80%]'>
-                    <div className='shadow-md rounded-md bg-white'>
-                        <div className='py-2 px-3 border-b border-[rgba(0,0,0,0.1)]'>
-                            <h2>My Orders</h2>
-                            <p className='mt-0'>There are <span className='font-bold text-primary'>{ orders?.length + " " }</span>
-                                Orders</p>
+              <div className="relative overflow-x-auto mt-5">
+                <table className="w-full text-sm text-left rtl:text-right text-gray-500">
+                  <thead className="text-xs text-gray-700 uppercase bg-gray-50">
+                    <tr>
+                      <th scope="col" className="px-6 py-3">
+                        &nbsp;
+                      </th>
+                      <th scope="col" className="px-6 py-3 whitespace-nowrap">
+                        Order Id
+                      </th>
+                      <th scope="col" className="px-6 py-3 whitespace-nowrap">
+                        paymant Id
+                      </th>
+                      <th scope="col" className="px-6 py-3 whitespace-nowrap">
+                        Name
+                      </th>
+                      <th scope="col" className="px-6 py-3 whitespace-nowrap">
+                        Phone Number
+                      </th>
+                      <th scope="col" className="px-6 py-3 whitespace-nowrap">
+                        Address
+                      </th>
+                      <th scope="col" className="px-6 py-3 whitespace-nowrap">
+                        Pincode
+                      </th>
+                      <th scope="col" className="px-6 py-3 whitespace-nowrap">
+                        Total Amount
+                      </th>
+                      <th scope="col" className="px-6 py-3 whitespace-nowrap">
+                        Order status
+                      </th>
+                      <th scope="col" className="px-6 py-3 whitespace-nowrap">
+                        Date
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {orders?.length !== 0 &&
+                      orders?.map((order, index) => {
+                        return (
+                          <>
+                            <tr className="bg-white border-b">
+                              <td className="px-6 py-4 font-[500]">
+                                <Button
+                                  className="!w-[35px] !h-[35px] !min-w-[35px] !rounded-full !bg-[#f1f1f1]"
+                                  onClick={() => isShowOrderdProduct(index)}
+                                >
+                                  {isOpenOrderdProduct === index ? (
+                                    <FaAngleUp className="text-[16px] text-[rgba(0,0,0,0.7)]" />
+                                  ) : (
+                                    <FaAngleDown className="text-[16px] text-[rgba(0,0,0,0.7)]" />
+                                  )}
+                                </Button>
+                              </td>
+                              <td className="px-6 py-4 font-[500]">
+                                <span className="text-primary">
+                                  {order?._id}
+                                </span>
+                              </td>
+                              <td className="px-6 py-4 font-[500]">
+                                <span className="text-primary">
+                                  {order?.paymentId
+                                    ? order?.paymentId
+                                    : "CASH ON DELIVERY"}
+                                </span>
+                              </td>
+                              <td className="px-6 py-4 font-[500] whitespace-nowrap">
+                                {order?.userId?.name}
+                              </td>
+                              <td className="px-6 py-4 font-[500]">
+                                {order?.delivery_address?.mobile}
+                              </td>
+                              <td className="px-6 py-4 font-[500]">
+                                <span className="block w-[400px]">
+                                  {order?.delivery_address?.address_line1 +
+                                    " " +
+                                    order?.delivery_address?.city +
+                                    " " +
+                                    order?.delivery_address?.landmark +
+                                    " " +
+                                    order?.delivery_address?.state +
+                                    " " +
+                                    order?.delivery_address?.country}
+                                </span>
+                              </td>
+                              <td className="px-6 py-4 font-[500]">
+                                {order?.delivery_address?.pincode}
+                              </td>
+                              <td className="px-6 py-4 font-[500]">
+                                {order?.totalAmt?.toLocaleString("en-US", {
+                                  style: "currency",
+                                  currency: "NGN",
+                                })}
+                              </td>
+                              <td className="px-6 py-4 font-[500]">
+                                <Badge status={order?.order_status} />
+                              </td>
+                              <td className="px-6 py-4 font-[500] whitespace-nowrap">
+                                {order?.createdAt?.split("T")[0]}
+                              </td>
+                            </tr>
 
-                            <div className="relative overflow-x-auto mt-5">
-                                <table className="w-full text-sm text-left rtl:text-right text-gray-500">
-                                    <thead className="text-xs text-gray-700 uppercase bg-gray-50">
+                            {isOpenOrderdProduct === index && (
+                              <tr>
+                                <td className="pl-20" colSpan="6">
+                                  <div className="relative overflow-x-auto">
+                                    <table className="w-full text-sm text-left rtl:text-right text-gray-500">
+                                      <thead className="text-xs text-gray-700 uppercase bg-gray-50">
                                         <tr>
-                                            <th scope="col" className="px-6 py-3">
-                                                &nbsp;
-                                            </th>
-                                            <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                                                Order Id
-                                            </th>
-                                            <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                                                paymant Id
-                                            </th>
-                                            <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                                                Name
-                                            </th>
-                                            <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                                                Phone Number
-                                            </th>
-                                            <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                                                Address
-                                            </th>
-                                            <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                                                Pincode
-                                            </th>
-                                            <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                                                Total Amount
-                                            </th>
-                                            <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                                                Order status
-                                            </th>
-                                            <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                                                Date
-                                            </th>
+                                          <th
+                                            scope="col"
+                                            className="px-6 py-3 whitespace-nowrap"
+                                          >
+                                            Product Id
+                                          </th>
+                                          <th
+                                            scope="col"
+                                            className="px-6 py-3 whitespace-nowrap"
+                                          >
+                                            Product Title
+                                          </th>
+                                          <th
+                                            scope="col"
+                                            className="px-6 py-3 whitespace-nowrap"
+                                          >
+                                            Image
+                                          </th>
+                                          <th
+                                            scope="col"
+                                            className="px-6 py-3 whitespace-nowrap"
+                                          >
+                                            Quantity
+                                          </th>
+                                          <th
+                                            scope="col"
+                                            className="px-6 py-3 whitespace-nowrap"
+                                          >
+                                            Price
+                                          </th>
+                                          <th
+                                            scope="col"
+                                            className="px-6 py-3 whitespace-nowrap"
+                                          >
+                                            Sub Total
+                                          </th>
                                         </tr>
-                                    </thead>
-                                    <tbody>
+                                      </thead>
+                                      <tbody>
+                                        {order?.products?.length !== 0 &&
+                                          order?.products?.map(
+                                            (item, index) => {
+                                              return (
+                                                <tr className="bg-white border-b">
+                                                  <td className="px-6 py-4 font-[500]">
+                                                    <span className="text-gray-600">
+                                                      {item?._id}
+                                                    </span>
+                                                  </td>
+                                                  <td className="px-6 py-4 font-[500]">
+                                                    <div className="w-[200px]">
+                                                      {item?.productTitle
+                                                        ?.length > 40
+                                                        ? item?.productTitle?.slice(
+                                                            0,
+                                                            40,
+                                                          ) + "..."
+                                                        : item?.productTitle}
+                                                    </div>
+                                                  </td>
+                                                  <td className="px-6 py-4 font-[500]">
+                                                    <img
+                                                      src={item?.image}
+                                                      className="w-[40px] h-[40px] object-cover rounded-md"
+                                                    />
+                                                  </td>
+                                                  <td className="px-6 py-4 font-medium">
+                                                    {item?.quantity}
+                                                  </td>
+                                                  <td className="px-6 py-4 font-medium">
+                                                    {item?.price?.toLocaleString(
+                                                      "en-US",
+                                                      {
+                                                        style: "currency",
+                                                        currency: "NGN",
+                                                      },
+                                                    )}
+                                                  </td>
+                                                  <td className="px-6 py-4 font-medium">
+                                                    {item?.subTotal?.toLocaleString(
+                                                      "en-US",
+                                                      {
+                                                        style: "currency",
+                                                        currency: "NGN",
+                                                      },
+                                                    )}
+                                                  </td>
+                                                </tr>
+                                              );
+                                            },
+                                          )}
 
-                                        {
-                                            orders?.length !== 0 && orders?.map((order, index) => {
-                                                return (
-                                                    <>
-                                                        <tr className="bg-white border-b">
-                                                            <td className="px-6 py-4 font-[500]">
-                                                                <Button className='!w-[35px] !h-[35px] !min-w-[35px] !rounded-full !bg-[#f1f1f1]'
-                                                                    onClick={() => isShowOrderdProduct(index)}>
-                                                                    {
-                                                                        isOpenOrderdProduct === index ? <FaAngleUp className='text-[16px] text-[rgba(0,0,0,0.7)]' /> : <FaAngleDown className='text-[16px] text-[rgba(0,0,0,0.7)]' />
-                                                                    }
-                                                                </Button>
-                                                            </td>
-                                                            <td className="px-6 py-4 font-[500]">
-                                                                <span className='text-primary'>{order?._id}</span>
-                                                            </td>
-                                                            <td className="px-6 py-4 font-[500]">
-                                                                <span className='text-primary'>{order?.paymentId ? order?.paymentId : 'CASH ON DELIVERY'}</span>
-                                                            </td>
-                                                            <td className="px-6 py-4 font-[500] whitespace-nowrap">{order?.userId?.name}</td>
-                                                            <td className="px-6 py-4 font-[500]">{order?.delivery_address?.mobile}</td>
-                                                            <td className="px-6 py-4 font-[500]">
-                                                                <span className='block w-[400px]'>
-                                                                    {order?.delivery_address?.address_line1 + " " +
-                                                                        order?.delivery_address?.city + " " +
-                                                                        order?.delivery_address?.landmark + " " +
-                                                                        order?.delivery_address?.state + " " +
-                                                                        order?.delivery_address?.country
-                                                                    }
-                                                                </span>
-                                                            </td>
-                                                            <td className="px-6 py-4 font-[500]">{order?.delivery_address?.pincode}</td>
-                                                            <td className="px-6 py-4 font-[500]">{order?.totalAmt?.toLocaleString('en-US', { style: 'currency', currency: 'INR'})}</td>
-                                                            <td className="px-6 py-4 font-[500]"><Badge status={order?.order_status} /></td>
-                                                            <td className="px-6 py-4 font-[500] whitespace-nowrap">{order?.createdAt?.split("T")[0]}</td>
-
-                                                        </tr>
-
-                                                        {
-                                                            isOpenOrderdProduct === index  && (
-                                                                <tr>
-                                                                    <td className='pl-20' colSpan="6">
-                                                                        <div className="relative overflow-x-auto">
-                                                                            <table className="w-full text-sm text-left rtl:text-right text-gray-500">
-                                                                                <thead className="text-xs text-gray-700 uppercase bg-gray-50">
-                                                                                    <tr>
-
-                                                                                        <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                                                                                            Product Id
-                                                                                        </th>
-                                                                                        <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                                                                                            Product Title
-                                                                                        </th>
-                                                                                        <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                                                                                            Image
-                                                                                        </th>
-                                                                                        <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                                                                                            Quantity
-                                                                                        </th>
-                                                                                        <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                                                                                            Price
-                                                                                        </th>
-                                                                                        <th scope="col" className="px-6 py-3 whitespace-nowrap">
-                                                                                            Sub Total
-                                                                                        </th>
-
-                                                                                    </tr>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                    {
-                                                                                        order?.products?.length !== 0 && order?.products?.map((item, index) => {
-                                                                                            return (
-                                                                                                <tr className="bg-white border-b">
-                                                                                                    <td className="px-6 py-4 font-[500]">
-                                                                                                        <span className='text-gray-600'>{item?._id}</span>
-                                                                                                    </td>
-                                                                                                    <td className="px-6 py-4 font-[500]">
-                                                                                                        <div className='w-[200px]'>
-                                                                                                            {item?.productTitle?.length > 40 ? item?.productTitle?.slice(0, 40) + "..." : item?.productTitle}
-                                                                                                        </div>
-                                                                                                    </td>
-                                                                                                    <td className="px-6 py-4 font-[500]">
-                                                                                                        <img src={item?.image}
-                                                                                                            className='w-[40px] h-[40px] object-cover rounded-md' />
-                                                                                                    </td>
-                                                                                                    <td className="px-6 py-4 font-medium">{item?.quantity}</td>
-                                                                                                    <td className="px-6 py-4 font-medium">{item?.price?.toLocaleString('en-US', { style: 'currency', currency: 'INR'})}</td>
-                                                                                                    <td className="px-6 py-4 font-medium">{item?.subTotal?.toLocaleString('en-US', { style: 'currency', currency: 'INR'})}</td>
-
-
-                                                                                                </tr>
-                                                                                            )
-                                                                                        })
-                                                                                    }
-                                                                                    
-
-                                                                                    <tr>
-                                                                                        <td className='bg-[#f1f1f1]' colSpan="12">
-
-                                                                                        </td>
-                                                                                    </tr>
-
-
-                                                                                </tbody>
-                                                                            </table>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-                                                            )
-                                                        }
-                                                    </>
-                                                )
-                                            })
-                                        }
-                                    </tbody>
-                                </table>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
+                                        <tr>
+                                          <td
+                                            className="bg-[#f1f1f1]"
+                                            colSpan="12"
+                                          ></td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </td>
+                              </tr>
+                            )}
+                          </>
+                        );
+                      })}
+                  </tbody>
+                </table>
+              </div>
             </div>
-        </section>
-    )
-}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default Orders;

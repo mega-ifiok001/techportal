@@ -17,6 +17,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { IoIosLogOut, IoMdHeartEmpty } from 'react-icons/io';
 import { fetchDataFromApi } from '../../utils/api';
 import { HiOutlineMenu } from 'react-icons/hi';
+import logo from '../../assets/logo_offical.png';
 
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -97,7 +98,9 @@ const Header = () => {
                         <HiOutlineMenu size={22} /></Button>
                     }
                     <div className='col1 w-[40%] lg:w-[25%]'>
-                        <Link to={"/"}><img src='/logo.jpg' /></Link>
+                        <Link to={"/"}>
+                                    <img src={logo} alt="official logo for tech portal solutions" />
+</Link>
                     </div>
 
                     <div className={`col2 fixed top-0 left-0 w-full lg:w-[45%] lg:static p-2 lg:p-0 z-50 bg-white lg:bg-transparent ${context?.windowWidth > 922 && 'block!'} ${context?.openSearchPanel === true ? 'block' : 'hidden'}`}>

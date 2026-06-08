@@ -39,35 +39,35 @@ const Footer = () => {
             <div className='flex items-center justify-center gap-2 py-3 lg:py-8 pb-0 lg:pb-8 px-2! lg:px-5 scrollableBox footerBoxWrap'>
                 <div className='col flex items-center justify-center flex-col group w-[15%]'>
                     <LiaShippingFastSolid
-                    className='text-[40px] transition-all duration-300 group-hover:text-[#ff5252] group-hover:-translate-y-1'/>
+                    className='text-[40px] transition-all duration-300 group-hover:text-[#01065d] group-hover:-translate-y-1'/>
                     <h3 className='text-[16px] font-[600] mt-3'>Free Shipping</h3>
                     <p className='text-[12px] font-[500]'>For all Orders Over $100</p>
                 </div>
 
                 <div className='col flex items-center justify-center flex-col group w-[15%]'>
                     <PiKeyReturnLight
-                    className='text-[40px] transition-all duration-300 group-hover:text-[#ff5252] group-hover:-translate-y-1'/>
+                    className='text-[40px] transition-all duration-300 group-hover:text-[#01065d] group-hover:-translate-y-1'/>
                     <h3 className='text-[16px] font-[600] mt-3'>30 Days Return</h3>
                     <p className='text-[12px] font-[500]'>For an Exchange Product</p>
                 </div>
 
                 <div className='col flex items-center justify-center flex-col group w-[15%]'>
                     <BsWallet2
-                    className='text-[35px] transition-all duration-300 group-hover:text-[#ff5252] group-hover:-translate-y-1'/>
+                    className='text-[35px] transition-all duration-300 group-hover:text-[#01065d] group-hover:-translate-y-1'/>
                     <h3 className='text-[16px] font-[600] mt-3'>Secured Payment</h3>
                     <p className='text-[12px] font-[500]'>Payment Cards Accepted</p>
                 </div>
 
                 <div className='col flex items-center justify-center flex-col group w-[15%]'>
                     <LiaGiftSolid
-                    className='text-[40px] transition-all duration-300 group-hover:text-[#ff5252] group-hover:-translate-y-1'/>
+                    className='text-[40px] transition-all duration-300 group-hover:text-[#01065d] group-hover:-translate-y-1'/>
                     <h3 className='text-[16px] font-[600] mt-3'>Special Gifts</h3>
                     <p className='text-[12px] font-[500]'>Our First Product Order</p>
                 </div>
 
                 <div className='col flex items-center justify-center flex-col group w-[15%]'>
                     <BiSupport
-                    className='text-[35px] transition-all duration-300 group-hover:text-[#ff5252] group-hover:-translate-y-1'/>
+                    className='text-[35px] transition-all duration-300 group-hover:text-[#01065d] group-hover:-translate-y-1'/>
                     <h3 className='text-[16px] font-[600] mt-3'>Support 24/7</h3>
                     <p className='text-[12px] font-[500]'>Contact us Anytime</p>
                 </div>
@@ -80,15 +80,17 @@ const Footer = () => {
         <div className='footer flex px-3 lg:px-0 flex-col lg:flex-row py-8'>
             <div className='part1 w-full lg:w-[25%] border-r border-[rgba(0,0,0,0.1)]'>
                 <h2 className='text-[18px] font-[600] mb-4'>Contact us</h2>
-                <p className='text-[13px] font-[400] pb-4'>CladdyShop -Mega Super Super Store <br/>507-Union Trade Center France</p>
-                <Link to="mailto:satyamkumar59@gmail.com" className='link text-[13px]'>satyamkumar59@gmail.com</Link>
+                <p className='text-[13px] font-[400] pb-4'>Tech Portal Solutions Gadget Store</p>
+                <Link to="mailto:techportals191@gmail.com" className='link text-[13px]'>techportals191@gmail.com</Link> <br />
+                        <div className='text-[10px] font-[600]'>59 Ikot Ekpene Rd., Uyo.</div>
 
-                <span className='text-[22px] font-[600] block w-full mt-3 mb-5 text-[#ff5252]'>
-                    (+91) 70706-62532
+
+                <span className='text-[13px] font-[600] block w-full mt-3 mb-5 text-[#01065d]'>
+                    <a href="tel:07066965486">(+234) 706 696 5486</a>, <a href="tel:09159685595">(+234) 915 968 5595</a>
                 </span>
 
                     <div className='flex items-center gap-2'>
-                        <IoChatboxOutline className="text-[40px] text-[#ff5252]"/>
+                        <IoChatboxOutline className="text-[40px] text-[#01065d]"/>
                         <span className='text-[16px] font-[600]'>Online Chat<br/> Get Expert Help</span>
                     </div>
             </div>
@@ -165,29 +167,29 @@ const Footer = () => {
         <div className='container flex items-center justify-between flex-col lg:flex-row gap-4 lg:gap-0'>
             <ul className='flex items-center gap-2'>
                 <li className='list-none'>
-                    <Link to="/" target='_blank' className='w-[35px] h-[35px] rounded-full border border-[rgba(0,0,0,0.1)] flex items-center justify-center group hover:bg-[#ff5252] transition-all'>
+                    <Link to="/" target='_blank' className='w-[35px] h-[35px] rounded-full border border-[rgba(0,0,0,0.1)] flex items-center justify-center group hover:bg-[#01065d] transition-all'>
                     <FaFacebook className='text-[15px] group-hover:text-white' />
                     </Link>
                 </li>
                 <li className='list-none'>
-                    <Link to="/" target='_blank' className='w-[35px] h-[35px] rounded-full border border-[rgba(0,0,0,0.1)] flex items-center justify-center group hover:bg-[#ff5252] transition-all'>
+                    <Link to="/" target='_blank' className='w-[35px] h-[35px] rounded-full border border-[rgba(0,0,0,0.1)] flex items-center justify-center group hover:bg-[#01065d] transition-all'>
                     <AiOutlineYoutube className='text-[20px] group-hover:text-white' />
                     </Link>
                 </li>
                 <li className='list-none'>
-                    <Link to="/" target='_blank' className='w-[35px] h-[35px] rounded-full border border-[rgba(0,0,0,0.1)] flex items-center justify-center group hover:bg-[#ff5252] transition-all'>
+                    <Link to="/" target='_blank' className='w-[35px] h-[35px] rounded-full border border-[rgba(0,0,0,0.1)] flex items-center justify-center group hover:bg-[#01065d] transition-all'>
                     <FaPinterest className='text-[15px] group-hover:text-white' />
                     </Link>
                 </li>
                 <li className='list-none'>
-                    <Link to="/" target='_blank' className='w-[35px] h-[35px] rounded-full border border-[rgba(0,0,0,0.1)] flex items-center justify-center group hover:bg-[#ff5252] transition-all'>
+                    <Link to="/" target='_blank' className='w-[35px] h-[35px] rounded-full border border-[rgba(0,0,0,0.1)] flex items-center justify-center group hover:bg-[#01065d] transition-all'>
                     <FaInstagram className='text-[15px] group-hover:text-white' />
                     </Link>
                 </li>
             </ul>
 
             <p className='text-[13px] text-center mb-0'>
-                &copy; 2025 - Ecommerce Template
+                &copy; 2026 - Tech Portal Solutions Official Store
             </p>
 
             <div className='flex items-center gap-5 lg:gap-0'>

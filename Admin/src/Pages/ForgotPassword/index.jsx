@@ -82,7 +82,8 @@ const ForgotPassword = () => {
 
         <div className='loginBox card md:w-[600px] w-full h-auto px-3 pb-20 mx-auto pt-5 lg:pt-20 relative z-50'>
             <div className='text-center'>
-                <img src="/logo.svg"  className='m-auto'/>
+                                                    <span className="text-xl font-bold tracking-tight text-[#01065d] transition-all">Tech Portal Solutions</span>
+
             </div>
 
             <h1 className='text-center text-[18px] sm:text-[35px] font-[800] mt-4'>

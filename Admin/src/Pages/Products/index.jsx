@@ -422,10 +422,10 @@ const Products = () => {
                                             <TableCell style={{ minWidth: columns.minWidth }}>
                                                 <div className='flex gap-1 flex-col'>
                                                     <span className='oldPrice line-through leading-3 text-gray-500 text-[14px] font-[500]'>
-                                                        &#x20b9; {product?.oldPrice}
+                                                        &#x20a6; {product?.oldPrice}
                                                     </span>
                                                     <span className='price text-primary text-[14px] font-[600] text-green-600'>
-                                                        &#x20b9; {product?.price}
+                                                        &#x20a6; {product?.price}
                                                     </span>
                                                 </div>
                                             </TableCell>

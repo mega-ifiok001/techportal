@@ -12,7 +12,7 @@ const BlogItem = (props) => {
             <img src={props?.item?.images?.[0]} 
             className='w-full transition-all group-hover:scale-105 group-hover:rotate-1' 
             alt='blog image' />
-            <span className='flex items-center justify-center text-white absolute bottom-[15px] right-[15px] z-50 bg-[#ff5252] rounded-md p-1 text-[11px] font-[500] gap-1'>
+            <span className='flex items-center justify-center text-white absolute bottom-[15px] right-[15px] z-50 bg-[#01065d] rounded-md p-1 text-[11px] font-[500] gap-1'>
                 <IoMdTime className='text-[16px]' /> {props?.item?.createdAt?.split("T")?.[0]}
             </span>
         </div>

@@ -78,7 +78,7 @@ const VerificationEmail = (username, otp) => {
                 display: inline-block;
             }
             .warning {
-                background-color: #fff3cd;
+                background-color: #01065d;
                 border: 1px solid #ffeaa7;
                 color: #856404;
                 padding: 15px;
@@ -107,12 +107,12 @@ const VerificationEmail = (username, otp) => {
     <body>
         <div class="container">
             <div class="header">
-                <h1>Welcome to Classifyshop! 🎉</h1>
+                <h1>Welcome to Tech Portal Solutions Store! </h1>
                 <p>Verify your email address to get started</p>
             </div>
             <div class="content">
                 <p>Hi <span class="highlight">${username}</span>,</p>
-                <p>Thank you for registering with Classifyshop App! We're excited to have you on board. To complete your registration, please verify your email address using the OTP below:</p>
+                <p>Thank you for registering with Tech Portal Solutions Store! We're excited to have you on board. To complete your registration, please verify your email address using the OTP below:</p>
                 
                 <div class="otp-section">
                     <div class="otp-label">Your Verification Code</div>
@@ -122,12 +122,12 @@ const VerificationEmail = (username, otp) => {
                 <p>This code will expire in 10 minutes. If you didn't create an account, you can safely ignore this email.</p>
                 
                 <div class="warning">
-                    <strong>⚠️ Security Note:</strong> Never share your OTP with anyone. Classifyshop support staff will never ask for your verification code.
+                    <strong>⚠️ Security Note:</strong> Never share your OTP with anyone. Tech Portal Solutions Store support staff will never ask for your verification code.
                 </div>
             </div>
             <div class="footer">
-                <p>Questions? Contact us at support@classifyshop.com</p>
-                <p>&copy; 2025 Classifyshop App. All rights reserved.</p>
+                <p>Questions? Contact us at info@techportalsolutions.com</p>
+                <p>&copy; 2026 Tech Portal Solutions. All rights reserved.</p>
             </div>
         </div>
     </body>

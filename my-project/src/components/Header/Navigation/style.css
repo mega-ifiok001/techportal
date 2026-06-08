@@ -12,7 +12,7 @@
     top: 100%;
 }
 .nav li .submenu li:hover button {
-    color: #ff5252 !important;
+    color: #01065d !important;
 }
 
 
@@ -32,5 +32,5 @@
 }
 
 .nav li .submenu li:hover .submenu {
-    color: #ff5252 !important;
+    color: #01065d !important;
 }

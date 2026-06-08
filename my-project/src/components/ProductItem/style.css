@@ -8,7 +8,7 @@
 
 /* Wishlist button icon default and hover color */
 .productItem .actions .wishlist-btn svg{
-    color: #ff5252 !important;
+    color: #01065d !important;
     transition: color 0.2s ease;
 }
 

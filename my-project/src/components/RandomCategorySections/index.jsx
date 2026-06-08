@@ -146,7 +146,7 @@ const RandomCategorySections = ({ latestProducts, latestLoading, featuredProduct
     const getBadgeColor = (section) => {
         if (section.type === 'latest') return 'bg-[#2196f3]';
         if (section.type === 'featured') return 'bg-[#ff9800]';
-        return 'bg-[#ff5252]';
+        return 'bg-[#01065d]';
     };
 
     return (

@@ -226,10 +226,10 @@ export const Sidebar = (props) => {
             />
             <div className='flex pt-4 pb-2 priceRange'>
               <span className='text-[13px]'>
-                From: <strong className='text-dark'>Rs: {price[0]}</strong>
+                From: <strong className='text-dark'>NGN: {price[0]}</strong>
               </span>
               <span className='ml-auto text-[13px]'>
-                From: <strong className='text-dark'>Rs: {price[1]}</strong>
+                To: <strong className='text-dark'>NGN: {price[1]}</strong>
               </span>
             </div>
           </div>

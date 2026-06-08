@@ -36,7 +36,7 @@ const MobileNav = () => {
     <div className='mobileNav bg-white p-1 px-3 w-full flex items-center justify-between fixed bottom-0 left-0 gap-0 border-t border-gray-300 lg:hidden z-51'>
         <NavLink to="/" className={({ isActive }) => "nav-link"}>
             {({ isActive }) => (
-                <Button className={`flex-col w-10! min-w-10! capitalize! ${isActive ? 'text-[#ff5252]!' : 'text-gray-700!'}`}>
+                <Button className={`flex-col w-10! min-w-10! capitalize! ${isActive ? 'text-[#01065d]!' : 'text-gray-700!'}`}>
                     <IoHomeOutline size={18} />
                     <span className='text-[12px]'>Home</span>
                 </Button>
@@ -61,7 +61,7 @@ const MobileNav = () => {
 
         <NavLink to="/my-list" className={({ isActive }) => "nav-link"}>
             {({ isActive }) => (
-                <Button className={`flex-col w-10! min-w-10! capitalize! ${isActive ? 'text-[#ff5252]!' : 'text-gray-700!'}`}>
+                <Button className={`flex-col w-10! min-w-10! capitalize! ${isActive ? 'text-[#01065d]!' : 'text-gray-700!'}`}>
                     <LuHeart size={18} />
                     <span className='text-[12px]'>Wishlists</span>
                 </Button>
@@ -70,7 +70,7 @@ const MobileNav = () => {
 
         <NavLink to="/my-orders" className={({ isActive }) => "nav-link"}>
             {({ isActive }) => (
-                <Button className={`flex-col w-10! min-w-10! capitalize! ${isActive ? 'text-[#ff5252]!' : 'text-gray-700!'}`}>
+                <Button className={`flex-col w-10! min-w-10! capitalize! ${isActive ? 'text-[#01065d]!' : 'text-gray-700!'}`}>
                     <BsBagCheck size={18} />
                     <span className='text-[12px]'>Orders</span>
                 </Button>
@@ -79,7 +79,7 @@ const MobileNav = () => {
 
         <NavLink to="/my-account" className={({ isActive }) => "nav-link"}>
             {({ isActive }) => (
-                <Button className={`flex-col w-10! min-w-10! capitalize! ${isActive ? 'text-[#ff5252]!' : 'text-gray-700!'}`}>
+                <Button className={`flex-col w-10! min-w-10! capitalize! ${isActive ? 'text-[#01065d]!' : 'text-gray-700!'}`}>
                     <FiUser size={18} />
                     <span className='text-[12px]'>Account</span>
                 </Button>

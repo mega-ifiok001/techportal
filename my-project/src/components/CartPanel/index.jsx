@@ -39,7 +39,7 @@ const CartPanel = (props) => {
                   </h4>
                   <p className='flex items-center gap-3 mt-2 mb-2'>
                     <span className='text-[13px] sm:text-[14px]'>Qty : <span>{item?.quantity}</span></span>
-                    <span className='text-primary font-bold'>{item?.price?.toLocaleString('en-US', {style: 'currency', currency: "INR"})}</span>
+                    <span className='text-primary font-bold'>{item?.price?.toLocaleString('en-US', {style: 'currency', currency: "NGN"})}</span>
                   </p>
 
                   <MdOutlineDeleteOutline
@@ -65,7 +65,7 @@ const CartPanel = (props) => {
                 (context?.cartData?.length !== 0 ?
                 context?.cartData?.map(item => parseInt(item?.price) * item.quantity).reduce
                 ((total, value) => total + value, 0 ) : 0)?.toLocaleString('en-US',
-                { style: 'currency', currency: 'INR'})
+                { style: 'currency', currency: 'NGN'})
               }
             </span>
           </div>
@@ -86,7 +86,7 @@ const CartPanel = (props) => {
                 (context?.cartData?.length !== 0 ?
                 context?.cartData?.map(item => parseInt(item?.price) * item.quantity).reduce
                 ((total, value) => total + value, 0 ) : 0)?.toLocaleString('en-US',
-                { style: 'currency', currency: 'INR'})
+                { style: 'currency', currency: 'NGN'})
               }
             </span>
           </div>

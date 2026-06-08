@@ -34,6 +34,7 @@ import AddBlog from '../../Pages/Blog/addBlog';
 import EditBlog from '../../Pages/Blog/editBlog';
 import { AddBannerV1 } from '../../Pages/Banners/addBannerV1';
 import { EditBannerV1 } from '../../Pages/Banners/editBannerV1';
+import logo from '../../assets/logo_blue.png';
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -104,7 +105,7 @@ const Header = () => {
                 <div className='rounded-full w-[35px] h-[35px] overflow-hidden cursor-pointer'
                   onClick={handleClickMyAcc}
                 >
-                  <img src={context?.userData?.avatar ? context?.userData?.avatar : "https://up.yimg.com/ib/th/id/OIP.Kk4i-k-7bOfsgPv0SJtj5AHaHa?pid=Api&rs=1&c=1&qlt=95&w=121&h=121"}
+                  <img src={context?.userData?.avatar ? context?.userData?.avatar : ""}
                     className='w-full h-full object-cover' />
                 </div>
 

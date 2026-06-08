@@ -163,16 +163,16 @@ const Home = () => {
 
     <section className='py-0 lg:py-4 pt-0 lg:pt-2 bg-white'>
       <div className='container'>
-        <div className='freeShipping w-full md:w-[80%] m-auto p-2! lg:p-4 border-2 border-[#ff5252] flex items-center justify-center lg:justify-between rounded-md mb-2 lg:mb-3 flex-col lg:flex-row'>
+        <div className='freeShipping w-full md:w-[80%] m-auto p-2! lg:p-4 border-2 border-[#01065d] flex items-center justify-center lg:justify-between rounded-md mb-2 lg:mb-3 flex-col lg:flex-row'>
           <div className='col1 flex items-center gap-0 lg:gap-4'>
             <LiaShippingFastSolid className='text-[30px] lg:text-[50px]' />
             <span className='text-[16px] lg:text-[20px] font-[600] uppercase'>Free Shipping</span>
           </div>
           
           <div className='col2'>
-            <p className='font-[500] text-[12px]! lg:text-[20px] -mt-[3px]! lg:mt-3! text-center'>Free Delivery Now On Your First Order and over $200</p>
+            <p className='font-[500] text-[12px]! lg:text-[20px] -mt-[3px]! lg:mt-3! text-center'>Free Delivery Now On Your First Order and over &#x20a6;500,000</p>
           </div>
-          <p className='font-bold text-[20px] lg:text-[25px] -mt-[15px]! -mb-[5px]! lg:mb-5! lg:mt-5!'>- Only $200</p>
+          <p className='font-bold text-[20px] lg:text-[25px] -mt-[15px]! -mb-[5px]! lg:mb-5! lg:mt-5!'>- Only &#x20a6;500,000</p>
         </div>
 
         {

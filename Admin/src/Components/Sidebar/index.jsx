@@ -13,6 +13,7 @@ import { Collapse } from 'react-collapse';
 import { MyContext } from '../../App';
 import { SiBloglovin } from 'react-icons/si';
 import { fetchDataFromApi } from '../../utils/api';
+import logo from '../../assets/logo_offical.png'
 
 const Sidebar = () => {
 
@@ -54,8 +55,8 @@ const Sidebar = () => {
         }}
       >
         <Link to="/">
-          <img src="/logo1.svg" alt="Logo"
-            className='w-[200px]' />
+                                         <img src={logo} width={150} alt="tech portal official logo" />
+
         </Link>
       </div>
 

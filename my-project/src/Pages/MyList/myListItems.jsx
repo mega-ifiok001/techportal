@@ -46,10 +46,10 @@ const MyListItems = (props) => {
 
                             <div className='flex items-center gap-4 mt-2 mb-2'>
                                 <span className='price text-black text-[14px] font-[600]'>
-                                    &#x20b9;{props?.item?.price}
+                                  &#x20a6;{props?.item?.price}
                                 </span>
                                 <span className='oldPrice line-through text-gray-500 text-[14px] font-[500]'>
-                                    &#x20b9;{props?.item?.oldPrice}
+                                  &#x20a6;{props?.item?.oldPrice}
                                 </span>
                                 <span className='price text-primary text-[14px] font-[600]'>
                                     {props?.item?.discount}% OFF

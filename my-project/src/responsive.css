@@ -9,7 +9,7 @@
     .btn svg{font-size: 15px !important;}
 
     .mobileNav a.isActive button {
-        color: #ff5252 !important;
+        color: #01065d !important;
     }
 
     .navigation ul{white-space: nowrap; overflow-x: scroll; overflow-y: hidden; display: block; -ms-overflow-style: none; text-align: center;  scrollbar-width: none;}

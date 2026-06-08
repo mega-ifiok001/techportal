@@ -48,7 +48,7 @@ const Navigation = (props) => {
                         <ul className='flex items-center gap-3 nav'>
                             <li className='list-none'>
                                 <Link to={"/"} className='link transition text-[14px] font-[500]'>
-                                    <Button className='link transition !font-[500] !text-[rgba(0,0,0,0.8)] hover:!text-[#ff5252] !py-4'>Home</Button>
+                                    <Button className='link transition !font-[500] !text-[rgba(0,0,0,0.8)] hover:!text-[#01065d] !py-4'>Home</Button>
                                 </Link>
                             </li>
 
@@ -62,7 +62,7 @@ const Navigation = (props) => {
                                             onMouseLeave={() => { setHoveredCatIdx(null); setHoveredSubCatIdx(null); }}
                                         >
                                             <Link to={`/products?catId=${cat?._id}`} className='link transition text-[14px] font-[500]'>
-                                                <Button className='link transition !font-[500] !text-[rgba(0,0,0,0.8)] hover:!text-[#ff5252] !py-4'>{cat?.name}</Button>
+                                                <Button className='link transition !font-[500] !text-[rgba(0,0,0,0.8)] hover:!text-[#01065d] !py-4'>{cat?.name}</Button>
                                             </Link>
 
                                             {

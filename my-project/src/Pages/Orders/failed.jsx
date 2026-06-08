@@ -8,24 +8,16 @@ const OrderFailed = () => {
 
   const reasonMessage = (() => {
     switch (reason) {
-      case "PAYPAL_CANCELED":
-        return "Payment was canceled. Please try again.";
-      case "PAYPAL_ERROR":
-        return "PayPal payment failed. Please try again.";
-      case "PAYPAL_CAPTURE_FAILED":
-        return "Payment capture failed. Please contact support if you were charged.";
-      case "PAYPAL_SDK_LOAD_FAILED":
-        return "We could not load PayPal checkout. Please try again.";
-      case "RAZORPAY_ORDER_FAILED":
-        return "Payment failed during Razorpay checkout. Please try again.";
-      case "RAZORPAY_CANCELED":
-        return "Razorpay payment was canceled. Please try again.";
-      case "RAZORPAY_FAILED":
-        return "Razorpay payment failed. Please try again.";
-      case "COD_ORDER_FAILED":
-        return "Cash on delivery order failed. Please try again.";
-      default:
-        return "Your order could not be completed. Please try again.";
+case "PAYSTACK_CANCELED":
+    return "Payment was canceled. Please try again.";
+case "PAYSTACK_CAPTURE_FAILED":
+    return "Payment verification failed. Please contact support if you were charged.";
+case "PAYSTACK_SDK_LOAD_FAILED":
+    return "Unable to load Paystack checkout. Please try again.";
+case "PAYSTACK_ORDER_FAILED":
+    return "Payment was received but order could not be placed. Please contact support.";
+default:
+    return "Your order could not be completed. Please try again.";
     }
   })();
 

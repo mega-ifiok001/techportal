@@ -94,11 +94,11 @@ export const ProductDetails = () => {
 
             <div className='container pt-10'>
               <div className='flex gap-8 mb-5'>
-                <span className={`link text-[17px] cursor-pointer font-medium ${activeTab === 0 ? 'text-primary border-b-2 border-[#ff5252]' : ''}`}
+                <span className={`link text-[17px] cursor-pointer font-medium ${activeTab === 0 ? 'text-primary border-b-2 border-[#01065d]' : ''}`}
                   onClick={() => setActiveTab(0)}>
                   Description
                 </span>
-                <span className={`link text-[17px] cursor-pointer font-medium ${activeTab === 1 ? 'text-primary border-b-2 border-[#ff5252]' : ''}`}
+                <span className={`link text-[17px] cursor-pointer font-medium ${activeTab === 1 ? 'text-primary border-b-2 border-[#01065d]' : ''}`}
                   onClick={() => setActiveTab(1)}
                   ref={reviewSec}
                 >

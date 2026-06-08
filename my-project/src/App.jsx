@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import React, { useEffect, useState, createContext } from 'react'
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 import './App.css'
 import "./responsive.css"
 import Header from './components/Header'
 import Footer from './components/Footer'
+import HubLandingPage from './Pages/LandingPage'
 import Home from './Pages/Home'
 import ProductListing from './Pages/ProductListing'
 import { ProductDetails } from './Pages/ProductDetails'
-import { createContext } from 'react'
-
 
 import Login from './Pages/Login'
 import Register from './Pages/Register'
@@ -28,8 +27,21 @@ import OrderFailed from './Pages/Orders/failed'
 import SearchPage from './Pages/Search'
 
 
-
 const MyContext = createContext();
+
+const ConditionalHeader = () => {
+  const location = useLocation();
+  // Hide on Landing Page ("/"), show everywhere else
+  if (location.pathname === '/') return null;
+  return <Header />;
+};
+
+const ConditionalFooter = () => {
+  const location = useLocation();
+  // Hide on Landing Page ("/"), show everywhere else
+  if (location.pathname === '/') return null;
+  return <Footer />;
+};
 
 function App() {
 
@@ -64,7 +76,6 @@ function App() {
     });
   };
   
-
   const handleCloseProductDetailsModal = () => {
     setOpenProductDetailsModal({
       open: false,
@@ -88,8 +99,6 @@ function App() {
 
     if(token !== undefined && token !== null && token !== ""){
       setIsLogin(true);
-
-      
 
       getCartItems();
       getMyListData();
@@ -173,7 +182,6 @@ function App() {
       size: product?.size,
       weight: product?.weight,
       ram: product?.ram
-      
     }
 
     postData("/api/cart/add", data).then((res) => {
@@ -208,8 +216,6 @@ function App() {
       alertBox("error", error?.message || "Failed to fetch wishlist items");
     })
   }
-
-  
 
   const values = {
     openProductDetailsModal,
@@ -254,40 +260,45 @@ function App() {
     openSearchPanel
   }
 
-  return (
+   return (
     <>
       <BrowserRouter>
-      <MyContext.Provider value={values}>
-      <Header />
-      <Routes>
-        <Route path={"/"} exact={true} element={<Home/>} />
-        <Route path={"/products"} exact={true} element={<ProductListing/>} />
-        <Route path={"/product/:id"} exact={true} element={<ProductDetails/>} />
-        <Route path={"/login"} exact={true} element={<Login/>} />
-        <Route path={"/register"} exact={true} element={<Register/>} />
-        <Route path={"/cart"} exact={true} element={ <CartPage />} />
-        <Route path={"/verify"} exact={true} element={ <Verify />} />
-        <Route path={"/forgot-password"} exact={true} element={ <ForgotPassword />} />
-        <Route path={"/checkout"} exact={true} element={ <Checkout />} />
-        <Route path={"/my-account"} exact={true} element={ <MyAccount />} />
-        <Route path={"/my-list"} exact={true} element={ <MyList />} />
-        <Route path={"/my-orders"} exact={true} element={ <Orders />} />
-        <Route path={"/order/success"} exact={true} element={ <OrderSuccess />} />
-        <Route path={"/order/failed"} exact={true} element={ <OrderFailed />} />
-        <Route path={"/address"} exact={true} element={ <Address />} />
-        <Route path={"/search"} exact={true} element={ <SearchPage />} />
-        
-      </Routes>
-      <Footer />
-      </MyContext.Provider>
+        <MyContext.Provider value={values}>
+          
+          {/* This keeps your Header exactly where it was, but hides it on "/" */}
+          <ConditionalHeader />
+
+          <Routes>
+            {/* Landing Page (Stands separated, no Header/Footer) */}
+            <Route path="/" element={<HubLandingPage />} />
+
+            {/* E-Commerce Pages (Will all show the Header/Footer) */}
+            <Route path="/store" element={<Home />} />
+            <Route path="/products" element={<ProductListing />} />
+            <Route path="/product/:id" element={<ProductDetails />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/verify" element={<Verify />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/my-account" element={<MyAccount />} />
+            <Route path="/my-list" element={<MyList />} />
+            <Route path="/my-orders" element={<Orders />} />
+            <Route path="/order/success" element={<OrderSuccess />} />
+            <Route path="/order/failed" element={<OrderFailed />} />
+            <Route path="/address" element={<Address />} />
+            <Route path="/search" element={<SearchPage />} />
+          </Routes>
+
+          {/* This keeps your Footer exactly where it was, but hides it on "/" */}
+          <ConditionalFooter />
+
+        </MyContext.Provider>
       </BrowserRouter>
 
       <Toaster />
 
-      
-
-
-     
     </>
   )
 }

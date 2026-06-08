@@ -49,7 +49,7 @@ const HomeBannerV1 = (props) => {
                                 }
 
                                 <h3 className='flex items-center gap-0 lg:gap-3 text-[12px] lg:text-[18px] font-[500] w-full text-left mt-3 mb-0 lg:mb-3 relative -right-[100%] opacity-0 flex-col lg:flex-row'>
-                                    <span className='w-full lg:w-max hidden lg:block'>Starting At Only</span> <span className='text-primary text-[16px] lg:text-[30px] block lg:inline w-full lg:w-max'>&#x20b9;{item?.price}</span></h3>
+                                    <span className='w-full lg:w-max hidden lg:block'>Starting At Only</span> <span className='text-primary text-[16px] lg:text-[30px] block lg:inline w-full lg:w-max'>&#x20a6;{item?.price}</span></h3>
 
                                 <div className='w-full btn relative -right-full opacity-0'>
                                     <Link to={

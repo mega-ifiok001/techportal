@@ -15,6 +15,8 @@ import { postData } from '../../utils/api';
 
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { firebaseApp } from '../../firebase';
+import logo from '../../assets/logo_offical.png';
+
 
 const auth = getAuth(firebaseApp);
 
@@ -84,7 +86,7 @@ const Login = () => {
         postData("/api/user/login", formFields, { withCredentials: true }).then((res) => {
             setIsLoading(true);
             if (res?.error !== true) {
-                if(res?.user?.role !== "ADMIN"){
+                if(res?.user?.role !== "admin"){
                     context.alertBox("error", "You are not authorized to access this page");
                     setIsLoading(false);
                     return false;
@@ -172,8 +174,9 @@ const Login = () => {
     <section className='bg-white w-full '>
         <header className='w-full static lg:fixed top-0 left-0 px-4 py-3 flex items-center justify-center sm:justify-between z-50'>
             <Link to="/">
-                <img src="/logo1.svg" alt="Logo"
-                className='w-[150px]!'/>
+                                                                         <img src={logo} width={150} alt="tech portal official logo" />
+                                
+
             </Link>
 
 
@@ -196,7 +199,8 @@ const Login = () => {
 
         <div className='loginBox card md:w-[600px] w-full h-auto pb-20 mx-auto pt-5 lg:pt-20 relative z-50'>
             <div className='text-center'>
-                <img src="/logo.svg"  className='m-auto'/>
+                                                    <span className="text-xl font-bold tracking-tight text-[#01065d] transition-all">Tech Portal Solutions</span>
+
             </div>
 
             <h1 className='text-center text-[18px] sm:text-[35px] font-[800] mt-4'>

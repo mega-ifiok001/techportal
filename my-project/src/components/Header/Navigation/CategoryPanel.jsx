@@ -24,7 +24,8 @@ const CategoryPanel = (props) => {
     const DrawerList = (
         <Box sx={{ width: 250 }} role="presentation" className="catagoryPanel">
             <div className="p-3">
-                <img src="/logo.jpg" loading="eager" className='w-[170px]' />
+                                                    <span className="text-xl font-bold tracking-tight text-[#01065d] transition-all">Tech Portal Solutions</span>
+
             </div>
             <h3 className='p-3 text-[16px] font-[500] flex items-center justify-between'>Shop By Categories<IoCloseSharp className=' text-[20px] cursor-pointer' onClick={toggleDrawer(false)} /></h3>
 

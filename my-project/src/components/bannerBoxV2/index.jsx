@@ -12,7 +12,7 @@ const BannerBoxV2 = (props) => {
         ${props.info === "left" ? "" : "pl-17"}`}>
             <h2 className='text-[14px] md:text-[18px] font-[600]'>{props?.item?.bannerTitle}</h2>
 
-            <span className='text-[20px] text-primary font-[600] w-full'>&#x20b9;{props?.item?.price}</span>
+            <span className='text-[20px] text-primary font-[600] w-full'>&#x20a6;{props?.item?.price}</span>
 
             <div className='w-full'>
                 <Link to={`/`} className='text-[16px] font-[600] link'>Shop Now</Link>

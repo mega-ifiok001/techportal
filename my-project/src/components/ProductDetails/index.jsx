@@ -213,8 +213,8 @@ export const ProductDetailsComponent = (props) => {
       <div className='flex flex-col sm:flex-row md:flex-row lg:flex-row items-start sm:items-center gap-0 lg:gap-4 mt-0 lg:mt-4'>
 
         <div className='flex items-center gap-4'>
-          <span className='oldPrice line-through text-gray-500 text-[20px] font-[500]'> &#x20b9; {props.item?.oldPrice}</span>
-          <span className='price text-[#ff5252] text-[20px] font-[600]'> &#x20b9; {props.item?.price}</span>
+          <span className='oldPrice line-through text-gray-500 text-[20px] font-[500]'> &#x20a6; {props.item?.oldPrice}</span>
+          <span className='price text-[#01065d] text-[20px] font-[600]'> &#x20a6; {props.item?.price}</span>
         </div>
 
         <div className='flex items-center pb-2 lg:pb-0 gap-4'>
@@ -357,7 +357,7 @@ export const ProductDetailsComponent = (props) => {
       </div>
 
       <div className='flex items-center gap-4 mt-4'>
-        {/* <Button className={`wishlist-btn !w-[30px] !h-[30px] !min-w-[30px] !rounded-full !bg-white hover:!bg-[#ff5252] group`} */}
+        {/* <Button className={`wishlist-btn !w-[30px] !h-[30px] !min-w-[30px] !rounded-full !bg-white hover:!bg-[#01065d] group`} */}
               {/* onClick={()=> handleAddToMyList(props?.item)} */}
             {/* > */}
             {

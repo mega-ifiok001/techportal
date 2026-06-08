@@ -43,7 +43,7 @@ h1,h2,h3,h4,h5,h6{
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #ff5252
+    background: #01065d
 }
 ::-webkit-scrollbar-track {
     background: #fff
@@ -55,19 +55,19 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .bg-primary{
-    background: #ff5252 !important;
+    background: #01065d !important;
 }
 
 .border-primary{
-    border: 1px solid #ff5252 !important;
+    border: 1px solid #01065d !important;
 }
 
 .text-primary{
-    color: #ff5252 !important;
+    color: #01065d !important;
 }
 
 .btn-org{
-    background: #ff5252 !important;
+    background: #01065d !important;
     color: #fff !important;
     font-weight: 500;
     font-size: 16px;
@@ -80,8 +80,8 @@ h1,h2,h3,h4,h5,h6{
 
 .btn-org.btn-border{
     background: none !important;
-    color: #ff5252 !important;
-    border: 1px solid #ff5252 !important;
+    color: #01065d !important;
+    border: 1px solid #01065d !important;
     font-weight: 500;
     font-size: 16px;
     padding: 7px 20px !important;
@@ -90,7 +90,7 @@ h1,h2,h3,h4,h5,h6{
 .btn-org.btn-border:hover{
     background: #171717 !important;
     color: #fff !important;
-    border: 1px solid #ff5252 !important; 
+    border: 1px solid #01065d !important; 
 }
 
 .btn-dark{
@@ -117,9 +117,9 @@ h1,h2,h3,h4,h5,h6{
     border-bottom: 1px solid rgba(0,0,0,0.1);
 } */
 
-.link:hover, .Mui-checked{color: #ff5252 !important;}
+.link:hover, .Mui-checked{color: #01065d !important;}
 
-.MuiBadge-badge{background-color: #ff5252 !important;}
+.MuiBadge-badge{background-color: #01065d !important;}
 
 nav ul button{
     text-transform: capitalize !important;
@@ -191,11 +191,11 @@ nav ul button:hover{
 
 
 .MuiTabs-indicator {
-    background-color: #ff5252 !important;
+    background-color: #01065d !important;
 }
 
 .MuiTab-textColorPrimary.Mui-selected {
-    color: #ff5252 !important;
+    color: #01065d !important;
 }
 
 .productsSlider .swiper-wrapper {
@@ -210,7 +210,7 @@ footer form input::placeholder {
 
 
 .css-vuhw6e-MuiButtonBase-root-MuiSwitchBase-root-MuiCheckbox-root.Mui-checked, .css-vuhw6e-MuiButtonBase-root-MuiSwitchBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate {
-    color: #ff5252!important;
+    color: #01065d!important;
 }
 
 .MuiFormControlLabel-label {
@@ -219,7 +219,7 @@ footer form input::placeholder {
 }
 
 .swiper-pagination-bullet-active {
-    background: #ff5252 !important;
+    background: #01065d !important;
 }
 
 .HomeSliderV2 .swiper-slide-active .info {
@@ -270,12 +270,12 @@ footer form input::placeholder {
 }
 
 .itemViewActions button.active svg{
-    color: #ff5252 !important;
+    color: #01065d !important;
     opacity: 1;
 }
 
 .Mui-selected.MuiPaginationItem-page{
-    background-color: #ff5252 !important;
+    background-color: #01065d !important;
     color: #fff !important;
 }
 .shadow-md,.shadow-lg{
@@ -308,7 +308,7 @@ footer form input::placeholder {
 }
 
 .zoomProductSliderThumbs .swiper-button-prev:hover, .zoomProductSliderThumbs .swiper-button-next:hover{
-    background: #ff5252 !important;
+    background: #01065d !important;
 }
 
 .productContent .actions button{
@@ -372,7 +372,7 @@ input[type="number"]::-webkit-outer-spin-button {
     position: absolute;
     top: 50%;
     left: 0px;
-    background: #ff5252;
+    background: #01065d;
     transition: all 0.3s ease-in-out;
     opacity: 0;
 }
@@ -384,7 +384,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .myAccountTabs li a.active button svg{
-    color: #ff5252 !important;
+    color: #01065d !important;
     opacity: 1 !important;
 }
 

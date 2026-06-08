@@ -295,22 +295,22 @@ const ProductItem = (props) => {
           </div>
         }
        
-        <span className='discount flex items-center absolute top-[10px] left-[10px] z-50 bg-[#ff5252] text-white rounded-lg px-2 py-1 text-[12px] font-[600] p-1 text-[12px] font-[500]'>{props?.item?.discount}%</span>
+        <span className='discount flex items-center absolute top-[10px] left-[10px] z-50 bg-[#01065d] text-white rounded-lg px-2 py-1 text-[12px] font-[600] p-1 text-[12px] font-[500]'>{props?.item?.discount}%</span>
 
         <div className='actions absolute top-[-200px] right-[5px] z-50 flex items-center gap-2 flex-col w-[50px] transition-all duration-300 group-hover:top-[15px] opacity-0 group-hover:opacity-100'>
           <Tooltip title="View" placement='left-start'>
-            <Button className='!w-[30px] !h-[30px] !min-w-[30px] !rounded-full !bg-white !text-black hover:!bg-[#ff5252] hover:!text-white group'
+            <Button className='!w-[30px] !h-[30px] !min-w-[30px] !rounded-full !bg-white !text-black hover:!bg-[#01065d] hover:!text-white group'
               onClick={() => context.handleOpenProductDetailModel(true, props?.item)}>
               <MdZoomOutMap className='text-[18px] !text-black group-hover:text-white' />
             </Button>
           </Tooltip>
           <Tooltip title="Compare" placement='left-start'>
-            <Button className='!w-[30px] !h-[30px] !min-w-[30px] !rounded-full !bg-white !text-black hover:!bg-[#ff5252] hover:!text-white group'>
+            <Button className='!w-[30px] !h-[30px] !min-w-[30px] !rounded-full !bg-white !text-black hover:!bg-[#01065d] hover:!text-white group'>
               <IoGitCompareOutline className='text-[18px] !text-black group-hover:text-white' />
             </Button>
           </Tooltip>
           <Tooltip title="Wishlist" placement='left-start'>
-            <Button className={`wishlist-btn !w-[30px] !h-[30px] !min-w-[30px] !rounded-full !bg-white hover:!bg-[#ff5252] group`}
+            <Button className={`wishlist-btn !w-[30px] !h-[30px] !min-w-[30px] !rounded-full !bg-white hover:!bg-[#01065d] group`}
               onClick={()=> handleAddToMyList(props?.item)}
             >
               {
@@ -332,8 +332,8 @@ const ProductItem = (props) => {
         <Rating name='size-small' defaultValue={props?.item?.rating} size="small" readOnly />
 
         <div className='flex items-center whitespace-nowrap gap-3'>
-          <span className='oldPrice line-through text-gray-500 text-[12px] lg:text-[14px] font-[500]'>&#x20b9;{props?.item?.oldPrice}</span>
-          <span className='price text-[#ff5252] text-[12px] lg:text-[14px] font-[600]'>&#x20b9;{props?.item?.price}</span>
+          <span className='oldPrice line-through text-gray-500 text-[12px] lg:text-[14px] font-[500]'>&#x20a6;{props?.item?.oldPrice}</span>
+          <span className='price text-[#01065d] text-[12px] lg:text-[14px] font-[600]'>&#x20a6;{props?.item?.price}</span>
         </div>
 
         <div className=" mt-1 lg:mt-3!">
