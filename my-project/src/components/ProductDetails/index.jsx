@@ -20,7 +20,10 @@ export const ProductDetailsComponent = (props) => {
     const [isAddedInMyList, setIsAddedInMyList] = useState(false);
     const [showFullDescription, setShowFullDescription] = useState(false);
 
+ 
     const context = useContext(MyContext);
+
+    
 
 
     const handleSelecteQty=(qty) => {
@@ -213,8 +216,8 @@ export const ProductDetailsComponent = (props) => {
       <div className='flex flex-col sm:flex-row md:flex-row lg:flex-row items-start sm:items-center gap-0 lg:gap-4 mt-0 lg:mt-4'>
 
         <div className='flex items-center gap-4'>
-          <span className='oldPrice line-through text-gray-500 text-[20px] font-[500]'> &#x20a6; {props.item?.oldPrice}</span>
-          <span className='price text-[#01065d] text-[20px] font-[600]'> &#x20a6; {props.item?.price}</span>
+          <span className='oldPrice line-through text-gray-500 text-[20px] font-[500]'> &#x20a6; {props.item?.oldPrice?.toLocaleString()}</span>
+          <span className='price text-[#01065d] text-[20px] font-[600]'> &#x20a6; {props.item?.price?.toLocaleString()}</span>
         </div>
 
         <div className='flex items-center pb-2 lg:pb-0 gap-4'>
@@ -272,7 +275,7 @@ export const ProductDetailsComponent = (props) => {
                   <Button
                     key={index}
                     className={`${productActionIndex === index ?
-                      'bg-primary text-white' : ''
+                      'bg-primary !text-white' : ''
                       } ${tabError === true && 'border! border-red-500!'}`}
                     onClick={() => handleClickActiveTab(index, item)}
                   >
@@ -296,7 +299,7 @@ export const ProductDetailsComponent = (props) => {
                   <Button
                     key={index}
                     className={`${productActionIndex === index ?
-                      'bg-primary text-white' : ''
+                      'bg-primary !text-white' : ''
                       } ${tabError === true && 'border! border-red-500!'}`}
                     onClick={() => handleClickActiveTab(index, item)}
                   >
@@ -320,7 +323,7 @@ export const ProductDetailsComponent = (props) => {
                   <Button
                     key={index}
                     className={`${productActionIndex === index ?
-                      'bg-primary text-white' : ''
+                      'bg-primary !text-white' : ''
                       } ${tabError === true && 'border! border-red-500!'}`}
                     onClick={() => handleClickActiveTab(index, item)}
                   >

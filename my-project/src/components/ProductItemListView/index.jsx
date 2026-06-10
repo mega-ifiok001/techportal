@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import './style.css';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Rating from '@mui/material/Rating';
 import Button from '@mui/material/Button';
@@ -29,12 +29,15 @@ const ProductItem = (props) => {
   const [selectedTabName, setSelectedTabName] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
+  const navigate = useNavigate()
+
   const context = useContext(MyContext);
 
   const addToCart = (product, quantity) => {
 
     if (!context?.isLogin) {
       context?.alertBox("error", "You are not logged in. Please login first");
+      navigate("/login");
       return;
     }
     const productItem = {

@@ -1,0 +1,340 @@
+  /* ── leadership + staff carousel ── */
+  .ab-ceo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 18px;
+    margin: 10px 0 56px;
+  }
+
+  .ab-ceo-card {
+    padding: 26px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.09) 0%, rgba(255,255,255,0.04) 100%);
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ab-ceo-card::after {
+    content: '';
+    position: absolute;
+    inset: auto -20% -20% auto;
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(99,102,241,0.16), transparent 70%);
+    pointer-events: none;
+  }
+
+  .ab-ceo-layout {
+    display: grid;
+    grid-template-columns: 164px 1fr;
+    gap: 22px;
+    align-items: center;
+  }
+
+  .ab-ceo-portrait {
+    width: 164px;
+    height: 164px;
+    border-radius: 34px;
+    background: linear-gradient(135deg, rgba(99,102,241,0.26), rgba(168,85,247,0.18));
+    border: 1px solid rgba(255,255,255,0.14);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+
+  .ab-ceo-portrait::before {
+    content: '';
+    position: absolute;
+    inset: 12px;
+    border-radius: 28px;
+    border: 1px dashed rgba(255,255,255,0.18);
+  }
+
+  .ab-ceo-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .ab-ceo-initials {
+    font-size: 38px;
+    font-weight: 900;
+    line-height: 1;
+    color: #fff;
+    margin-top: 6px;
+  }
+
+  .ab-chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .ab-chip {
+    padding: 7px 10px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.78);
+    font-size: 12px;
+  }
+
+  .ab-metric-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .ab-metric {
+    padding: 14px 12px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .ab-metric-k {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+
+  .ab-metric-v {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .ab-carousel-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 8px 0 12px;
+  }
+
+  .ab-carousel-controls {
+    display: flex;
+    gap: 10px;
+  }
+
+  .ab-carousel-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.06);
+    color: #fff;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+  }
+
+  .ab-carousel-btn:hover {
+    transform: translateY(-2px);
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(99,102,241,0.4);
+  }
+
+  .ab-carousel-shell {
+    position: relative;
+  }
+
+  .ab-carousel-track {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 8px 4px 16px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ab-carousel-track::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .ab-carousel-track::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .ab-carousel-track::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.18);
+    border-radius: 999px;
+  }
+
+  .ab-carousel-card {
+    flex: 0 0 300px;
+    scroll-snap-align: start;
+    min-height: 382px;
+    border-radius: 22px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  }
+
+  .ab-carousel-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(99,102,241,0.35);
+    box-shadow: 0 18px 44px rgba(0,0,0,0.24);
+  }
+
+  .ab-carousel-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 40%);
+  }
+
+  .ab-card-top {
+    padding: 18px;
+    min-height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ab-avatar {
+    width: 84px;
+    height: 84px;
+    border-radius: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.08);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+
+  .ab-avatar strong {
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  .ab-avatar small {
+    font-size: 10px;
+    opacity: 0.75;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+
+  .ab-role-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 10px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    font-size: 11px;
+    color: rgba(255,255,255,0.82);
+    white-space: nowrap;
+  }
+
+  .ab-card-body {
+    padding: 0 18px 18px;
+  }
+
+  .ab-card-name {
+    font-size: 18px;
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 4px;
+  }
+
+  .ab-card-role {
+    font-size: 12px;
+    color: rgba(255,255,255,0.52);
+    margin: 0 0 12px;
+  }
+
+  .ab-card-quote {
+    font-size: 13px;
+    color: rgba(255,255,255,0.62);
+    line-height: 1.7;
+    margin: 0 0 14px;
+  }
+
+  .ab-tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .ab-tag {
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.72);
+  }
+
+  .ab-dot-row {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 12px;
+  }
+
+  .ab-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.18);
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .ab-dot.ab-active {
+    width: 26px;
+    background: linear-gradient(90deg, #6366f1, #a5b4fc);
+  }
+
+  @media (max-width: 640px) {
+    .ab-ceo-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .ab-ceo-portrait {
+      width: 100%;
+      height: 180px;
+    }
+
+    .ab-carousel-card {
+      flex-basis: 82vw;
+    }
+
+    .ab-carousel-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .ab-metric-grid {
+      grid-template-columns: 1fr;
+    }
+  }

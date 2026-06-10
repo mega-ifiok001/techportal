@@ -25,6 +25,8 @@ const ProductItem = (props) => {
   const [selectedTabName, setSelectedTabName] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
+
+
   const context = useContext(MyContext);
 
   const addToCart = (product, quantity) => {
@@ -179,6 +181,7 @@ const ProductItem = (props) => {
   const handleAddToMyList = (item) => {
     if(!context?.isLogin){
       context?.alertBox("error", "You are not logged in. Please login first");
+      redirect('/login')
       return false;
     }
 

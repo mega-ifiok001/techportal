@@ -162,6 +162,7 @@ function App() {
   const addToCart = (product, quantity) => {
     if(!isLogin){
       alertBox("error", "You are not logged in. Please login first");
+      navigate("/login");
       return false;
     }
 

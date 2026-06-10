@@ -41,7 +41,7 @@ const Footer = () => {
                     <LiaShippingFastSolid
                     className='text-[40px] transition-all duration-300 group-hover:text-[#01065d] group-hover:-translate-y-1'/>
                     <h3 className='text-[16px] font-[600] mt-3'>Free Shipping</h3>
-                    <p className='text-[12px] font-[500]'>For all Orders Over $100</p>
+                    <p className='text-[12px] font-[500]'>For all Orders Over  ₦500,000</p>
                 </div>
 
                 <div className='col flex items-center justify-center flex-col group w-[15%]'>
@@ -101,22 +101,10 @@ const Footer = () => {
 
                     <ul className='list'>
                         <li className='list-none text-[14px] w-full mb-2'>
-                            <Link to="/" className='link'>Price drop</Link>
-                        </li>
-                        <li className='list-none text-[14px] w-full mb-2'>
-                            <Link to="/" className='link'>New Products</Link>
-                        </li>
-                        <li className='list-none text-[14px] w-full mb-2'>
-                            <Link to="/" className='link'>Best sales</Link>
-                        </li>
-                        <li className='list-none text-[14px] w-full mb-2'>
                             <Link to="/" className='link'>Contact us</Link>
                         </li>
                         <li className='list-none text-[14px] w-full mb-2'>
-                            <Link to="/" className='link'>Sitemap</Link>
-                        </li>
-                        <li className='list-none text-[14px] w-full mb-2'>
-                            <Link to="/" className='link'>Stores</Link>
+                            <Link to="/shop" className='link'>Stores</Link>
                         </li>
                     </ul>
                 </div>
@@ -135,13 +123,10 @@ const Footer = () => {
                             <Link to="/" className='link'>Terms and condition of use</Link>
                         </li>
                         <li className='list-none text-[14px] w-full mb-2'>
-                            <Link to="/" className='link'>About us</Link>
+                            <Link to="https://techportal-web.vercel.app/#about" className='link'>About us</Link>
                         </li>
                         <li className='list-none text-[14px] w-full mb-2'>
-                            <Link to="/" className='link'>Secure payment</Link>
-                        </li>
-                        <li className='list-none text-[14px] w-full mb-2'>
-                            <Link to="/" className='link'>Login</Link>
+                            <Link to="/login" className='link'>Login</Link>
                         </li>
                     </ul>
                 </div>
