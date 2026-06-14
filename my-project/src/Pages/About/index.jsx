@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import ceoImage from '../../assets/ceo.png';
+import imager from '../../assets/dummy.jpeg';
 
 const aboutStyles = `
   /* ── leadership + staff carousel ── */
@@ -646,7 +648,7 @@ const jumpToStaff = (idx) => {
   ];
 
   const ceo = {
-  name: "Your CEO Name",
+  name: "Mr Pilip",
   role: "Chief Executive Officer",
   description:
     "Leads the company vision across training, retail, coworking, and customer success. Focused on building an accessible tech ecosystem that solves real problems.",
@@ -668,7 +670,7 @@ const staff = [
     cover:
       "linear-gradient(135deg, rgba(99,102,241,0.38), rgba(59,130,246,0.16))",
     avatarBg:
-      "linear-gradient(135deg, rgba(99,102,241,0.28), rgba(255,255,255,0.08))",
+      '../../assets/dummy.jpeg',
     quote: "Turns complex tech into practical learning experiences.",
     tags: ["Curriculum", "Workshops", "Mentorship"],
   },
@@ -1153,8 +1155,7 @@ const staff = [
   >
     <div className="ab-ceo-layout">
       <div className="ab-ceo-portrait">
-        <div className="ab-ceo-label">CEO / Founder</div>
-        <div className="ab-ceo-initials">CEO</div>
+         <img src={ceoImage} alt="image of the CEO of Tech Portal" />
       </div>
 
       <div>
@@ -1352,8 +1353,7 @@ const staff = [
             }}
           >
             <div className="ab-avatar" style={{ background: m.avatarBg }}>
-              <strong>{m.initials}</strong>
-              <small>{m.dept}</small>
+             <img src={imager} alt="" />
             </div>
 
             <span className="ab-role-badge">

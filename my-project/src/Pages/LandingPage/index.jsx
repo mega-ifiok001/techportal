@@ -179,7 +179,7 @@ const styles = `
   
   .navbar-scrolled {
     background: rgba(1, 6, 93, 0.95);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
   }
   
   .navbar-top {
@@ -411,13 +411,13 @@ export default function TechPortalLanding() {
           {/* Hamburger */}
           <button
             onClick={toggleMenu}
-            className="md:hidden z-50 relative w-12 h-12 flex flex-col items-center justify-center rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all focus:outline-none"
+            className="md:hidden z-50 relative w-12 h-12 flex flex-col items-center justify-center rounded-xl bg-white/2 shadow-2xl hover:bg-white/10 transition-all focus:outline-none"
             aria-label="Toggle Menu"
           >
             <div className="space-y-1.5 w-5">
               <span className={`block h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'transform rotate-45 translate-y-2 w-5' : 'w-5'}`} />
-              <span className={`block h-0.5 bg-indigo-300 transition-all duration-300 ${isMenuOpen ? 'opacity-0' : 'w-4 ml-auto'}`} />
-              <span className={`block h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'transform -rotate-45 -translate-y-2 w-5' : 'w-3 ml-auto'}`} />
+              <span className={`block h-0.5 bg-indigo-300 transition-all duration-300 ${isMenuOpen ? 'opacity-0' : 'w-4 ml-2'}`} />
+              <span className={`block h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'transform -rotate-45 -translate-y-2 w-5' : 'w-5 ml-auto'}`} />
             </div>
           </button>
         </div>
@@ -550,7 +550,7 @@ export default function TechPortalLanding() {
         <div className="grid lg:grid-cols-12 gap-8 items-stretch">
           <div className="lg:col-span-5 flex flex-col justify-center space-y-3">
             {services.map((item, index) => (
-              <div key={index} className="reveal service-tab" style={{ transitionDelay: `${index * 130}ms` }}>
+              <div key={index} className="reveal service-tab cursor-pointer" style={{ transitionDelay: `${index * 130}ms` }}>
                 <button
                   onClick={() => setActiveService(index)}
                   className={`w-full p-5 rounded-xl border text-left transition-all duration-500 focus:outline-none shimmer-wrap ${
@@ -684,7 +684,7 @@ export default function TechPortalLanding() {
         <div className="reveal banner-reveal relative rounded-2xl bg-gradient-to-r from-white/10 to-white/5 border border-white/15 p-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left shadow-2xl overflow-hidden group shimmer-wrap">
           <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           <div className="space-y-1 relative z-10">
-            <h4 className="text-xl font-bold">Ready to upgrade your computer?</h4>
+            <h4 className="text-xl font-bold">Ready to upgrade or buy your first computer?</h4>
             <p className="text-xs text-white/60 max-w-md font-light">Our laptop catalog is online and ready. Pick up at our co-working office or get free delivery.</p>
           </div>
           <a href="/store" className="w-full md:w-auto px-6 h-12 bg-white text-[#01065d] font-bold text-xs rounded-xl flex items-center justify-center hover:bg-indigo-50 shadow-md hover:scale-105 active:scale-95 transition-all whitespace-nowrap relative z-10">
@@ -693,17 +693,19 @@ export default function TechPortalLanding() {
         </div>
       </section>
 
-      <FloatingWhatsapp />
+      <FloatingWhatsapp  />
 
       {/* ── Footer ── */}
       <footer className="border-t border-white/5 bg-[#000236]">
-        <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-white/40 font-mono">
-          <p>© 2026 Tech Portal Solutions. Delivering Innovative technology driven solutions.</p>
+        <div className="max-w-7xl mx-auto px-3 py-3 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-white/40 font-mono">
+          <p className="text-center">© 2026 Tech Portal Solutions. Delivering Innovative technology driven solutions.</p>
           <div className="flex space-x-6">
             <a href="#services" className="hover:text-white transition-colors">Services</a>
             <a href="#video" className="hover:text-white transition-colors">Tour</a>
             <a href="/store" className="text-indigo-300 hover:text-white transition-colors">Buy Devices from us →</a>
           </div>
+        <p className="text-center">Built With ❤ by <a className="text-indigo-300 hover:text-white transition-colors" target='_blank' title="visit pluscode" href="https://pluscodeltd.vercel.app">PlusCode Ltd</a></p>
+
         </div>
       </footer>
       </div>
