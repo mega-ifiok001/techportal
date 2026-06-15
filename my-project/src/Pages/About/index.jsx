@@ -1,6 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import ceoImage from '../../assets/ceo.png';
-import imager from '../../assets/dummy.jpeg';
+import GeneralManagerImage from '../../assets/general_manager.jpeg';
+import socialMediaManagerImage_one from '../../assets/social_media_manager_one.jpeg';
+import contentCreatorImage from '../../assets/inspiration_favour.jpeg';
+import marketingSpecialistImage from '../../assets/marketingSpecialistImage (1).jpeg';
+import promoter_one from '../../assets/promote_one.jpeg';
+import promoter_two from '../../assets/promoter_two.jpeg';
+import promoter_three from '../../assets/solomon.jpeg';
+import computerEngineer from '../../assets/computer_engineer.jpeg';
+import promoter_four from '../../assets/God’swill Ettynyene Antia.jpeg';
+import manager from '../../assets/aniebiet.jpeg';
+import promoter_five from '../../assets/promise.jpeg';
+import  graphic_designer from '../../assets/edikan.jpeg';
+
 
 const aboutStyles = `
   /* ── leadership + staff carousel ── */
@@ -648,10 +660,10 @@ const jumpToStaff = (idx) => {
   ];
 
   const ceo = {
-  name: "Mr Pilip",
+  name: "Etinyene Philip",
   role: "Chief Executive Officer",
   description:
-    "Leads the company vision across training, retail, coworking, and customer success. Focused on building an accessible tech ecosystem that solves real problems.",
+    "Etinyene is the vision behind Tech Portal Solutions. He built a space where technology meets opportunity, and continues to drive the company forward with clear purpose and bold thinking. From shaping the business direction to setting the standard for every service Tech Portal delivers, his leadership defines what the company is and where it is headed.",
   focus: ["Vision & strategy", "Partnerships", "Growth"],
   metrics: [
     { k: "Leadership style", v: "Hands-on" },
@@ -662,82 +674,127 @@ const jumpToStaff = (idx) => {
 
 const staff = [
   {
-    name: "Academy Team Lead",
-    role: "Training & mentorship",
+    name: "David Godwin",
+    role: "General Manager",
     dept: "Training",
-    initials: "AL",
-    status: "Teaching",
+    initials: "DG",
     cover:
       "linear-gradient(135deg, rgba(99,102,241,0.38), rgba(59,130,246,0.16))",
-    avatarBg:
-      '../../assets/dummy.jpeg',
-    quote: "Turns complex tech into practical learning experiences.",
-    tags: ["Curriculum", "Workshops", "Mentorship"],
+    staffImage:GeneralManagerImage,
+    quote: "David Godwin drives the operational structure and growth strategies at Tech Portal Solutions. With a keen focus on scaling team capabilities and implementing robust marketing frameworks, oversee the seamless integration of our laptop retail, premium workspace, and tech training academy.",
+   
   },
   {
-    name: "Hardware Sales Lead",
-    role: "Devices & accessories",
+    name: "Praise Chinaza  ",
+    role: "Social media manger ",
     dept: "Store",
-    initials: "SL",
-    status: "Selling",
+    initials: "PC",
     cover:
       "linear-gradient(135deg, rgba(59,130,246,0.34), rgba(14,165,233,0.15))",
-    avatarBg:
-      "linear-gradient(135deg, rgba(59,130,246,0.26), rgba(255,255,255,0.08))",
-    quote: "Helps customers choose the right laptop, accessory, or setup.",
-    tags: ["Inventory", "Sales", "Consulting"],
+    staffImage: socialMediaManagerImage_one,
+    quote: "Responsible for creating, managing and growing the brand’s presence on social media platforms, interact with followersand analyze performance metrics. Enable effective connect between target audience while achieving organizational goals",
   },
   {
-    name: "Coworking Manager",
-    role: "Space operations",
-    dept: "Workspace",
-    initials: "WM",
-    status: "Managing",
+    name: "Inspiration Favour",
+    role: "Content Creator",
+    dept: "Content",
+    initials: "IF",
     cover:
       "linear-gradient(135deg, rgba(168,85,247,0.34), rgba(236,72,153,0.14))",
-    avatarBg:
-      "linear-gradient(135deg, rgba(168,85,247,0.26), rgba(255,255,255,0.08))",
-    quote: "Creates a productive, calm, and modern work environment.",
-    tags: ["Operations", "Community", "Support"],
+    staffImage: contentCreatorImage,
+    quote: "Creative mind behind contents and digital storytellingPassionate about crafting messages that inspires, educates and connect Bringing the brand to life through innovative ideas and strategic communication.",
+
   },
   {
-    name: "Customer Success Lead",
-    role: "Client support",
-    dept: "Support",
-    initials: "CS",
-    status: "Helping",
+    name: "Peace Johnson",
+    role: "Marketing Specialist",
+    dept: "Sales & Marketing",
+    initials: "PJ",
     cover:
       "linear-gradient(135deg, rgba(34,197,94,0.28), rgba(16,185,129,0.14))",
-    avatarBg:
-      "linear-gradient(135deg, rgba(34,197,94,0.24), rgba(255,255,255,0.08))",
-    quote: "Makes sure every customer gets a fast, friendly response.",
-    tags: ["Support", "Retention", "Feedback"],
+    staffImage: marketingSpecialistImage,
+    quote: "I'm a marketer passionate about helping brands grow through content, digital marketing, and customer engagement. I create strategies that increase visibility, attract the right audience, and drive business growth.",
+ 
   },
   {
-    name: "Brand & Content Lead",
-    role: "Marketing & visuals",
+    name: "Akaninyene, Promise Lawrence",
+    role: "Promoter",
     dept: "Creative",
-    initials: "BC",
-    status: "Creating",
+    initials: "APL",
     cover:
       "linear-gradient(135deg, rgba(249,115,22,0.28), rgba(245,158,11,0.14))",
-    avatarBg:
-      "linear-gradient(135deg, rgba(249,115,22,0.24), rgba(255,255,255,0.08))",
-    quote: "Shapes the company voice across social, design, and campaigns.",
-    tags: ["Content", "Design", "Campaigns"],
+    staffImage: promoter_one,
+    quote: "Akaninyene focuses on the growth and promotion of automated digital media assets at Tech Portal Solutions. Utilizing artificial intelligence and digital storytelling tools, he creates highly engaging niche entertainment content tailored for global streaming audiences to drive digital monetization",
   },
   {
-    name: "Systems Technician",
-    role: "IT & infrastructure",
+    name: "Edidiong Michael",
+    role: "Promoter",
+    dept: "Creative",
+    initials: "EM",
+    cover:
+      "linear-gradient(135deg, rgba(249,115,22,0.28), rgba(245,158,11,0.14))",
+    staffImage: promoter_two,
+    quote: "PEdidiong directs her efforts toward the growth and market positioning of automated digital media portfolios at Tech Portal Solutions. Through AI-assisted workflows and modern content generation, she builds highly engaging, specialized entertainment for global streaming viewers to ensure consistent digital monetization.",
+  },
+  {
+    name: "Solomon",
+    role: "Promoter",
+    dept: "Creative",
+    initials: "S",
+    cover:
+      "linear-gradient(135deg, rgba(249,115,22,0.28), rgba(245,158,11,0.14))",
+    staffImage: promoter_three,
+    quote: "Solomon directs his efforts toward the growth and market positioning of automated digital media portfolios at Tech Portal Solutions. Through AI-assisted workflows and modern content generation, she builds highly engaging, specialized entertainment for global streaming viewers to ensure consistent digital monetization.",
+  },
+   {
+    name: "God’swill Ettynyene Antia",
+    role: "Promoter",
+    dept: "Creative",
+    initials: "GEA",
+    cover:
+      "linear-gradient(135deg, rgba(249,115,22,0.28), rgba(245,158,11,0.14))",
+    staffImage: promoter_four,
+    quote: "God’swill Ettynyene Antia directs her efforts toward the growth and market positioning of automated digital media portfolios at Tech Portal Solutions. Through AI-assisted workflows and modern content generation, she builds highly engaging, specialized entertainment for global streaming viewers to ensure consistent digital monetization.",
+  },
+   {
+    name: "Aniebiet Enefiok Umoh",
+    role: "Manager",
+    dept: "Creative",
+    initials: "AEU",
+    cover:
+      "linear-gradient(135deg, rgba(249,115,22,0.28), rgba(245,158,11,0.14))",
+    staffImage: manager,
+    quote: "Aniebiet Enefiok Umoh leads the creative initiatives at Tech Portal Solutions. With a keen eye for detail and a passion for innovation, she drives the development of compelling content that resonates with global audiences.",
+  },
+  {
+    name: "Idongesit Maurice",
+    role: " Computer Engineer",
     dept: "Tech",
     initials: "ST",
-    status: "Building",
     cover:
       "linear-gradient(135deg, rgba(20,184,166,0.28), rgba(59,130,246,0.14))",
-    avatarBg:
-      "linear-gradient(135deg, rgba(20,184,166,0.24), rgba(255,255,255,0.08))",
-    quote: "Keeps devices, systems, and internal tools running smoothly.",
-    tags: ["Systems", "Repairs", "Networks"],
+    staffImage: computerEngineer,
+    quote: "Idongesit is the engine under the hood at Tech Portal Solutions. He architects and sustains the technical systems that keep every workstation alive, every connection stable, and every piece of equipment performing at its best. From network configuration to hardware diagnostics, his engineering instincts translate into a workspace where clients and learners never have to think twice about infrastructure, because he already has.",
+  },
+   {
+    name: "Promise Monday",
+    role: "Promoter",
+    dept: "Creative",
+    initials: "PM",
+    cover:
+      "linear-gradient(135deg, rgba(20,184,166,0.28), rgba(59,130,246,0.14))",
+    staffImage: promoter_five,
+    quote: "Promise is the driving force behind our creative initiatives at Tech Portal Solutions. She brings a unique blend of strategic thinking and artistic vision to every project, ensuring that our messaging resonates with audiences and drives meaningful engagement. Her passion for innovation and commitment to excellence make her an invaluable asset to our team.",
+  },
+   {
+    name: "Edikan Bassey",
+    role: "Graphic Designer",
+    dept: "Creative",
+    initials: "EB",
+    cover:
+      "linear-gradient(135deg, rgba(20,184,166,0.28), rgba(59,130,246,0.14))",
+    staffImage: graphic_designer,
+    quote: "Edikan is the creative force behind our visual identity at Tech Portal Solutions. His strategic thinking and artistic vision bring every project to life, ensuring that our messaging resonates with audiences and drives meaningful engagement. His passion for innovation and commitment to excellence make him an invaluable asset to our team.",
   },
 ];
 
@@ -1148,14 +1205,14 @@ const staff = [
   Leadership & team
 </div>
 
-<div className="ab-ceo-grid">
+<div className="mt-3">
   <div
     className="ab-ceo-card ab-reveal ab-up"
     style={{ transitionDelay: "80ms" }}
   >
     <div className="ab-ceo-layout">
-      <div className="ab-ceo-portrait">
-         <img src={ceoImage} alt="image of the CEO of Tech Portal" />
+      <div className="ab-ceo-portrait rounded-xl mt-20 mb-20 " style={{ background: ceoImage }}>
+         <img src={ceoImage} className="rounded-xl" alt="image of the CEO of Tech Portal" />
       </div>
 
       <div>
@@ -1205,70 +1262,7 @@ const staff = [
     </div>
   </div>
 
-  <div
-    className="ab-ceo-card ab-reveal ab-up"
-    style={{ transitionDelay: "150ms" }}
-  >
-    <div
-      style={{
-        fontSize: 11,
-        fontWeight: 700,
-        letterSpacing: "0.1em",
-        textTransform: "uppercase",
-        color: "rgba(255,255,255,0.35)",
-        marginBottom: 12,
-      }}
-    >
-      Leadership notes
-    </div>
 
-    <div style={{ display: "grid", gap: 12 }}>
-      {[
-        {
-          title: "Customer-first execution",
-          text: "We build services around real business outcomes.",
-        },
-        {
-          title: "Practical learning",
-          text: "The academy, store, and workspace all support the same ecosystem.",
-        },
-        {
-          title: "Local growth",
-          text: "Designed for Nigeria and built to scale across Africa.",
-        },
-      ].map((item, idx) => (
-        <div
-          key={idx}
-          style={{
-            padding: "14px 16px",
-            borderRadius: 14,
-            background: "rgba(255,255,255,0.05)",
-            border: "1px solid rgba(255,255,255,0.08)",
-          }}
-        >
-          <div
-            style={{
-              fontSize: 13,
-              fontWeight: 700,
-              color: "#fff",
-              marginBottom: 4,
-            }}
-          >
-            {item.title}
-          </div>
-          <div
-            style={{
-              fontSize: 13,
-              lineHeight: 1.7,
-              color: "rgba(255,255,255,0.62)",
-            }}
-          >
-            {item.text}
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
 </div>
 
 {/* ── Staff carousel / gallery ── */}
@@ -1309,8 +1303,8 @@ const staff = [
         maxWidth: 620,
       }}
     >
-      Swipe through the staff cards or use the arrows. This layout reads like a
-      carousel on mobile and like a gallery on larger screens.
+        Meet the talented individuals behind our success. Explore the team and discover the people driving innovation, supporting customers, and building exceptional experiences every day.
+
     </p>
   </div>
 
@@ -1352,13 +1346,11 @@ const staff = [
               gap: 12,
             }}
           >
-            <div className="ab-avatar" style={{ background: m.avatarBg }}>
-             <img src={imager} alt="" />
+            <div className="ab-avatar" style={{ background: m.staffImage }}>
+             <img src={m.staffImage} className="rounded-xl w-full" alt={m.name, m.role} />
             </div>
 
-            <span className="ab-role-badge">
-              <i className="fa-solid fa-briefcase"></i> {m.status}
-            </span>
+            
           </div>
 
           <div
@@ -1373,17 +1365,11 @@ const staff = [
         </div>
 
         <div className="ab-card-body">
-          <h4 className="ab-card-name">{m.name}</h4>
+          <h4 className="ab-card-name pt-2">{m.name}</h4>
           <p className="ab-card-role">{m.role}</p>
           <p className="ab-card-quote">{m.quote}</p>
 
-          <div className="ab-tag-row">
-            {m.tags.map((tag, i) => (
-              <span key={i} className="ab-tag">
-                {tag}
-              </span>
-            ))}
-          </div>
+        
         </div>
       </article>
     ))}

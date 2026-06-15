@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import logo from '../../assets/logo_white.png';
 import About from '../About';
 import FloatingWhatsapp from '../../components/WhatsappButton';
+import hubVideo from "../../assets/video.mp4";
+import videoThumbnail from "../../assets/logo_block.png";
 
 // ─── Reusable scroll-reveal hook ───────────────────────────────────────────────
 function useReveal(threshold = 0.15) {
@@ -623,27 +625,45 @@ export default function TechPortalLanding() {
           <p className="reveal rv-fade-up text-xs md:text-sm text-white/60" style={{ transitionDelay: '120ms' }}>Take a short 1-minute visual tour of our hub and meeting spaces.</p>
         </div>
         <div className="reveal video-reveal relative rounded-2xl overflow-hidden glass-card p-2 aspect-video shadow-[0_20px_60px_rgba(0,0,0,0.6)] group">
-          {!isPlayingVideo ? (
-            <div
-              className="w-full h-full bg-cover bg-center rounded-xl relative flex items-center justify-center transition-transform duration-700 group-hover:scale-[1.01]"
-              style={{ backgroundImage: `url('../../assets/image.jpeg')` }}
-            >
-              <div className="absolute inset-0 bg-[#01065d]/60 group-hover:bg-[#01065d]/40 transition-colors duration-300" />
-              <button
-                onClick={() => setIsPlayingVideo(true)}
-                className="relative z-10 w-16 h-16 md:w-20 md:h-20 bg-white text-[#01065d] fa-solid fa-play rounded-full flex items-center justify-center text-xl font-bold shadow-2xl hover:scale-110 active:scale-90 transition-transform duration-300 animate-bounce"
-                style={{ animationDuration: '3s' }}
-              ></button>
-              <span className="absolute bottom-4 left-4 z-10 text-[11px] font-mono bg-black/50 px-2 py-1 rounded backdrop-blur-sm border border-white/10"><span className="fa-solid fa-clock"></span> 1:14 Min Tour</span>
-            </div>
-          ) : (
-            <div className="w-full h-full bg-black rounded-xl flex items-center justify-center">
-              <div className="text-center p-4">
-                <p className="text-sm font-mono text-white/80 fa-solid fa-video"> [ Video element plays here seamlessly ]</p>
-                <button onClick={() => setIsPlayingVideo(false)} className="mt-4 text-xs underline text-indigo-300 hover:text-white transition-colors focus:outline-none">Close player</button>
-              </div>
-            </div>
-          )}
+        {!isPlayingVideo ? (
+  <div
+    className="w-full h-full bg-cover bg-center rounded-xl relative flex items-center justify-center transition-transform duration-700 group-hover:scale-[1.01]"
+    style={{ backgroundImage: `url(${videoThumbnail})` }}
+  >
+    <div className="absolute inset-0 bg-[#01065d]/60 group-hover:bg-[#01065d]/40 transition-colors duration-300" />
+
+    <button
+      onClick={() => setIsPlayingVideo(true)}
+      className="relative z-10 w-16 h-16 md:w-20 md:h-20 bg-white text-[#01065d] rounded-full flex items-center justify-center shadow-2xl hover:scale-110 active:scale-90 transition-transform duration-300"
+    >
+      <i className="fa-solid fa-play text-xl"></i>
+    </button>
+
+    <span className="absolute bottom-4 left-4 z-10 text-[11px] font-mono bg-black/50 px-2 py-1 rounded backdrop-blur-sm border border-white/10">
+      <i className="fa-solid fa-clock mr-1"></i>
+      1:14 Min Tour
+    </span>
+  </div>
+) : (
+  <div className="w-full h-full rounded-xl overflow-hidden bg-black relative">
+    <video
+      src={hubVideo}
+      controls
+      autoPlay
+      className="w-full h-full object-cover"
+    >
+      Your browser does not support the video tag.
+    </video>
+
+    <button
+      onClick={() => setIsPlayingVideo(false)}
+      className="absolute top-4 right-4 bg-black/60 text-white px-3 py-2 rounded-lg text-sm hover:bg-black/80 transition"
+    >
+      <i className="fa-solid fa-xmark mr-2"></i>
+      Close
+    </button>
+  </div>
+)}
         </div>
       </section>
 

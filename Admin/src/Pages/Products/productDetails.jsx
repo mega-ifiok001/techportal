@@ -199,7 +199,7 @@ const ProductDetails = () => {
                                         <MdRateReview className='opacity-65' />
                                         Review :
                                     </span>
-                                    <span className='text-[14px]'>({product?.review?.length > 0 ? product?.review?.length : 0}) Review</span>
+                                    <span className='text-[14px]'>({product?.reviews?.length > 0 ? product?.reviews?.length : 0}) Review</span>
                                 </div>
 
                                 <div className='flex items-center py-1'>
@@ -245,66 +245,7 @@ const ProductDetails = () => {
                                 </div>
                             </div>
 
-                            <div className="reviews w-full h-auto mb-3 p-4 bg-white rounded-sm shadow-md flex items-center justify-between">
-                                <div className="flex items-center gap-8">
-                                    <div className="img w-[85px] h-[85px] rounded-full overflow-hidden">
-                                        <img src="https://up.yimg.com/ib/th/id/OIP.kf9TvsuxepBOhAV4cTHEoAHaHa?pid=Api&rs=1&c=1&qlt=95&w=121&h=121"
-                                            className='h-full object-cover' />
-                                    </div>
-
-                                    <div className="info w-[80%]">
-                                        <div className="flex items-center justify-between">
-                                            <h4 className="text-[16px] font-medium">Naveen kumar</h4>
-                                            <Rating name="read-only" value={4} readOnly size="small" />
-                                        </div>
-                                        <span className='text-[13px]'>2025-01-11</span>
-                                        <p className="text-[13px] mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum consequatur laborum sapiente aut aperiam harum, velit qui porro aliquam, consequuntur, consectetur debitis labore reiciendis hic nisi doloribus tempore alias autem!
-                                            Voluptate eligendi repellat! </p>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                            <div className="reviews w-full h-auto mb-3 p-4 bg-white rounded-sm shadow-md flex items-center justify-between">
-                                <div className="flex items-center gap-8">
-                                    <div className="img w-[85px] h-[85px] rounded-full overflow-hidden">
-                                        <img src="https://up.yimg.com/ib/th/id/OIP.kf9TvsuxepBOhAV4cTHEoAHaHa?pid=Api&rs=1&c=1&qlt=95&w=121&h=121"
-                                            className='h-full object-cover' />
-                                    </div>
-
-                                    <div className="info w-[80%]">
-                                        <div className="flex items-center justify-between">
-                                            <h4 className="text-[16px] font-medium">Naveen kumar</h4>
-                                            <Rating name="read-only" value={4} readOnly size="small" />
-                                        </div>
-                                        <span className='text-[13px]'>2025-01-11</span>
-                                        <p className="text-[13px] mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum consequatur laborum sapiente aut aperiam harum, velit qui porro aliquam, consequuntur, consectetur debitis labore reiciendis hic nisi doloribus tempore alias autem!
-                                            Voluptate eligendi repellat! </p>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                            <div className="reviews w-full h-auto mb-3 p-4 bg-white rounded-sm shadow-md flex items-center justify-between">
-                                <div className="flex items-center gap-8">
-                                    <div className="img w-[85px] h-[85px] rounded-full overflow-hidden">
-                                        <img src="https://up.yimg.com/ib/th/id/OIP.kf9TvsuxepBOhAV4cTHEoAHaHa?pid=Api&rs=1&c=1&qlt=95&w=121&h=121"
-                                            className='h-full object-cover' />
-                                    </div>
-
-                                    <div className="info w-[80%]">
-                                        <div className="flex items-center justify-between">
-                                            <h4 className="text-[16px] font-medium">Naveen kumar</h4>
-                                            <Rating name="read-only" value={4} readOnly size="small" />
-                                        </div>
-                                        <span className='text-[13px]'>2025-01-11</span>
-                                        <p className="text-[13px] mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum consequatur laborum sapiente aut aperiam harum, velit qui porro aliquam, consequuntur, consectetur debitis labore reiciendis hic nisi doloribus tempore alias autem!
-                                            Voluptate eligendi repellat! </p>
-                                    </div>
-                                </div>
-                            </div>
+                          
                         </div>
                     </>
                     :
