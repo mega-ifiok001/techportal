@@ -93,7 +93,7 @@ const Login = () => {
 
                 context.setIsLogin(true);
 
-                history('/');
+                history('/store');
             } else {
                 context.alertBox("error", res?.message); 
                 setIsLoading(false);

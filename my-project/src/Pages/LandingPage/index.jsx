@@ -550,12 +550,12 @@ export default function TechPortalLanding() {
           <p className="reveal rv-fade-up text-sm text-white/60 font-light" style={{ transitionDelay: '120ms' }}>Click below to see how our different systems serve you under one roof.</p>
         </div>
         <div className="grid lg:grid-cols-12 gap-8 items-stretch">
-          <div className="lg:col-span-5 flex flex-col justify-center space-y-3">
+          <div className="lg:col-span-5 flex flex-col !cursor-pointer justify-center space-y-3">
             {services.map((item, index) => (
-              <div key={index} className="reveal service-tab cursor-pointer" style={{ transitionDelay: `${index * 130}ms` }}>
+              <div key={index} className="reveal service-tab !cursor-pointer" style={{ transitionDelay: `${index * 130}ms` }}>
                 <button
                   onClick={() => setActiveService(index)}
-                  className={`w-full p-5 rounded-xl border text-left transition-all duration-500 focus:outline-none shimmer-wrap ${
+                  className={`w-full cursor-pointer p-5 rounded-xl border text-left transition-all duration-500 focus:outline-none shimmer-wrap ${
                     activeService === index
                       ? 'bg-white text-[#01065d] border-white shadow-[0_20px_40px_rgba(255,255,255,0.1)] scale-[1.03]'
                       : 'bg-white/5 border-white/10 hover:bg-white/10 opacity-70 hover:opacity-100 hover:translate-x-1'
@@ -619,7 +619,7 @@ export default function TechPortalLanding() {
       </section>
 
       {/* ── Video ── */}
-      <section id="video" className="max-w-5xl mx-auto px-6 py-12">
+      {/* <section id="video" className="max-w-5xl mx-auto px-6 py-12">
         <div className="text-center mb-8 space-y-2">
           <h2 className="reveal rv-fade-up text-2xl md:text-3xl font-bold heading-line">See Life At Tech Portal</h2>
           <p className="reveal rv-fade-up text-xs md:text-sm text-white/60" style={{ transitionDelay: '120ms' }}>Take a short 1-minute visual tour of our hub and meeting spaces.</p>
@@ -657,15 +657,15 @@ export default function TechPortalLanding() {
 
     <button
       onClick={() => setIsPlayingVideo(false)}
-      className="absolute top-4 right-4 bg-black/60 text-white px-3 py-2 rounded-lg text-sm hover:bg-black/80 transition"
+      className="absolute top-4 right-4 bg-[blue] text-white px-3 py-2 rounded-lg text-sm hover:bg-[white] hover:text-[blue] cursor-pointer transition"
     >
-      <i className="fa-solid fa-xmark mr-2"></i>
+      <i className="fa-solid fa-xmark mr-2  cursor-pointer"></i>
       Close
     </button>
   </div>
 )}
         </div>
-      </section>
+      </section> */}
 
       {/* ── Testimonials ── */}
       <section id="testimonials" className="max-w-7xl mx-auto px-6 py-20">
@@ -683,7 +683,7 @@ export default function TechPortalLanding() {
               <div className="absolute -top-10 -right-10 w-20 h-20 bg-white/5 rounded-full blur-xl group-hover:bg-white/10 group-hover:scale-150 transition-all duration-700" />
               <p className="text-sm text-white/80 leading-relaxed font-light italic mb-6 relative z-10">"{t.text}"</p>
               <div className="flex items-center space-x-3 pt-4 border-t border-white/15 relative z-10">
-                <img src={t.image} alt={t.name} className="w-10 h-10 rounded-full object-cover border border-white/20 shadow-md group-hover:border-indigo-400 transition-colors duration-300" />
+                {/* <img src={t.image} alt={t.name} className="w-10 h-10 rounded-full object-cover border border-white/20 shadow-md group-hover:border-indigo-400 transition-colors duration-300" /> */}
                 <div>
                   <h4 className="text-sm font-bold text-white group-hover:text-indigo-200 transition-colors">{t.name}</h4>
                   <p className="text-xs text-white/50">{t.role}</p>
