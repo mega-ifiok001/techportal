@@ -8,14 +8,13 @@ import HubLandingPage from './Pages/LandingPage'
 import Home from './Pages/Home'
 import ProductListing from './Pages/ProductListing'
 import { ProductDetails } from './Pages/ProductDetails'
-
 import Login from './Pages/Login'
 import Register from './Pages/Register'
 import CartPage from './Pages/Cart'
 import Verify from './Pages/Verify'
 import ForgotPassword from './Pages/ForgotPassword'
 import MyAccount from './Pages/MyAccount'
-
+import InfoPages from './pages/more'
 import toast, { Toaster } from 'react-hot-toast';
 import Checkout from './Pages/Checkout'
 import MyList from './Pages/MyList'
@@ -25,21 +24,21 @@ import Address from './Pages/MyAccount/address'
 import OrderSuccess from './Pages/Orders/success'
 import OrderFailed from './Pages/Orders/failed'
 import SearchPage from './Pages/Search'
-
+import Contact from './Pages/Contact'
 
 const MyContext = createContext();
 
 const ConditionalHeader = () => {
   const location = useLocation();
-  // Hide on Landing Page ("/"), show everywhere else
-  if (location.pathname === '/') return null;
+  // Hide on Landing Page ("/") and Info Pages ("/info/*")
+  if (location.pathname === '/' || location.pathname.startsWith('/info')) return null;
   return <Header />;
 };
 
 const ConditionalFooter = () => {
   const location = useLocation();
-  // Hide on Landing Page ("/"), show everywhere else
-  if (location.pathname === '/') return null;
+  // Hide on Landing Page ("/") and Info Pages ("/info/*")
+  if (location.pathname === '/' || location.pathname.startsWith('/info')) return null;
   return <Footer />;
 };
 
@@ -54,14 +53,10 @@ function App() {
   const [catData, setCatData] = useState([]);
   const [cartData, setCartData] = useState([]);
   const [myListData, setMyListData] = useState([]);
-
-
   const [openCartPanel, setOpenCartPanel] = useState(false);
   const [openAddressPanel, setOpenAddressPanel] = useState(false);
-
   const [addressMode, setAddressMode] = useState("add");
   const [addressId, setAddressId] = useState('');
-
   const [searchData, setSearchData] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -70,41 +65,30 @@ function App() {
   const [openSearchPanel, setOpenSearchPanel] = useState(false);
 
   const handleOpenProductDetailModel = (status, item) => {
-    setOpenProductDetailsModal({
-      open: status,
-      item: item 
-    });
+    setOpenProductDetailsModal({ open: status, item: item });
   };
-  
+
   const handleCloseProductDetailsModal = () => {
-    setOpenProductDetailsModal({
-      open: false,
-      item: {} 
-    });
+    setOpenProductDetailsModal({ open: false, item: {} });
   };
 
   const toggleCartPanel = (newOpen) => () => {
     setOpenCartPanel(newOpen);
-  }
+  };
 
   const toggleAddressPanel = (newOpen) => () => {
-    if(newOpen == false){
-      setAddressMode("add");
-    }
+    if (newOpen == false) setAddressMode("add");
     setOpenAddressPanel(newOpen);
-  }
+  };
 
   useEffect(() => {
     const token = localStorage.getItem("accesstoken");
-
-    if(token !== undefined && token !== null && token !== ""){
+    if (token !== undefined && token !== null && token !== "") {
       setIsLogin(true);
-
       getCartItems();
       getMyListData();
       getUserDetails();
-
-    }else{
+    } else {
       setIsLogin(false);
     }
   }, [isLogin]);
@@ -115,58 +99,39 @@ function App() {
         if (res?.response?.data?.message === "You have not login") {
           localStorage.removeItem("accesstoken");
           localStorage.removeItem("refreshtoken");
-
           alertBox("error", "Session expired. Please login again.");
-
           window.location.href = "/login";
-
           setIsLogin(false);
           return;
         }
       }
-
       setUserData(res.data);
-
     }).catch((err) => {
       alertBox("error", err?.message || "Failed to fetch user details");
-    })
-  }
+    });
+  };
 
   useEffect(() => {
     fetchDataFromApi("/api/category").then((res) => {
-      if(res?.error === false) {
-        setCatData(res?.categories);
-      }
-    })
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
+      if (res?.error === false) setCatData(res?.categories);
+    });
 
+    const handleResize = () => setWindowWidth(window.innerWidth);
     window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const alertBox = (type, msg) => {
-    if(type === "Success"){
-      toast.success(msg)
-    }
-    if(type === "error"){
-      toast.error(msg);
-    }
-  }
+    if (type === "Success") toast.success(msg);
+    if (type === "error") toast.error(msg);
+  };
 
   const addToCart = (product, quantity) => {
-    if(!isLogin){
+    if (!isLogin) {
       alertBox("error", "You are not logged in. Please login first");
       navigate("/login");
       return false;
     }
-
-    const id = userData?._id;
 
     const data = {
       productTitle: product?.name,
@@ -183,40 +148,33 @@ function App() {
       size: product?.size,
       weight: product?.weight,
       ram: product?.ram
-    }
+    };
 
     postData("/api/cart/add", data).then((res) => {
-      if(res?.error !== false){
+      if (res?.error !== false) {
         alertBox("error", res?.message);
         return false;
       }
       alertBox("Success", res?.message);
-
       getCartItems();
-      
     }).catch((error) => {
       alertBox("error", error?.message || "Failed to add to cart");
-    })
-    
-  }
+    });
+  };
 
   const getCartItems = () => {
     fetchDataFromApi(`/api/cart/get`).then((res) => {
-      if (res?.error === false) {
-        setCartData(res?.data);
-      }
-    })
-  }
+      if (res?.error === false) setCartData(res?.data);
+    });
+  };
 
   const getMyListData = () => {
     fetchDataFromApi(`/api/mylist/`).then((res) => {
-      if (res?.error === false) {
-        setMyListData(res?.data);
-      }
+      if (res?.error === false) setMyListData(res?.data);
     }).catch((error) => {
       alertBox("error", error?.message || "Failed to fetch wishlist items");
-    })
-  }
+    });
+  };
 
   const values = {
     openProductDetailsModal,
@@ -234,7 +192,7 @@ function App() {
     setIsLogin,
     setUserData,
     userData,
-    setCatData, 
+    setCatData,
     catData,
     addToCart,
     cartData,
@@ -259,21 +217,23 @@ function App() {
     isFilterBtnShow,
     setOpenSearchPanel,
     openSearchPanel
-  }
+  };
 
-   return (
+  return (
     <>
       <BrowserRouter>
         <MyContext.Provider value={values}>
-          
-          {/* This keeps your Header exactly where it was, but hides it on "/" */}
+
           <ConditionalHeader />
 
           <Routes>
-            {/* Landing Page (Stands separated, no Header/Footer) */}
+            {/* Landing Page — no Header/Footer */}
             <Route path="/" element={<HubLandingPage />} />
 
-            {/* E-Commerce Pages (Will all show the Header/Footer) */}
+            {/* Info / Policy Pages — own layout, no store Header/Footer */}
+            <Route path="/info/*" element={<InfoPages />} />
+
+            {/* Store Pages — all show Header/Footer */}
             <Route path="/store" element={<Home />} />
             <Route path="/products" element={<ProductListing />} />
             <Route path="/product/:id" element={<ProductDetails />} />
@@ -290,18 +250,17 @@ function App() {
             <Route path="/order/failed" element={<OrderFailed />} />
             <Route path="/address" element={<Address />} />
             <Route path="/search" element={<SearchPage />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
 
-          {/* This keeps your Footer exactly where it was, but hides it on "/" */}
           <ConditionalFooter />
 
         </MyContext.Provider>
       </BrowserRouter>
 
       <Toaster />
-
     </>
-  )
+  );
 }
 
 export default App;

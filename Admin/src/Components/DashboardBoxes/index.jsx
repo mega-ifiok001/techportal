@@ -44,10 +44,10 @@ const DashboardBoxes = (props) => {
         }}
     >
         <SwiperSlide>
-            <div className='box bg-[#3872fa] p-5 cursor-pointer hover:bg-[#3d6dde] rounded-md border border-[rgba(0,0,0,0.1)] flex items-center gap-4'>
+            <div className='box bg-[#3872fa] p-2 cursor-pointer hover:bg-[#3d6dde] rounded-md border border-[rgba(0,0,0,0.1)] flex items-center gap-4'>
                 <FiPieChart className='text-[40px] text-white' />
                 <div className='info min-w-[55%]'>
-                    <h3 className='text-white'>Total Users</h3>
+                    <h3 className='text-white text-[16px]'>Total Users</h3>
                     <b className='text-white text-[20px]'>{props?.users}</b>
                 </div>
                 <IoStatsChartSharp className='text-[50px] ml-auto text-white' />
@@ -55,10 +55,10 @@ const DashboardBoxes = (props) => {
         </SwiperSlide>
 
          <SwiperSlide>
-            <div className='box bg-[#16c003] p-5 cursor-pointer hover:bg-[#08a600] rounded-md border border-[rgba(0,0,0,0.1)] flex items-center gap-4'>
+            <div className='box bg-[#16c003] p-2 cursor-pointer hover:bg-[#08a600] rounded-md border border-[rgba(0,0,0,0.1)] flex items-center gap-4'>
                 <GoGift className='text-[40px] text-white' />
                 <div className='info min-w-[55%]'>
-                    <h3 className='text-white'>Total Orders</h3>
+                    <h3 className='text-white text-[16px]'>Total Orders</h3>
                     <b className='text-white text-[20px]'>{props?.orders}</b>
                 </div>
                 <IoStatsChartSharp className='text-[50px] ml-auto text-white' />
@@ -66,10 +66,10 @@ const DashboardBoxes = (props) => {
         </SwiperSlide>
 
         <SwiperSlide>
-            <div className='box bg-[#312be1d8] p-5 cursor-pointer hover:bg-[#2a27c1] rounded-md border border-[rgba(0,0,0,0.1)] flex items-center gap-4'>
+            <div className='box bg-[#312be1d8] p-2 cursor-pointer hover:bg-[#2a27c1] rounded-md border border-[rgba(0,0,0,0.1)] flex items-center gap-4'>
                 <RiProductHuntLine className='text-[40px] text-white' />
                 <div className='info min-w-[55%]'>
-                    <h3 className='text-white'>Total Product</h3>
+                    <h3 className='text-white text-[16px]'>Total Product</h3>
                     <b className='text-white text-[20px]'>{props?.products}</b>
                 </div>
                 <IoStatsChartSharp className='text-[50px] ml-auto text-white' />
@@ -77,10 +77,10 @@ const DashboardBoxes = (props) => {
         </SwiperSlide>
 
         <SwiperSlide>
-            <div className='box bg-[#16c003] p-5 cursor-pointer hover:bg-[#08a600] rounded-md border border-[rgba(0,0,0,0.1)] flex items-center gap-4'>
+            <div className='box bg-[#16c003] p-2 cursor-pointer hover:bg-[#08a600] rounded-md border border-[rgba(0,0,0,0.1)] flex items-center gap-4'>
                 <MdOutlineReviews className='text-[40px] text-white' />
                 <div className='info min-w-[55%]'>
-                    <h3 className='text-white'>Total Category</h3>
+                    <h3 className='text-white text-[16px]'>Total Category</h3>
                     <b className='text-white text-[20px]'>{props?.category}</b>
                 </div>
                 <IoStatsChartSharp className='text-[50px] ml-auto text-white' />
@@ -88,10 +88,10 @@ const DashboardBoxes = (props) => {
         </SwiperSlide>
 
         <SwiperSlide>
-            <div className='box bg-[#f90d0d] p-5 cursor-pointer hover:bg-[#bd0000] rounded-md border border-[rgba(0,0,0,0.1)] flex items-center gap-4'>
+            <div className='box bg-[#f90d0d] p-2 cursor-pointer hover:bg-[#bd0000] rounded-md border border-[rgba(0,0,0,0.1)] flex items-center gap-4'>
                 <MdOutlineReviews className='text-[40px] text-white' />
                 <div className='info min-w-[55%]'>
-                    <h3 className='text-white'>Total Reviews</h3>
+                    <h3 className='text-white text-[16px]'>Total Reviews</h3>
                     <b className='text-white text-[20px]'>{props?.reviews}</b>
                 </div>
                 <IoStatsChartSharp className='text-[50px] ml-auto text-white' />

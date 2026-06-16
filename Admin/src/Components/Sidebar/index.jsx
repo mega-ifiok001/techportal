@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { RxDashboard } from 'react-icons/rx';
 import { FaRegImage } from 'react-icons/fa';
-import { FiUsers } from 'react-icons/fi';
+import { FiUsers, FiMessageSquare } from 'react-icons/fi';
 import { RiProductHuntLine } from 'react-icons/ri';
 import { TbCategory } from 'react-icons/tb';
 import { IoBagCheckOutline } from 'react-icons/io5';
@@ -132,6 +132,19 @@ const Sidebar = () => {
           >
             <Button className='w-full capitalize! justify-start! flex gap-3 text-[14px] text-[rgba(0,0,0,0.8)]! font-medium! items-center py-2! hover:bg-[#f1f1f1]!'>
               <FiUsers className='text-[18px]' /> <span>Users</span>
+            </Button>
+          </Link>
+        </li>
+
+         <li>
+          <Link to="/contact-message"
+            onClick={() => {
+              context?.windowWidth < 922 && context?.setisSidebarOpen(false)
+              setSubmenuIndex(null)
+             }}
+          >
+            <Button className='w-full capitalize! justify-start! flex gap-3 text-[14px] text-[rgba(0,0,0,0.8)]! font-medium! items-center py-2! hover:bg-[#f1f1f1]!'>
+              <FiMessageSquare className='text-[18px]' /> <span>Contact Messages</span>
             </Button>
           </Link>
         </li>

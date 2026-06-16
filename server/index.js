@@ -17,6 +17,7 @@ import blogRouter from './router/blog.route.js';
 import orderRouter from './router/order.route.js';
 import bannerV2Router from './router/bannerV2.route.js';
 import bannerV1Router from './router/bannerV1.route.js';
+import contactRoute from "./router/contact.route.js";
 
 const app = express();
 app.use(cors());
@@ -34,6 +35,7 @@ app.get("/", (req, res) => {
     })
 });
 
+
 app.use("/api/user", userRouter);
 app.use("/api/category", categoryRouter);
 app.use("/api/product", productRouter);
@@ -45,6 +47,7 @@ app.use("/api/bannerV1", bannerV1Router);
 app.use("/api/bannerV2", bannerV2Router);
 app.use("/api/blog", blogRouter);
 app.use("/api/order", orderRouter);
+app.use("/api/contact", contactRoute);
 
   
 connectDB().then(() => {

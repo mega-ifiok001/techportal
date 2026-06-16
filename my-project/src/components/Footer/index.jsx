@@ -114,13 +114,13 @@ const Footer = () => {
 
                     <ul className='list'>
                         <li className='list-none text-[14px] w-full mb-2'>
-                            <Link to="/" className='link'>Delivery</Link>
+                            <Link to="/info/delivery" className='link'>Delivery</Link>
                         </li>
                         <li className='list-none text-[14px] w-full mb-2'>
-                            <Link to="/" className='link'>Legal Notice</Link>
+                            <Link to="/info/legal-notice" className='link'>Legal Notice</Link>
                         </li>
                         <li className='list-none text-[14px] w-full mb-2'>
-                            <Link to="/" className='link'>Terms and condition of use</Link>
+                            <Link to="/info/terms-and-conditions" className='link'>Terms and condition of use</Link>
                         </li>
                         <li className='list-none text-[14px] w-full mb-2'>
                             <Link to="https://techportal-web.vercel.app/#about" className='link'>About us</Link>

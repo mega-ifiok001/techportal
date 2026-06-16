@@ -32,6 +32,7 @@ import BannerV1List from './Pages/Banners/bannerV1List'
 import { BlogList } from './Pages/Blog'
 import ProtectedRoute from './Components/ProtectedRoute'
 import BannerV2List from './Pages/Banners/bannerV2List'
+import ContactMessage from './Pages/contactMessages'
 
 
 
@@ -286,6 +287,26 @@ function App() {
               </div>
               <div className={`contentRight py-4 px-5 ${isSidebarOpen === false ? 'w-[100%]' : 'w-[82%]'} transition-all duration-300`}>
                 <Users />
+              </div>
+            </div>
+          </section>
+        </ProtectedRoute>
+      ),
+    },
+
+      {
+      path: '/contact-message',
+      exaxt: true,
+      element: (
+        <ProtectedRoute>
+          <section className='main'>
+            <Header />
+            <div className='contentMain flex'>
+              <div className={`overflow-hidden sidebarWrapper ${isSidebarOpen === true ? 'w-[18%]' : 'w-[0%] opacity-0'} transition-all duration-300`}>
+                <Sidebar />
+              </div>
+              <div className={`contentRight py-4 px-5 ${isSidebarOpen === false ? 'w-[100%]' : 'w-[82%]'} transition-all duration-300`}>
+                <ContactMessage />
               </div>
             </div>
           </section>
