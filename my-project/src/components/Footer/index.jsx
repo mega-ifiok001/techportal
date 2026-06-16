@@ -97,14 +97,14 @@ const Footer = () => {
 
             <div className='part2 w-full lg:w-[40%] flex pl-0 lg:pl-5 mt-5 lg:mt-0'>
                 <div className='part2_col1 w-[50%]'>
-                    <h2 className='text-[18px] font-[600] mb-4'>Products</h2>
+                    <h2 className='text-[18px] font-[600] mb-4'>Context</h2>
 
                     <ul className='list'>
                         <li className='list-none text-[14px] w-full mb-2'>
                             <Link to="/" className='link'>Contact us</Link>
                         </li>
                         <li className='list-none text-[14px] w-full mb-2'>
-                            <Link to="/shop" className='link'>Stores</Link>
+                            <Link to="/products" className='link'>Products</Link>
                         </li>
                     </ul>
                 </div>
