@@ -1,4 +1,4 @@
-# 🛒 ClassyShop – Full-Stack E-Commerce Platform
+# 🛒 Tech portal solutions – landing page and Full-Stack E-Commerce Platform
 
 A complete, production-ready e-commerce platform with a **Customer Storefront**, **Admin Dashboard**, and **Backend API Server**. Built with the **MERN Stack** (MongoDB, Express, React, Node.js) + Material-UI, TailwindCSS, PayPal Payments, Google OAuth, and more.
 
@@ -8,19 +8,19 @@ A complete, production-ready e-commerce platform with a **Customer Storefront**,
 
 | App | URL |
 |-----|-----|
-| 🛍️ **Customer Storefront** | [`https://classyshop.onrender.com`](https://classyshop.onrender.com) |
+| 🛍️ **Customer Storefront** | [`https://techportal-web.vercel.app`](https://techportal-web.vercel.app)|
 
 ---
 
-## 🎬 Demo Previews
+##  Demo Previews
 
 ### Customer Storefront
 
-![ClassyShop Homepage Demo](./my-project/screenshots/home-scroll.gif)
+![Tech Portal Homepage Demo](./my-project/src/assets/techportal.png)
 
 ### Admin Dashboard
 
-![ClassyShop Admin Dashboard Demo](./Admin/screenshots/admin-dashboard.gif)
+![TechPortal Admin Dashboard Demo](./Admin/src/assets/techportal_dashboard.png)
 
 ---
 
@@ -32,164 +32,19 @@ A complete, production-ready e-commerce platform with a **Customer Storefront**,
 <details>
 <summary>🏠 Home Page - Hero Slider & Categories</summary>
 
-![Home Page](./my-project/screenshots/home-page.png)
+![Home Page](./my-project/src/assets/techportal.png)
 
 </details>
 
 <details>
 <summary>🔥 Home Page - Popular Products</summary>
 
-![Popular Products](./my-project/screenshots/home-popular-products.png)
+![Popular Products](./my-project/src/assets/tecchportal_store.png)
 
 </details>
 
-<details>
-<summary>⭐ Home Page - Featured Products</summary>
 
-![Featured Products](./my-project/screenshots/home-featured.png)
 
-</details>
-
-<details>
-<summary>🛍️ Product Listing</summary>
-
-![Product Listing](./my-project/screenshots/product-listing.png)
-![Product Listing GIF](./my-project/screenshots/product-listing-scroll.gif)
-
-</details>
-
-<details>
-<summary>📦 Product Details</summary>
-
-![Product Details](./my-project/screenshots/product-details.png)
-
-</details>
-
-<details>
-<summary>🛒 Shopping Cart</summary>
-
-![Cart Page](./my-project/screenshots/cart-page.png)
-
-</details>
-
-<details>
-<summary>🔑 Login & Register</summary>
-
-![Login Page](./my-project/screenshots/login-page.png)
-![Register Page](./my-project/screenshots/register-page.png)
-
-</details>
-
-<details>
-<summary>📱 Mobile Responsive</summary>
-
-![Mobile Home](./my-project/screenshots/mobile-home.png)
-![Mobile Product Details](./my-project/screenshots/mobile-product-details.png)
-
-</details>
-
-</details>
-
-<details>
-<summary><b>⚙️ Admin Dashboard Screenshots</b></summary>
-
-<details>
-<summary>📊 Dashboard – Analytics & Stats</summary>
-
-![Dashboard](./Admin/screenshots/dashboard.png)
-![Dashboard](./Admin/screenshots/dashboard2.png)
-
-</details>
-
-<details>
-<summary>📦 Product Management</summary>
-
-![Product List](./Admin/screenshots/product-list.png)
-![Add Product](./Admin/screenshots/add-product.png)
-![Add Product](./Admin/screenshots/add-product2.png)
-![Edit Product](./Admin/screenshots/edit-product.png)
-![Edit Product](./Admin/screenshots/edit-product2.png)
-![Edit Product](./Admin/screenshots/edit-product3.png)
-
-</details>
-
-<details>
-<summary>📦 Product Details</summary>
-
-![Product Details](./Admin/screenshots/product-details.png)
-
-</details>
-
-<details>
-<summary>📂 Category Management</summary>
-
-![Category List](./Admin/screenshots/category-list.png)
-![Add Category](./Admin/screenshots/add-category.png)
-![Edit Category](./Admin/screenshots/edit-category.png)
-
-</details>
-
-<details>
-<summary>📋 Order Management</summary>
-
-![Orders](./Admin/screenshots/orders.png)
-![Orders](./Admin/screenshots/orders2.png)
-
-</details>
-
-<details>
-<summary>👥 User Management</summary>
-
-![Users](./Admin/screenshots/users.png)
-
-</details>
-
-<details>
-<summary>🖼️ Banner & Slider Management</summary>
-
-![Home Slider](./Admin/screenshots/home-slider.png)
-![Banner V1 Management](./Admin/screenshots/banner-v1-management.png)
-![Add Banner V1](./Admin/screenshots/add-banner-v1.png)
-![Edit Banner V1](./Admin/screenshots/edit-banner-v1.png)
-![Banner V2 Management](./Admin/screenshots/banner-v2-management.png)
-![Add Banner V2](./Admin/screenshots/add-banner-v2.png)
-![Edit Banner V2](./Admin/screenshots/edit-banner-v2.png)
-
-</details>
-
-<details>
-<summary>📝 Blog Management</summary>
-
-![Blog Management](./Admin/screenshots/blog-management.png)
-![Add Blog](./Admin/screenshots/add-blog.png)
-![Edit Blog](./Admin/screenshots/edit-blog.png)
-
-</details>
-
-<details>
-<summary>🔑 Login & Authentication</summary>
-
-![Login Page](./Admin/screenshots/login-page.png)
-![Sign Up Page](./Admin/screenshots/signup-page.png)
-
-</details>
-
-<details>
-<summary>📱 Mobile Responsive</summary>
-
-![Mobile Dashboard](./Admin/screenshots/mobile-dashboard.png)
-![Mobile Dashboard](./Admin/screenshots/mobile-dashboard2.png)
-![Mobile Dashboard](./Admin/screenshots/mobile-dashboard3.png)
-![Mobile Dashboard](./Admin/screenshots/mobile-dashboard4.png)
-![Mobile Sidebar](./Admin/screenshots/mobile-sidebar.png)
-
-</details>
-
-</details>
-
----
-
-## ✨ Features Overview
 
 ### 🛍️ Customer Storefront (`my-project/`)
 
