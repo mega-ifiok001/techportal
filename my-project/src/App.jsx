@@ -14,7 +14,7 @@ import CartPage from './Pages/Cart'
 import Verify from './Pages/Verify'
 import ForgotPassword from './Pages/ForgotPassword'
 import MyAccount from './Pages/MyAccount'
-import InfoPages from './Pages/More'
+import InfoPages from './Pages/LegalPages'
 import toast, { Toaster } from 'react-hot-toast';
 import Checkout from './Pages/Checkout'
 import MyList from './Pages/MyList'
