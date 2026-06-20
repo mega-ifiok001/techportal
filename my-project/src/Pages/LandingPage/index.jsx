@@ -2,9 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import logo from '../../assets/logo_white.png';
 import About from '../About';
 import FloatingWhatsapp from '../../components/WhatsappButton';
-import hubVideo from "../../assets/video.mp4";
-import videoThumbnail from "../../assets/logo_block.png";
-
+import HeroSection from '../../components/HeroSection'
 // ─── Reusable scroll-reveal hook ───────────────────────────────────────────────
 function useReveal(threshold = 0.15) {
   const ref = useRef(null);
@@ -193,6 +191,41 @@ const styles = `
   body {
     padding-top: 80px;
   }
+
+  @keyframes progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.blink-cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.animate-float-1 {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-2 {
+  animation: float 8s ease-in-out infinite 1s;
+}
+
+.animate-float-3 {
+  animation: float 7s ease-in-out infinite 2s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(6deg); }
+  50% { transform: translateY(-20px) rotate(6deg); }
+}
 `;
 
 const TYPED_TEXT = "Learn tech, share space, and get the best tools.";
@@ -205,21 +238,8 @@ export default function TechPortalLanding() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMenuAnimating, setIsMenuAnimating] = useState(false);
   const [menuAnimation, setMenuAnimation] = useState('');
-  const [displayed, setDisplayed] = useState('');
-  const [done, setDone] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // ── Typewriter ──
-  useEffect(() => {
-    let i = 0;
-    setDisplayed(''); setDone(false);
-    const t = setInterval(() => {
-      i++;
-      setDisplayed(TYPED_TEXT.slice(0, i));
-      if (i >= TYPED_TEXT.length) { clearInterval(t); setDone(true); }
-    }, TYPE_SPEED);
-    return () => clearInterval(t);
-  }, []);
 
   // ── Sticky nav shadow on scroll ──
   useEffect(() => {
@@ -319,9 +339,10 @@ export default function TechPortalLanding() {
       metric: "1,200+ Students",
       icon: "fa-solid fa-brain",
       cta: "Start Learning",
-      ctaType: "whatsapp",
+      ctaType: "link",
       ctaText:
         "Hi, I'm interested in your Digital Education programs (AI, Web Dev, Marketing, YouTube Automation). I'd like more details.",
+      link:'/courses'
     },
     {
       title: "Innovation Co-Working Spaces",
@@ -331,12 +352,13 @@ export default function TechPortalLanding() {
       metric: "24/7 Access",
       icon: "fa-solid fa-building",
       cta: "Enquire Now",
-      ctaType: "whatsapp",
+      ctaType: "link",
       ctaText:
         "Hi, I want to enquire about your Co-Working Space (pricing, availability, and facilities).",
+        link:'/workspace'
     },
     {
-      title: "Tech Hardware Hub",
+      title: "Sales of Laptop & Maintenance",
       description:
         "Performance-tested laptops and tech gear optimized for developers and creators, backed with warranty and support.",
       tag: "Build & Buy",
@@ -355,10 +377,10 @@ export default function TechPortalLanding() {
   ];
 
   const mobileLinks = [
-    { label: 'Our Services', hash: '#services', sub: 'Explore dynamic ecosystems' },
-    { label: 'Student Tour', hash: '#video', sub: 'Take a virtual look inside' },
-    { label: 'Testimonials', hash: '#testimonials', sub: 'What our developers say' },
-    { label: 'About Us', hash: '#about', sub: 'Our story and mission' },
+    { label: 'Our Services', hash: '/', sub: 'Explore dynamic ecosystems' },
+    { label: 'Courses', hash: '/courses', sub: 'Scale yourself with the right courses' },
+    { label: 'WorkSpace', hash: '/workspace', sub: 'Work with ease' },
+    { label: 'About Us', hash: '/about', sub: 'Our story and mission' },
   ];
 
   return (
@@ -378,23 +400,30 @@ export default function TechPortalLanding() {
 
           {/* Desktop Links */}
           <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-white/80">
-            <a 
-              href="#services" 
+          <a 
+              href="/" 
               className="hover:text-white transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all"
             >
-              Our Services
+              Home
             </a>
             <a 
-              href="#video" 
+              href="/courses" 
               className="hover:text-white transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all"
             >
-              Student Tour
+              Courses
             </a>
             <a 
-              href="#testimonials" 
+              href="/workspace" 
               className="hover:text-white transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all"
             >
-              Testimonials
+              WorkSpace
+            </a>
+            
+            <a 
+              href="/maintenance" 
+              className="hover:text-white transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all"
+            >
+              Computer Maintenance
             </a>
             <a 
               href="#about" 
@@ -484,47 +513,8 @@ export default function TechPortalLanding() {
         </div>
       )}
 
-      {/* ── Hero Section ── */}
-      <section className="relative max-w-7xl mx-auto px-6 pt-16 pb-24 lg:pt-24 lg:pb-32 grid lg:grid-cols-12 gap-12 items-center">
-        <div className="lg:col-span-7 space-y-6 text-left z-10">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/5 border border-white/15 text-xs font-medium text-indigo-200 animate-pulse shadow-inner">
-            <span><span className="fa-solid fa-star"></span> Welcome to Your Tech Hub</span>
-          </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-gradient">
-            {displayed}
-            {!done && (
-              <span
-                className="blink-cursor"
-                style={{ display: 'inline-block', width: 3, height: '0.85em', background: '#a5b4fc', borderRadius: 2, marginLeft: 4, verticalAlign: 'middle' }}
-              />
-            )}
-          </h1>
-          <p className="text-base sm:text-lg text-white/70 max-w-xl font-light leading-relaxed">
-            Tech Portal is a simple all-in-one place for tech minds. We teach software skills, offer beautiful shared workspaces, and sell high-performance laptops.
-          </p>
-          <div className="flex flex-wrap gap-4 pt-4">
-            <a href="/store" className="px-8 h-14 bg-white text-[#01065d] rounded-xl font-bold flex items-center justify-center shadow-[0_10px_30px_rgba(255,255,255,0.15)] hover:shadow-[0_20px_40px_rgba(255,255,255,0.3)] hover:scale-105 active:scale-95 transition-all duration-300">Buy Laptops</a>
-            <a href="#services" className="px-8 h-14 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-semibold flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5">Explore Services</a>
-          </div>
-        </div>
-        <div className="lg:col-span-5 relative flex items-center justify-center min-h-[380px]">
-          <div className="glass-card w-72 h-72 rounded-3xl shadow-[30px_30px_60px_rgba(0,0,0,0.5)] transform rotate-6 animate-float-1 p-6 flex flex-col justify-between hover:scale-105 transition-transform duration-500">
-            <div className="flex items-center justify-center shadow-inner text-xl fa-solid fa-rocket"></div>
-            <div>
-              <p className="text-xs uppercase font-mono text-indigo-300 tracking-widest">Active Hub</p>
-              <h3 className="text-xl font-bold mt-1 text-white">Growth Portal Online</h3>
-            </div>
-          </div>
-          <div className="absolute top-4 right-4 glass-card w-28 h-28 rounded-2xl shadow-2xl transform -rotate-12 animate-float-2 p-3 flex flex-col justify-between hover:rotate-0 transition-transform duration-300">
-            <span className="text-xl fa-solid fa-laptop"></span>
-            <span className="text-[10px] font-mono text-white/60">Shop Synced</span>
-          </div>
-          <div className="absolute -bottom-6 left-8 glass-card px-4 py-3 rounded-xl shadow-lg transform rotate-12 animate-float-3 flex items-center space-x-2">
-            <span className="w-2.5 h-2.5 bg-green-400 rounded-full animate-ping" />
-            <span className="text-xs font-semibold">100+ Students</span>
-          </div>
-        </div>
-      </section>
+ {/* hero section */}
+ <HeroSection />
 
       {/* ── Stats ── */}
       <section className="max-w-7xl mx-auto px-6 py-8">
@@ -715,19 +705,20 @@ export default function TechPortalLanding() {
 
       <FloatingWhatsapp  />
 
-      {/* ── Footer ── */}
-      <footer className="border-t border-white/5 bg-[#000236]">
-        <div className="max-w-7xl mx-auto px-3 py-3 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-white/40 font-mono">
-          <p className="text-center">© 2026 Tech Portal Solutions. Delivering Innovative technology driven solutions.</p>
-          <div className="flex space-x-6">
-            <a href="#services" className="hover:text-white transition-colors">Services</a>
-            <a href="#video" className="hover:text-white transition-colors">Tour</a>
-            <a href="/store" className="text-indigo-300 hover:text-white transition-colors">Buy Devices from us →</a>
-          </div>
-        <p className="text-center">Built With ❤ by <a className="text-indigo-300 hover:text-white transition-colors" target='_blank' title="visit pluscode" href="https://pluscodeltd.vercel.app">PlusCode Ltd</a></p>
-
-        </div>
-      </footer>
+       {/* ── Footer ── */}
+            <footer className="border-t border-white/5 bg-[#000236]">
+              <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/40">
+                <p>© 2025 Tech Portal Solutions. </p>
+                <div className="flex space-x-6">
+                  <a href="/" className="hover:text-white transition-colors duration-300">Home</a>
+                  <a href="/courses" className="text-indigo-300 hover:text-white transition-colors duration-300">Courses</a>
+                  <a href="/workspace" className="hover:text-white transition-colors duration-300">Workspace</a>
+                  <a href="/maintenance" className="hover:text-white transition-colors duration-300">Computer Maintenance</a>
+                  <a href="/store" className="text-purple-300 hover:text-white transition-colors duration-300">Shop</a>
+                </div>
+                <p>Built with ❤️ by <a className="text-indigo-300 hover:text-white transition-colors duration-300" target="_blank" rel="noopener noreferrer" href="https://pluscodeltd.vercel.app">PlusCode Ltd</a></p>
+              </div>
+            </footer>
       </div>
     </>
   );

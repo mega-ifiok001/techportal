@@ -25,20 +25,26 @@ import OrderSuccess from './Pages/Orders/success'
 import OrderFailed from './Pages/Orders/failed'
 import SearchPage from './Pages/Search'
 import Contact from './Pages/Contact'
+import Courses from './Pages/Courses';
+import Workspace from './Pages/workspace';
+import ComputerMaintenace from './Pages/ComputerMaintenance';
+import ContactUs from './Pages/SiteContact'
 
 const MyContext = createContext();
 
 const ConditionalHeader = () => {
   const location = useLocation();
   // Hide on Landing Page ("/") and Info Pages ("/info/*")
-  if (location.pathname === '/' || location.pathname.startsWith('/info')) return null;
+  if (location.pathname === '/' || location.pathname.startsWith('/info') || location.pathname.startsWith('/courses') || location.pathname.startsWith('/workspace') || 
+  location.pathname.startsWith('/maintenance') || location.pathname.startsWith('/reach-us')) return null;
   return <Header />;
 };
 
 const ConditionalFooter = () => {
   const location = useLocation();
   // Hide on Landing Page ("/") and Info Pages ("/info/*")
-  if (location.pathname === '/' || location.pathname.startsWith('/info')) return null;
+  if (location.pathname === '/' || location.pathname.startsWith('/info') || location.pathname.startsWith('/courses') || location.pathname.startsWith('/workspace') ||
+   location.pathname.startsWith('/maintenance') || location.pathname.startsWith('/reach-us')) return null;
   return <Footer />;
 };
 
@@ -232,6 +238,11 @@ function App() {
 
             {/* Info / Policy Pages — own layout, no store Header/Footer */}
             <Route path="/info/*" element={<InfoPages />} />
+            <Route path="/courses/*" element={<Courses />} />
+            <Route path="/workspace/*" element={<Workspace />} />
+            <Route path="/maintenance/*" element={<ComputerMaintenace />} />
+            <Route path="/reach-us/*" element={<ContactUs />} />
+
 
             {/* Store Pages — all show Header/Footer */}
             <Route path="/store" element={<Home />} />

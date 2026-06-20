@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import ceoImage from '../../assets/ceo.png';
+import ceoImage from '../../assets/ceo.jpeg';
 import GeneralManagerImage from '../../assets/general_manager.jpeg';
 import socialMediaManagerImage_one from '../../assets/social_media_manager_one.jpeg';
 import contentCreatorImage from '../../assets/inspiration_favour.jpeg';
@@ -221,41 +221,63 @@ const aboutStyles = `
     background: radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 40%);
   }
 
-  .ab-card-top {
+    .ab-card-top {
     padding: 18px;
-    min-height: 170px;
+    min-height: 240px; /* Increased from 170px to make the image area taller */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    position: relative;
-    overflow: hidden;
+    position: relative; /* Added for absolute positioning of the image */
+    overflow: hidden; /* Added to clip the image nicely */
   }
 
+  /* NEW: Class for the full-width cover image */
+  .ab-card-cover-img {
+    position: absolute;
+    inset: 0; /* top: 0, right: 0, bottom: 0, left: 0 */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top; /* Focuses on the face */
+    z-index: 0;
+    transition: transform 0.4s ease;
+  }
+
+  /* Zoom effect on hover */
+  .ab-carousel-card:hover .ab-card-cover-img {
+    transform: scale(1.08);
+  }
+
+  /* Make the avatar act as a floating badge over the image */
   .ab-avatar {
-    width: 84px;
-    height: 84px;
-    border-radius: 26px;
+    width: 64px; /* Slightly smaller so it floats nicely */
+    height: 64px;
+    border-radius: 18px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     color: #fff;
-    border: 1px solid rgba(255,255,255,0.14);
-    background: rgba(255,255,255,0.08);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(1, 6, 93, 0.65); /* Dark translucent background */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    position: relative; /* Ensure it sits above the image */
+    z-index: 2;
   }
 
   .ab-avatar strong {
-    font-size: 24px;
+    font-size: 18px;
     line-height: 1;
   }
 
   .ab-avatar small {
-    font-size: 10px;
-    opacity: 0.75;
+    font-size: 8px;
+    opacity: 0.85;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    margin-top: 3px;
+    margin-top: 2px;
   }
 
   .ab-role-badge {
@@ -684,6 +706,16 @@ const staff = [
     quote: "David Godwin drives the operational structure and growth strategies at Tech Portal Solutions. With a keen focus on scaling team capabilities and implementing robust marketing frameworks, oversee the seamless integration of our laptop retail, premium workspace, and tech training academy.",
    
   },
+   {
+    name: "Aniebiet Enefiok Umoh",
+    role: "Manager",
+    dept: "Creative",
+    initials: "AEU",
+    cover:
+      "linear-gradient(135deg, rgba(249,115,22,0.28), rgba(245,158,11,0.14))",
+    staffImage: manager,
+    quote: "Aniebiet Enefiok Umoh leads the creative initiatives at Tech Portal Solutions. With a keen eye for detail and a passion for innovation, she drives the development of compelling content that resonates with global audiences.",
+  },
   {
     name: "Praise Chinaza  ",
     role: "Social media manger ",
@@ -755,16 +787,6 @@ const staff = [
       "linear-gradient(135deg, rgba(249,115,22,0.28), rgba(245,158,11,0.14))",
     staffImage: promoter_four,
     quote: "God’swill Ettynyene Antia directs her efforts toward the growth and market positioning of automated digital media portfolios at Tech Portal Solutions. Through AI-assisted workflows and modern content generation, she builds highly engaging, specialized entertainment for global streaming viewers to ensure consistent digital monetization.",
-  },
-   {
-    name: "Aniebiet Enefiok Umoh",
-    role: "Manager",
-    dept: "Creative",
-    initials: "AEU",
-    cover:
-      "linear-gradient(135deg, rgba(249,115,22,0.28), rgba(245,158,11,0.14))",
-    staffImage: manager,
-    quote: "Aniebiet Enefiok Umoh leads the creative initiatives at Tech Portal Solutions. With a keen eye for detail and a passion for innovation, she drives the development of compelling content that resonates with global audiences.",
   },
   {
     name: "Idongesit Maurice",
@@ -1271,18 +1293,7 @@ const staff = [
   style={{ transitionDelay: "90ms" }}
 >
   <div>
-    <div
-      style={{
-        fontSize: 11,
-        fontWeight: 700,
-        letterSpacing: "0.1em",
-        textTransform: "uppercase",
-        color: "rgba(255,255,255,0.35)",
-        marginBottom: 8,
-      }}
-    >
-      Staff carousel
-    </div>
+   
 
     <h3
       style={{
@@ -1337,32 +1348,29 @@ const staff = [
         className="ab-carousel-card ab-reveal ab-up"
         style={{ transitionDelay: `${70 + idx * 90}ms` }}
       >
-        <div className="ab-card-top" style={{ background: m.cover }}>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "flex-start",
-              gap: 12,
-            }}
-          >
-            <div className="ab-avatar" style={{ background: m.staffImage }}>
-             <img src={m.staffImage} className="rounded-xl w-full" alt={m.name, m.role} />
+                  <div className="ab-card-top">
+            {/* Full-width Cover Image */}
+            <img 
+              src={m.staffImage} 
+              className="ab-card-cover-img" 
+              alt={`${m.name} - ${m.role}`} 
+            />
+
+            {/* Dark gradient overlay to make text readable over the photo */}
+            <div style={{
+              position: 'absolute', inset: 0,
+              background: 'linear-gradient(to top, rgba(1,6,93,0.95) 0%, rgba(1,6,93,0.5) 50%, rgba(1,6,93,0.1) 100%)',
+              zIndex: 1
+            }}></div>
+
+            {/* Content floating above the image */}
+            <div style={{ position: 'relative', zIndex: 2, display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'space-between' }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
+               
+              </div>
+
             </div>
-
-            
           </div>
-
-          <div
-            style={{
-              marginTop: "auto",
-              fontSize: 12,
-              color: "rgba(255,255,255,0.72)",
-            }}
-          >
-            Department profile
-          </div>
-        </div>
 
         <div className="ab-card-body">
           <h4 className="ab-card-name pt-2">{m.name}</h4>
