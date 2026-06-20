@@ -24,7 +24,7 @@ import Address from './Pages/MyAccount/address'
 import OrderSuccess from './Pages/Orders/success'
 import OrderFailed from './Pages/Orders/failed'
 import SearchPage from './Pages/Search'
-import Contact from './Pages/Contact'
+import Contact from './Pages/contact'
 import Courses from './Pages/Courses';
 import Workspace from './Pages/workspace';
 import ComputerMaintenace from './Pages/ComputerMaintenance';
