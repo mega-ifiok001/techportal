@@ -2,6 +2,9 @@ import { useState, useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo_white.png';
 import FloatingWhatsapp from '../../components/WhatsappButton';
+import Footer from '../../components/WebsiteFooter';
+
+
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -32,12 +35,12 @@ const steps = [
 ];
 
 const mobileLinks = [
-  { label: 'Home',        hash: '/',            sub: 'Back to homepage' },
-  { label: 'Services',    hash: '/#services',   sub: 'Explore dynamic ecosystems' },
-  { label: 'Courses',     hash: '/courses',     sub: 'Scale yourself with the right courses' },
-  { label: 'Maintenance', hash: '/maintenance', sub: 'Keep your machines running' },
-  { label: 'About Us',    hash: '/about',       sub: 'Our story and mission' },
-];
+    { label: 'Home', hash:'/', sub: 'Explore dynamic ecosystems' },
+    { label: 'Courses', hash:'/courses', sub: 'Scale yourself with the right courses' },
+    { label: 'WorkSpace', hash:'/workspace', sub: 'Work with ease' },
+    { label: 'Computer maintenance', hash:'/maintenance', sub: 'Repair your laptops' },
+    { label: 'About Us', hash:'/about', sub: 'Our story and mission' },
+  ];
 
 // ─── Styles ───────────────────────────────────────────────────────────────────
 
@@ -86,7 +89,7 @@ const styles = `
 .menu-links-visible .stagger-link:nth-child(5) { transition-delay: 600ms; }
 
 .navbar-sticky { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1); }
-.navbar-top { background: rgba(1, 5, 109, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+.navbar-top { background: rgba(1, 5, 109, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
 .navbar-scrolled { background: rgba(1, 5, 109, 0.95); backdrop-filter: blur(20px); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6); }
 
 .glass-card { background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.15); transition: all 600ms cubic-bezier(0.4, 0, 0.2, 1); }
@@ -160,41 +163,27 @@ const MaintenancePage = () => {
     }
   }, [isMenuOpen]);
 
-  // ── Mobile nav — handles /#hash, #hash, and /routes ──
-  const handleMobileNav = useCallback((e, hash) => {
-    e.preventDefault();
-    setIsMenuAnimating(false);
-    setMenuAnimation('menu-slide-out');
 
-    setTimeout(() => {
-      setIsMenuOpen(false);
-      setMenuAnimation('');
-      document.body.style.overflow = '';
 
-      // Cross-page hash e.g. /#services
-      if (hash.startsWith('/#')) {
-        const id = hash.replace('/#', '');
-        navigate('/');
-        setTimeout(() => {
-          document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-        }, 150);
-        return;
-      }
 
-      // Same-page hash e.g. #contact-form
-      if (hash.startsWith('#')) {
-        const target = document.querySelector(hash);
-        if (target) {
-          const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - 80;
-          window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-        }
-        return;
-      }
+  // ── Close menu and navigate ──
+const handleMobileNav = useCallback((e, path) => {
+  e.preventDefault();
 
-      // Regular route e.g. /courses
-      navigate(hash);
-    }, 500);
-  }, [isMenuOpen, navigate]);
+  // Start closing animation
+  setIsMenuAnimating(false);
+  setMenuAnimation('menu-slide-out');
+
+  // After animation completes, navigate
+  setTimeout(() => {
+    setIsMenuOpen(false);
+    setMenuAnimation('');
+    document.body.style.overflow = '';
+
+    navigate(path);
+  }, 500);
+}, [navigate]);
+
 
   // ── Desktop nav — handles /#hash links ──
   const handleDesktopNav = useCallback((e, hash) => {
@@ -338,7 +327,7 @@ const MaintenancePage = () => {
       )}
 
       {/* ── Hero ── */}
-      <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section className="relative pt-22 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-20 left-10 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl animate-blob"></div>
           <div className="absolute top-40 right-10 w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
@@ -543,15 +532,15 @@ const MaintenancePage = () => {
         </div>
       </section>
 
-      {/* ── Banner ── */}
+     {/* Banner */}
       <section className="max-w-7xl mx-auto px-6 py-6 mb-16">
         <div className="glass-card rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6 smooth-card-transition shimmer-wrap reveal-on-scroll">
           <div className="space-y-2">
-            <h4 className="text-2xl font-black text-white">Looking for a New Machine Instead?</h4>
-            <p className="text-sm text-white/60 max-w-2xl">If repairs aren't enough, check out our store for powerful, certified refurbished laptops.</p>
+            <h4 className="text-2xl font-black text-white text-center lg:text-start">Need a Laptop for Your Course?</h4>
+            <p className="text-sm text-white/60 max-w-2xl text-center lg:text-start">Browse our curated selection of developer-grade laptops. Free delivery or pickup at our location.</p>
           </div>
-          <a href="/store" className="px-8 h-14 bg-white text-[#01056d] hover:text-white hover:bg-[#01056d] font-bold rounded-xl flex items-center justify-center smooth-button shadow-lg whitespace-nowrap">
-            Visit Laptop Store →
+          <a href="/store" className="px-8 h-14 bg-white text-[#01065d] hover:text-white hover:bg-[#01065d] font-bold rounded-xl flex items-center justify-center smooth-button shadow-lg whitespace-nowrap">
+            Shop Laptops →
           </a>
         </div>
       </section>
@@ -559,20 +548,9 @@ const MaintenancePage = () => {
       <FloatingWhatsapp />
 
        {/* ── Footer ── */}
-            <footer className="border-t border-white/5 bg-[#000236]">
-              <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/40">
-                <p>© 2025 Tech Portal Solutions. </p>
-                <div className="flex space-x-6">
-                  <a href="/" className="hover:text-white transition-colors duration-300">Home</a>
-                  <a href="/courses" className="text-indigo-300 hover:text-white transition-colors duration-300">Courses</a>
-                  <a href="/workspace" className="hover:text-white transition-colors duration-300">Workspace</a>
-                  <a href="/maintenance" className="hover:text-white transition-colors duration-300">Computer Maintenance</a>
-                  <a href="/store" className="text-purple-300 hover:text-white transition-colors duration-300">Shop</a>
-                </div>
-                <p>Built with ❤️ by <a className="text-indigo-300 hover:text-white transition-colors duration-300" target="_blank" rel="noopener noreferrer" href="https://pluscodeltd.vercel.app">PlusCode Ltd</a></p>
-              </div>
-            </footer>
-    </div>
+          <Footer/>
+
+          </div>
   );
 };
 

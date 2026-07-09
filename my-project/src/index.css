@@ -117,7 +117,7 @@ h1,h2,h3,h4,h5,h6{
     border-bottom: 1px solid rgba(0,0,0,0.1);
 } */
 
-.link:hover, .Mui-checked{color: #01065d !important;}
+.link:hover, .Mui-checked{color: #fff !important; transition: ease .2s;}
 
 .MuiBadge-badge{background-color: #01065d !important;}
 

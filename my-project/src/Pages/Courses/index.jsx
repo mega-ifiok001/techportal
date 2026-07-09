@@ -1,6 +1,9 @@
 import { useState, useCallback, useEffect } from 'react';
 import logo from '../../assets/logo_white.png';
 import FloatingWhatsapp from '../../components/WhatsappButton';
+import { useNavigate } from 'react-router-dom';
+import Footer from '../../components/WebsiteFooter'
+
 
 const CoursePage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -39,23 +42,26 @@ const CoursePage = () => {
     }
   }, [isMenuOpen]);
 
-  // Close menu and navigate
-  const handleMobileNav = useCallback((e, hash) => {
+  const navigate = useNavigate();
+  
+  // ── Close menu and navigate ──
+  const handleMobileNav = useCallback((e, path) => {
     e.preventDefault();
+  
+    // Start closing animation
     setIsMenuAnimating(false);
     setMenuAnimation('menu-slide-out');
+  
+    // After animation completes, navigate
     setTimeout(() => {
       setIsMenuOpen(false);
       setMenuAnimation('');
       document.body.style.overflow = '';
-      const target = document.querySelector(hash);
-      if (target) {
-        const navHeight = 80;
-        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
-        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-      }
+  
+      navigate(path);
     }, 500);
-  }, []);
+  }, [navigate]);
+  
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -67,12 +73,12 @@ const CoursePage = () => {
     return () => { document.body.style.overflow = ''; };
   }, [isMenuOpen]);
 
-  const mobileLinks = [
-    { label: 'Home', hash: '/', sub: 'Back to homepage' },
-    { label: 'Our Services', hash: '/services', sub: 'Explore dynamic ecosystems' },
-    { label: 'Courses', hash: '/courses', sub: 'Scale yourself with the right courses' },
-    { label: 'WorkSpace', hash: '/workspace', sub: 'Work with ease' },
-    { label: 'About Us', hash: '/about', sub: 'Our story and mission' },
+   const mobileLinks = [
+    { label: 'Home', hash:'/', sub: 'Explore dynamic ecosystems' },
+    { label: 'Courses', hash:'/courses', sub: 'Scale yourself with the right courses' },
+    { label: 'WorkSpace', hash:'/workspace', sub: 'Work with ease' },
+    { label: 'Computer maintenance', hash:'/maintenance', sub: 'Repair your laptops' },
+    { label: 'About Us', hash:'/about', sub: 'Our story and mission' },
   ];
 
   const categories = [
@@ -285,6 +291,13 @@ const CoursePage = () => {
   /* ═══════════════════════════════════════════════════════════
      ULTRA-SMOOTH ANIMATIONS - PROFESSIONAL GRADE
      ═══════════════════════════════════════════════════════════ */
+
+
+     .scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar { display: none; }
 
   /* Hardware Acceleration & Performance */
   * {
@@ -613,7 +626,7 @@ const CoursePage = () => {
   }
 
   .navbar-top {
-    background: rgba(1, 6, 93, 0.8);
+    background: rgba(1, 6, 93, 0.95);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
@@ -757,25 +770,48 @@ const CoursePage = () => {
     <div className="min-h-screen bg-gradient-to-br from-[#01065d] via-[#020a7a] to-[#01065d]">
       <style>{styles}</style>
 
-      {/* Navigation */}
-      <nav className={`navbar-sticky ${scrolled ? 'navbar-scrolled' : 'navbar-top'}`}>
+      {/* ══════════════════════════════════════════════════════════════
+          ── STICKY NAVBAR (using fixed positioning) ──
+         ══════════════════════════════════════════════════════════════ */}
+      <nav className={`navbar-sticky ${scrolled ? 'navbar-scrolled' : 'navbar-top'} navbar-blur`}>
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          {/* Logo */}
           <div className="flex items-center space-x-3 cursor-pointer group z-50">
-            <img src={logo} width={170} alt="Tech Portal Solutions" className="transition-transform duration-500 group-hover:scale-105" />
+            <img src={logo} width={170} alt="Tech Portal Solutions Official Logo" />
           </div>
 
+          {/* Desktop links */}
           <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-white/80">
-            <a href="/" className="hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all after:duration-300">Home</a>
-            <a href="#services" className="hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all after:duration-300">Our Services</a>
-            <a href="/courses" className="hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all after:duration-300">Courses</a>
-            <a href="/workspace" className="hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all after:duration-300">Workspace</a>
-            <a href="#testimonials" className="hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all after:duration-300">Testimonials</a>
-            <a href="/store" className="px-4 py-2 bg-white/10 hover:bg-white hover:text-[#01065d] rounded-lg text-white border border-white/10 transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg">
+            <a href="/" className="hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all after:duration-300">
+              Home
+            </a>
+            <a
+              href="/#services"
+              onClick={(e) => handleDesktopNav(e, '/#services')}
+              className="hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all after:duration-300"
+            >
+              Services
+            </a>
+            <a href="/courses" className="hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:w-0 hover:after:w-full after:bg-white after:transition-all after:duration-300">
+              Courses
+            </a>
+            <a href="/workspace" className="hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px]  after:bg-white after:transition-all after:duration-300">
+              Workspace
+            </a>
+            <a href="/maintenance" className="hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px]  after:bg-white after:transition-all after:duration-300">
+              Maintenance
+            </a>
+            <a href="/store" className="px-4 py-2 bg-white/10 hover:bg-white hover:text-[#01056d] rounded-lg text-white border border-white/10 transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg">
               Shop Laptops →
             </a>
           </div>
 
-          <button onClick={toggleMenu} className="md:hidden z-50 relative w-12 h-12 flex flex-col items-center justify-center rounded-xl bg-white/5 shadow-2xl hover:bg-white/10 transition-all duration-300" aria-label="Toggle Menu">
+          {/* Hamburger */}
+          <button
+            onClick={toggleMenu}
+            className="md:hidden z-50 relative w-12 h-12 flex flex-col items-center justify-center rounded-xl bg-white/2 shadow-2xl hover:bg-white/10 transition-all focus:outline-none"
+            aria-label="Toggle Menu"
+          >
             <div className="space-y-1.5 w-5">
               <span className={`block h-0.5 bg-white transition-all duration-300 ${isMenuOpen ? 'transform rotate-45 translate-y-2 w-5' : 'w-5'}`} />
               <span className={`block h-0.5 bg-indigo-300 transition-all duration-300 ${isMenuOpen ? 'opacity-0' : 'w-4 ml-2'}`} />
@@ -787,31 +823,47 @@ const CoursePage = () => {
 
       {/* Mobile Menu */}
       {(isMenuOpen || isMenuAnimating) && (
-        <div className={`fixed inset-0 z-40 md:hidden bg-[#01043a]/98 backdrop-blur-2xl flex flex-col justify-between p-8 ${menuAnimation}`}>
+        <div className={`fixed inset-0 z-40 md:hidden bg-[#01043a]/98 backdrop-blur-2xl flex flex-col justify-between mt-[3rem] p-8 ${menuAnimation}`}>
           <div className="absolute top-[-10%] right-[-10%] w-80 h-80 rounded-full bg-gradient-to-br from-indigo-600/30 to-purple-600/0 blur-2xl animate-pulse" />
           <div className="absolute bottom-[10%] left-[-20%] w-96 h-96 rounded-full bg-blue-600/10 blur-3xl" />
 
-          <div className="flex justify-between items-center mt-20 border-b border-white/10 pb-6 stagger-link">
-            <p className="text-xs text-white/50">Transform Your Career with Tech Skills</p>
-          </div>
+        
 
           <div className="flex flex-col space-y-5 my-auto text-left pl-2">
             {mobileLinks.map((link, i) => (
-              <a key={i} href={link.hash} onClick={(e) => handleMobileNav(e, link.hash)} className="group block stagger-link">
+              <a
+                key={i}
+                href={link.hash}
+                onClick={(e) => handleMobileNav(e, link.hash)}
+                className="group block stagger-link"
+                style={{ transitionDelay: `${200 + i * 100}ms` }}
+              >
                 <div className="flex items-center space-x-4">
-                  <span className="text-xs font-mono text-indigo-400 opacity-60 group-hover:opacity-100 transition-opacity duration-300">0{i + 1}.</span>
-                  <span className="text-3xl font-bold tracking-tight text-white/90 group-hover:text-white group-hover:translate-x-2 transition-all duration-300">{link.label}</span>
+                  <span className="text-xs font-mono text-indigo-400 opacity-60 group-hover:opacity-100 transition-opacity">0{i + 1}.</span>
+                  <span className="text-3xl font-bold tracking-tight text-white/90 group-hover:text-white group-hover:translate-x-2 transition-all duration-300 inline-block">{link.label}</span>
                 </div>
-                <span className="block text-xs text-white/40 font-light pl-8 group-hover:text-indigo-200 transition-colors duration-300">{link.sub}</span>
+                <span className="block text-xs text-white/40 font-light pl-8 group-hover:text-indigo-200 transition-colors">{link.sub}</span>
               </a>
             ))}
-          </div>
-
-          <div className="glass-card rounded-2xl p-4 flex items-center space-x-4 text-left stagger-link">
-            <div>
-              <p className="text-xs font-bold">Portal Systems Active</p>
+            <div className="pt-4 stagger-link" style={{ transitionDelay: '600ms' }}>
+              <a
+                href="/store"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleMobileNav(e, '/store');
+                }}
+                className="glass-card flex items-center justify-between p-4 rounded-2xl bg-gradient-to-r from-indigo-600/20 to-white/5 border border-white/15 shadow-2xl overflow-hidden relative group"
+              >
+                <div className="absolute inset-0 bg-white/5 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                <div className="relative z-10">
+                  <span className="text-[9px] font-mono tracking-wider text-indigo-300 block uppercase mb-0.5">Buy affordable devices</span>
+                  <span className="text-base font-bold text-white">Enter Laptop Store →</span>
+                </div>
+              </a>
             </div>
           </div>
+
+          
         </div>
       )}
 
@@ -828,7 +880,7 @@ const CoursePage = () => {
           {/* Hero Content */}
           <div className="text-center space-y-8 mb-16">
             <div className="space-y-4 animate-fade-in-up" style={{ animationDelay: '100ms' }}>
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[1.1]">
+              <h1 className="text-4xl sm:text-4xl md:text-5xl lg:text-8xl font-black leading-[1.1]">
                 <span className="block bg-gradient-to-r from-white via-indigo-100 to-white bg-clip-text text-transparent">
                   Master Skills That
                 </span>
@@ -853,7 +905,7 @@ const CoursePage = () => {
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="flex-1 bg-transparent text-white placeholder-white/40 outline-none text-base py-3"
                 />
-                <button className="px-6 py-3 bg-gradient-to-r from-indigo-500 cursor-pointer to-purple-500 text-white font-bold rounded-xl hover:from-indigo-600 hover:to-purple-600 smooth-button">
+                <button className="px-6 py-3 sm:px-1 bg-gradient-to-r from-indigo-500 cursor-pointer to-purple-500 text-white font-bold rounded-xl hover:from-indigo-600 hover:to-purple-600 smooth-button">
                   Search
                 </button>
               </div>
@@ -867,7 +919,7 @@ const CoursePage = () => {
                 <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br ${stat.color} flex items-center justify-center smooth-icon shadow-lg`}>
                   <span className={`fa-solid ${stat.icon} text-white text-2xl`}></span>
                 </div>
-                <div className="text-3xl sm:text-4xl font-black bg-gradient-to-r from-white to-indigo-200 bg-clip-text text-transparent mb-2">
+                <div className="text-2xl sm:text-3xl font-black bg-gradient-to-r from-white to-indigo-200 bg-clip-text text-transparent mb-2">
                   {stat.value}
                 </div>
                 <div className="text-sm font-bold text-white mb-1">
@@ -882,178 +934,167 @@ const CoursePage = () => {
         </div>
       </section>
 
-      {/* Category Pills */}
-      <section className="relative py-8 px-4 sm:px-6 lg:px-8 border-y border-white/10 bg-white/5 backdrop-blur-sm reveal-on-scroll">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
-                className={`group px-6 py-3 rounded-full font-bold text-sm smooth-button ${
-                  selectedCategory === category.id
-                    ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg scale-105'
-                    : 'bg-white/10 text-white/80 hover:bg-white/20 border border-white/20'
-                }`}
-              >
-                <span className={`fa-solid ${category.icon} mr-2`}></span>
-                {category.name}
-                <span className="ml-2 px-2 py-0.5 bg-white/20 rounded-full text-xs">
-                  {category.count}
+      {/* ── Category Pills - MOBILE NEAT ── */}
+<section className="relative py-3 sm:py-6 px-0 sm:px-6 lg:px-8 border-y border-white/10 bg-white/[0.03] backdrop-blur-sm reveal-on-scroll">
+  <div className="max-w-7xl mx-auto">
+    {/* Mobile: Neat horizontal scroll */}
+    <div className="md:hidden relative">
+      <div className="flex gap-2 overflow-x-auto scrollbar-hide px-4 py-1 snap-x snap-mandatory">
+        {categories.map((category) => (
+          <button
+            key={category.id}
+            onClick={() => setSelectedCategory(category.id)}
+            className={`snap-start shrink-0 flex items-center gap-1.5 px-4 py-2.5 rounded-full font-semibold text-[13px] whitespace-nowrap smooth-button transition-all ${
+              selectedCategory === category.id
+                ? 'bg-white text-[#01065d] shadow-md'
+                : 'bg-white/10 text-white/70 border border-white/10'
+            }`}
+          >
+            <span className={`fa-solid ${category.icon} text-[11px] opacity-80`}></span>
+            {category.name}
+            <span className={`ml-0.5 px-1.5 py-0.5 rounded-full text-[10px] font-bold ${selectedCategory === category.id ? 'bg-[#01065d]/10' : 'bg-white/15'}`}>
+              {category.count}
+            </span>
+          </button>
+        ))}
+      </div>
+      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-[#01065d] to-transparent" />
+    </div>
+
+    {/* Desktop: Centered wrap */}
+    <div className="hidden md:flex flex-wrap items-center justify-center gap-2.5">
+      {categories.map((category) => (
+        <button
+          key={category.id}
+          onClick={() => setSelectedCategory(category.id)}
+          className={`group px-5 py-2.5 rounded-full font-bold text-sm smooth-button flex items-center gap-2 ${
+            selectedCategory === category.id
+              ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg scale-105'
+              : 'bg-white/10 text-white/80 hover:bg-white/20 border border-white/20'
+          }`}
+        >
+          <span className={`fa-solid ${category.icon}`}></span>
+          {category.name}
+          <span className="px-2 py-0.5 bg-white/20 rounded-full text-xs">{category.count}</span>
+        </button>
+      ))}
+    </div>
+  </div>
+</section>
+
+    {/* ── Filters & Results - MOBILE NEAT ── */}
+<section id="courses" className="relative py-6 px-4 sm:px-6 lg:px-8">
+  <div className="max-w-7xl mx-auto">
+    <div className="bg-white/[0.04] md:bg-transparent border border-white/10 md:border-0 rounded-2xl p-3.5 md:p-0 mb-6 reveal-on-scroll">
+      <div className="flex items-center justify-between md:hidden mb-3">
+        <span className="text-[11px] font-bold tracking-widest text-white/40 uppercase">Filter by level</span>
+        <span className="text-[11px] font-medium px-2 py-1 rounded-full bg-white/10 text-white/60">
+          {filteredCourses.length} courses
+        </span>
+      </div>
+      
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 md:gap-6">
+        <div className="flex gap-2 overflow-x-auto scrollbar-hide snap-x md:flex-wrap md:overflow-visible">
+          <span className="hidden md:block text-sm font-bold text-white/70 uppercase tracking-wide mr-2 shrink-0 py-2">Level:</span>
+          {levels.map((level) => (
+            <button
+              key={level.id}
+              onClick={() => setSelectedLevel(level.id)}
+              className={`snap-start shrink-0 px-3.5 py-2 rounded-full md:rounded-lg font-semibold text-[12.5px] smooth-button flex items-center gap-1.5 whitespace-nowrap ${
+                selectedLevel === level.id
+                  ? 'bg-white text-[#01065d] shadow'
+                  : 'bg-white/10 text-white/70 border border-white/10 hover:bg-white/15'
+              }`}
+            >
+              <span className={`fa-solid ${level.icon} text-[11px]`}></span>
+              {level.name}
+            </button>
+          ))}
+        </div>
+        <div className="hidden md:flex items-center gap-3 shrink-0">
+          <span className="text-white/60 text-sm">
+            Found <span className="font-bold text-white text-lg">{filteredCourses.length}</span> courses
+          </span>
+        </div>
+      </div>
+    </div>
+
+    {/* ── REDUCED COURSE CARD ── */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+      {filteredCourses.map((course) => (
+        <div key={course.id} className="course-card-animation reveal-on-scroll group">
+          <div className="glass-card rounded-[18px] overflow-hidden smooth-card-transition h-full flex flex-col shadow-xl border border-white/10 bg-white/[0.04]">
+            {/* Image - REDUCED */}
+            <div className="relative h-40 sm:h-[168px] overflow-hidden shrink-0">
+              <img src={course.image} alt={course.title} className="w-full h-full object-cover smooth-image-transition" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#01065d] via-[#01065d]/40 to-transparent"></div>
+              
+              <div className="absolute top-2.5 left-2.5 flex gap-1.5">
+                <span className="px-2 py-1 bg-white/90 backdrop-blur text-[#01065d] text-[10px] font-black rounded-md tracking-wide">
+                  {course.category.toUpperCase()}
                 </span>
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
+                {course.bestseller && <span className="px-2 py-1 bg-yellow-400 text-black text-[10px] font-black rounded-md">BESTSELLER</span>}
+              </div>
 
-      {/* Filters & Results */}
-      <section id="courses" className="relative py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-8 reveal-on-scroll">
-            {/* Level Filter */}
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="text-sm font-bold text-white/70 uppercase tracking-wide">Level:</span>
-              {levels.map((level) => (
-                <button
-                  key={level.id}
-                  onClick={() => setSelectedLevel(level.id)}
-                  className={`px-4 py-2 rounded-lg font-semibold text-sm smooth-button ${
-                    selectedLevel === level.id
-                      ? 'bg-white text-[#01065d] shadow-lg'
-                      : 'bg-white/10 text-white/80 hover:bg-white/20 border border-white/20'
-                  }`}
-                >
-                  <span className={`fa-solid ${level.icon} mr-2`}></span>
-                  {level.name}
-                </button>
-              ))}
+              <div className="absolute bottom-2.5 right-2.5">
+                <span className={`px-2 py-1 rounded-full text-[10px] font-bold backdrop-blur-xl border ${
+                  course.level === 'beginner' ? 'bg-green-500/25 border-green-400/50 text-green-100' :
+                  course.level === 'intermediate' ? 'bg-blue-500/25 border-blue-400/50 text-blue-100' :
+                  'bg-purple-500/25 border-purple-400/50 text-purple-100'
+                }`}>
+                  {course.level.toUpperCase()}
+                </span>
+              </div>
             </div>
 
-            {/* Results Count */}
-            <div className="flex items-center gap-3">
-              <span className="text-white/60 text-sm">
-                Found <span className="font-bold text-white text-lg">{filteredCourses.length}</span> {filteredCourses.length === 1 ? 'course' : 'courses'}
-              </span>
-            </div>
-          </div>
+            {/* Content - COMPACT */}
+            <div className="p-4 flex-1 flex flex-col">
+              <h3 className="text-[15px] font-bold text-white leading-[1.3] line-clamp-2 mb-1.5 group-hover:text-indigo-200 smooth-transition min-h-[40px]">
+                {course.title}
+              </h3>
 
-          {/* Courses Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredCourses.map((course, index) => (
-              <div
-                key={course.id}
-                className="course-card-animation reveal-on-scroll group"
-              >
-                <div className="glass-card rounded-3xl overflow-hidden smooth-card-transition h-full flex flex-col shadow-2xl border border-white/10">
-                  {/* Course Image */}
-                  <div className="relative h-56 overflow-hidden">
-                    <img
-                      src={course.image}
-                      alt={course.title}
-                      className="w-full h-full object-cover smooth-image-transition"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#01065d] via-[#01065d]/60 to-transparent"></div>
+              <p className="text-white/55 text-[12.5px] leading-[1.5] line-clamp-2 mb-3">
+                {course.description}
+              </p>
 
-                    {/* Level Badge */}
-                    <div className="absolute bottom-4 right-4">
-                      <span className={`px-3 py-1.5 rounded-full text-xs font-bold backdrop-blur-xl border-2 ${
-                        course.level === 'beginner' ? 'bg-green-500/30 border-green-400 text-green-100' :
-                        course.level === 'intermediate' ? 'bg-blue-500/30 border-blue-400 text-blue-100' :
-                        'bg-purple-500/30 border-purple-400 text-purple-100'
-                      }`}>
-                        <span className="fa-solid fa-layer-group mr-1"></span>
-                        {course.level.toUpperCase()}
-                      </span>
-                    </div>
-                  </div>
+              {/* Compact tags */}
+              <div className="flex flex-wrap gap-1.5 mb-3.5">
+                {course.tags.slice(0, 3).map((tag) => (
+                  <span key={tag} className="px-2 py-1 rounded-md bg-white/5 border border-white/10 text-[10.5px] text-white/60 font-medium">
+                    #{tag}
+                  </span>
+                ))}
+                <span className="px-2 py-1 text-[10.5px] text-white/40">+{course.tags.length - 3}</span>
+              </div>
 
-                  {/* Course Content */}
-                  <div className="p-6 flex-1 flex flex-col">
-                    {/* Category Tag */}
-                    <div className="mb-3">
-                      <span className="px-3 py-1 bg-indigo-500/20 text-indigo-200 text-xs font-bold rounded-lg border border-indigo-500/30">
-                        {course.category.toUpperCase()}
-                      </span>
-                    </div>
-
-                    {/* Title */}
-                    <h3 className="text-2xl font-black text-white mb-3 group-hover:text-indigo-200 smooth-transition leading-tight">
-                      {course.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="text-white/60 text-sm mb-4 leading-relaxed line-clamp-2">
-                      {course.description}
-                    </p>
-
-                    {/* Features */}
-                    <div className="space-y-2 mb-4">
-                      {course.features.slice(0, 3).map((feature, idx) => (
-                        <div key={idx} className="flex items-center gap-2 text-xs text-white/70">
-                          <span className="fa-solid fa-check-circle text-green-400"></span>
-                          {feature}
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Completion Rate */}
-                    <div className="mb-4">
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-xs text-white/50">Completion Rate</span>
-                        <span className="text-xs font-bold text-green-400">{course.completionRate}%</span>
-                      </div>
-                      <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                        <div 
-                          className="h-full bg-gradient-to-r from-green-500 to-teal-500 rounded-full"
-                          style={{ width: `${course.completionRate}%` }}
-                        ></div>
-                      </div>
-                    </div>
-
-                    {/* CTA */}
-                    <div className="mt-auto pt-4">
-                      <button className="w-full cursor-pointer h-14 bg-white text-[#01065d] hover:bg-[#01065d] hover:text-white font-black rounded-xl smooth-button flex items-center justify-center gap-2 shadow-lg group/btn text-base shimmer-wrap">
-                        <span>Enroll Now</span>
-                        <span className="fa-solid fa-arrow-right group-hover/btn:translate-x-1 smooth-transition"></span>
-                      </button>
-                    </div>
-                  </div>
+              <div className="mt-auto space-y-3">
+                <div className="flex items-center justify-between">
+                   
+                   <div className="flex items-center gap-1 text-[11px] text-amber-300">
+                     <span className="fa-solid fa-star text-[10px]"></span> {course.rating}
+                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
 
-          {/* No Results */}
-          {filteredCourses.length === 0 && (
-            <div className="text-center py-20 reveal-on-scroll">
-              <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-white/10 flex items-center justify-center">
-                <span className="fa-solid fa-search text-white/30 text-4xl"></span>
+                <button className="w-full h-10 bg-white text-[#01065d] hover:bg-[#01065d] hover:text-white border border-white/0 hover:border-white/20 font-bold rounded-xl smooth-button flex items-center justify-center gap-2 text-[13px] shimmer-wrap">
+                  Enroll Now
+                  <span className="fa-solid fa-arrow-right text-[11px]"></span>
+                </button>
               </div>
-              <h3 className="text-3xl font-black text-white mb-3">No courses found</h3>
-              <p className="text-white/60 mb-8 text-lg">Try adjusting your filters or search query</p>
-              <button
-                onClick={() => {
-                  setSelectedCategory('all');
-                  setSelectedLevel('all');
-                  setSearchQuery('');
-                }}
-                className="px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-500 text-white font-bold rounded-xl smooth-button shadow-lg"
-              >
-                Clear All Filters
-              </button>
             </div>
-          )}
+          </div>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* CTA Section */}
       <section className="relative py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto">
-          <div className="glass-card p-12 sm:p-16 rounded-3xl text-center relative overflow-hidden reveal-on-scroll shimmer-wrap">
+          <div className="glass-card p-4 sm:p-4 rounded-3xl text-center relative overflow-hidden reveal-on-scroll shimmer-wrap">
             <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-pink-500/10"></div>
             <div className="relative z-10">
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black mb-6">
+              <h2 className="text-2xl sm:text-xl lg:text-3xl font-black mb-6">
                 <span className="bg-gradient-to-r from-white via-indigo-100 to-white bg-clip-text text-transparent">
                   Not Sure Of The Right 
                 </span>
@@ -1096,8 +1137,8 @@ const CoursePage = () => {
       <section className="max-w-7xl mx-auto px-6 py-6 mb-16">
         <div className="glass-card rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6 smooth-card-transition shimmer-wrap reveal-on-scroll">
           <div className="space-y-2">
-            <h4 className="text-2xl font-black text-white">Need a Laptop for Your Course?</h4>
-            <p className="text-sm text-white/60 max-w-2xl">Browse our curated selection of developer-grade laptops. Free delivery or pickup at our location.</p>
+            <h4 className="text-2xl font-black text-white text-center lg:text-start">Need a Laptop for Your Course?</h4>
+            <p className="text-sm text-white/60 max-w-2xl text-center lg:text-start">Browse our curated selection of developer-grade laptops. Free delivery or pickup at our location.</p>
           </div>
           <a href="/store" className="px-8 h-14 bg-white text-[#01065d] hover:text-white hover:bg-[#01065d] font-bold rounded-xl flex items-center justify-center smooth-button shadow-lg whitespace-nowrap">
             Shop Laptops →
@@ -1108,7 +1149,7 @@ const CoursePage = () => {
       <FloatingWhatsapp />
 
         {/* ── Footer ── */}
-            <footer className="border-t border-white/5 bg-[#000236]">
+            {/* <footer className="border-t border-white/5 bg-[#000236]">
               <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/40">
                 <p>© 2025 Tech Portal Solutions. </p>
                 <div className="flex space-x-6">
@@ -1120,7 +1161,9 @@ const CoursePage = () => {
                 </div>
                 <p>Built with ❤️ by <a className="text-indigo-300 hover:text-white transition-colors duration-300" target="_blank" rel="noopener noreferrer" href="https://pluscodeltd.vercel.app">PlusCode Ltd</a></p>
               </div>
-            </footer>
+            </footer> */}
+
+            <Footer/>
     </div>
   );
 };

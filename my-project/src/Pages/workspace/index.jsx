@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import logo from '../../assets/logo_white.png';
 import FloatingWhatsapp from '../../components/WhatsappButton';
+import Footer from '../../components/WebsiteFooter'
 import { useNavigate } from 'react-router-dom';
 
 const WorkspacePage = () => {
@@ -159,7 +160,7 @@ const WorkspacePage = () => {
   .menu-links-visible .stagger-link:nth-child(5) { transition-delay: 600ms; }
 
   .navbar-sticky { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1); }
-  .navbar-top { background: rgba(1, 5, 109, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+  .navbar-top { background: rgba(1, 5, 109, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
   .navbar-scrolled { background: rgba(1, 5, 109, 0.95); backdrop-filter: blur(20px); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6); }
 
   .glass-card { background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.15); transition: all 600ms cubic-bezier(0.4, 0, 0.2, 1); }
@@ -239,8 +240,11 @@ const WorkspacePage = () => {
             <img src={logo} width={170} alt="Tech Portal Solutions" className="transition-transform duration-500 group-hover:scale-105" />
           </div>
 
+          {/* Desktop links */}
           <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-white/80">
-            <a href="/" className="hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all after:duration-300">Home</a>
+            <a href="/" className="hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all after:duration-300">
+              Home
+            </a>
             <a
               href="/#services"
               onClick={(e) => handleDesktopNav(e, '/#services')}
@@ -248,9 +252,18 @@ const WorkspacePage = () => {
             >
               Services
             </a>
-            <a href="/courses" className="hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all after:duration-300">Courses</a>
-            <a href="/workspace" className="hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-white after:transition-all after:duration-300">Workspace</a>
-            <a href="/store" className="px-4 py-2 bg-white/10 hover:bg-white hover:text-[#01056d] rounded-lg text-white border border-white/10 transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg">Shop Laptops →</a>
+            <a href="/courses" className="hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all after:duration-300">
+              Courses
+            </a>
+            <a href="/workspace" className="hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:bg-white after:transition-all after:duration-300">
+              Workspace
+            </a>
+            <a href="/maintenance" className="hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px]  after:bg-white after:transition-all after:duration-300">
+              Maintenance
+            </a>
+            <a href="/store" className="px-4 py-2 bg-white/10 hover:bg-white hover:text-[#01056d] rounded-lg text-white border border-white/10 transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg">
+              Shop Laptops →
+            </a>
           </div>
 
           <button onClick={toggleMenu} className="md:hidden z-50 relative w-12 h-12 flex flex-col items-center justify-center rounded-xl bg-white/5 shadow-2xl hover:bg-white/10 transition-all duration-300" aria-label="Toggle Menu">
@@ -449,19 +462,7 @@ const WorkspacePage = () => {
       <FloatingWhatsapp />
 
         {/* ── Footer ── */}
-            <footer className="border-t border-white/5 bg-[#000236]">
-              <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/40">
-                <p>© 2025 Tech Portal Solutions. </p>
-                <div className="flex space-x-6">
-                  <a href="/" className="hover:text-white transition-colors duration-300">Home</a>
-                  <a href="/courses" className="text-indigo-300 hover:text-white transition-colors duration-300">Courses</a>
-                  <a href="/workspace" className="hover:text-white transition-colors duration-300">Workspace</a>
-                  <a href="/maintenance" className="hover:text-white transition-colors duration-300">Computer Maintenance</a>
-                  <a href="/store" className="text-purple-300 hover:text-white transition-colors duration-300">Shop</a>
-                </div>
-                <p>Built with ❤️ by <a className="text-indigo-300 hover:text-white transition-colors duration-300" target="_blank" rel="noopener noreferrer" href="https://pluscodeltd.vercel.app">PlusCode Ltd</a></p>
-              </div>
-            </footer>
+            <Footer/>
     </div>
   );
 };

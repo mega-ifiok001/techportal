@@ -3,6 +3,8 @@ import logo from '../../assets/logo_white.png';
 import About from '../About';
 import FloatingWhatsapp from '../../components/WhatsappButton';
 import HeroSection from '../../components/HeroSection'
+import { useNavigate } from 'react-router-dom';
+import Footer from '../../components/WebsiteFooter'
 // ─── Reusable scroll-reveal hook ───────────────────────────────────────────────
 function useReveal(threshold = 0.15) {
   const ref = useRef(null);
@@ -306,29 +308,26 @@ export default function TechPortalLanding() {
     }
   }, [isMenuOpen]);
 
-  // ── Close menu and navigate ──
-  const handleMobileNav = useCallback((e, hash) => {
-    e.preventDefault();
-    
-    // Start closing animation
-    setIsMenuAnimating(false);
-    setMenuAnimation('menu-slide-out');
-    
-    // After animation completes, navigate
-    setTimeout(() => {
-      setIsMenuOpen(false);
-      setMenuAnimation('');
-      document.body.style.overflow = '';
-      
-      // Scroll to section
-      const target = document.querySelector(hash);
-      if (target) {
-        const navHeight = 80;
-        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
-        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-      }
-    }, 500);
-  }, []);
+const navigate = useNavigate();
+
+// ── Close menu and navigate ──
+const handleMobileNav = useCallback((e, path) => {
+  e.preventDefault();
+
+  // Start closing animation
+  setIsMenuAnimating(false);
+  setMenuAnimation('menu-slide-out');
+
+  // After animation completes, navigate
+  setTimeout(() => {
+    setIsMenuOpen(false);
+    setMenuAnimation('');
+    document.body.style.overflow = '';
+
+    navigate(path);
+  }, 500);
+}, [navigate]);
+
 
   const services = [
     {
@@ -377,10 +376,11 @@ export default function TechPortalLanding() {
   ];
 
   const mobileLinks = [
-    { label: 'Our Services', hash: '/', sub: 'Explore dynamic ecosystems' },
-    { label: 'Courses', hash: '/courses', sub: 'Scale yourself with the right courses' },
-    { label: 'WorkSpace', hash: '/workspace', sub: 'Work with ease' },
-    { label: 'About Us', hash: '/about', sub: 'Our story and mission' },
+    { label: 'Home', hash:'/', sub: 'Explore dynamic ecosystems' },
+    { label: 'Courses', hash:'/courses', sub: 'Scale yourself with the right courses' },
+    { label: 'WorkSpace', hash:'/workspace', sub: 'Work with ease' },
+    { label: 'Computer maintenance', hash:'/maintenance', sub: 'Repair your laptops' },
+    { label: 'About Us', hash:'/about', sub: 'Our story and mission' },
   ];
 
   return (
@@ -398,44 +398,29 @@ export default function TechPortalLanding() {
             <img src={logo} width={170} alt="Tech Portal Solutions Official Logo" />
           </div>
 
-          {/* Desktop Links */}
+           {/* Desktop links */}
           <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-white/80">
-          <a 
-              href="/" 
-              className="hover:text-white transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all"
-            >
+            <a href="/" className="hover:text-white transition-all duration-300 relative after:absolute after:w-full after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all after:duration-300">
               Home
             </a>
-            <a 
-              href="/courses" 
-              className="hover:text-white transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all"
+            <a
+              href="/#services"
+              onClick={(e) => handleDesktopNav(e, '/#services')}
+              className="hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all after:duration-300"
             >
+              Services
+            </a>
+            <a href="/courses" className="hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all after:duration-300">
               Courses
             </a>
-            <a 
-              href="/workspace" 
-              className="hover:text-white transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all"
-            >
-              WorkSpace
+            <a href="/workspace" className="hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px]  after:bg-white after:transition-all after:duration-300">
+              Workspace
             </a>
-            
-            <a 
-              href="/maintenance" 
-              className="hover:text-white transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all"
-            >
-              Computer Maintenance
+            <a href="/maintenance" className="hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px]  after:bg-white after:transition-all after:duration-300">
+              Maintenance
             </a>
-            <a 
-              href="#about" 
-              className="hover:text-white transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all"
-            >
-              About Us
-            </a>
-            <a 
-              href="/store" 
-              className="px-4 py-2 bg-white/10 hover:bg-white hover:text-[#01065d] rounded-lg text-white border border-white/10 transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg"
-            >
-              Laptop Shop →
+            <a href="/store" className="px-4 py-2 bg-white/10 hover:bg-white hover:text-[#01056d] rounded-lg text-white border border-white/10 transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg">
+              Shop Laptops →
             </a>
           </div>
 
@@ -457,17 +442,14 @@ export default function TechPortalLanding() {
       {/* ── Mobile Menu (Overlay) ── */}
       {(isMenuOpen || isMenuAnimating) && (
         <div 
-          className={`fixed inset-0 z-40 md:hidden bg-[#01043a]/98 backdrop-blur-2xl flex flex-col justify-between p-8 ${menuAnimation}`}
+          className={`fixed inset-0 z-40 md:hidden bg-[#01043a]/98 backdrop-blur-2xl mt-[3rem] flex flex-col justify-between p-8 ${menuAnimation}`}
           style={{ top: 0, left: 0, right: 0, bottom: 0 }}
         >
           <div className="absolute top-[-10%] right-[-10%] w-80 h-80 rounded-full bg-gradient-to-br from-indigo-600/30 to-purple-600/0 blur-2xl animate-pulse" />
           <div className="absolute bottom-[10%] left-[-20%] w-96 h-96 rounded-full bg-blue-600/10 blur-3xl" />
           <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none" />
 
-          {/* Top tagline */}
-          <div className="flex justify-between items-center mt-20 border-b border-white/10 pb-6 stagger-link" style={{ transitionDelay: '100ms' }}>
-            <p className="text-xs text-white/50">Delivering Innovative Technology Driven Solutions</p>
-          </div>
+          
 
           {/* Nav Links - each link uses its specific hash */}
           <div className="flex flex-col space-y-5 my-auto text-left pl-2">
@@ -504,12 +486,7 @@ export default function TechPortalLanding() {
             </div>
           </div>
 
-          {/* Footer inside menu */}
-          <div className="glass-card rounded-2xl p-4 flex items-center space-x-4 text-left stagger-link" style={{ transitionDelay: '700ms' }}>
-            <div>
-              <p className="text-xs font-bold">Portal Systems Syncing</p>
-            </div>
-          </div>
+         
         </div>
       )}
 
@@ -706,19 +683,7 @@ export default function TechPortalLanding() {
       <FloatingWhatsapp  />
 
        {/* ── Footer ── */}
-            <footer className="border-t border-white/5 bg-[#000236]">
-              <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/40">
-                <p>© 2025 Tech Portal Solutions. </p>
-                <div className="flex space-x-6">
-                  <a href="/" className="hover:text-white transition-colors duration-300">Home</a>
-                  <a href="/courses" className="text-indigo-300 hover:text-white transition-colors duration-300">Courses</a>
-                  <a href="/workspace" className="hover:text-white transition-colors duration-300">Workspace</a>
-                  <a href="/maintenance" className="hover:text-white transition-colors duration-300">Computer Maintenance</a>
-                  <a href="/store" className="text-purple-300 hover:text-white transition-colors duration-300">Shop</a>
-                </div>
-                <p>Built with ❤️ by <a className="text-indigo-300 hover:text-white transition-colors duration-300" target="_blank" rel="noopener noreferrer" href="https://pluscodeltd.vercel.app">PlusCode Ltd</a></p>
-              </div>
-            </footer>
+          <Footer/>
       </div>
     </>
   );
