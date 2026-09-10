@@ -964,10 +964,9 @@ const staff = [
                   margin: "0 0 16px",
                 }}
               >
-                Tech Portal Solution is a technology services company dedicated
-                to empowering businesses and individuals in Nigeria and across
-                Africa. We don't just sell products — we build ecosystems where
-                people learn, work, and thrive.
+                Tech Portal Solutions is a technology company empowering
+                individuals and businesses across Nigeria and Africa to
+                learn, work, and thrive.
               </p>
               <p
                 className="ab-reveal ab-up"
@@ -981,9 +980,9 @@ const staff = [
                   margin: "0 0 32px",
                 }}
               >
-                From our training academy to our co-working spaces and laptop
-                store, everything we do is connected by one mission: bridge the
-                gap between business needs and technological advancement.
+                From our training academy and co-working spaces to our laptop
+                store, everything we do bridges business needs and
+                technology.
               </p>
 
             

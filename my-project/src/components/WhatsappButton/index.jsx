@@ -1,4 +1,4 @@
-const WHATSAPP_NUMBER = "234XXXXXXXXXX";
+const WHATSAPP_NUMBER = "2347066965486";
 
 export default function FloatingWhatsApp() {
   return (

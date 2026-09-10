@@ -79,6 +79,7 @@ const CoursePage = () => {
     { label: 'WorkSpace', hash:'/workspace', sub: 'Work with ease' },
     { label: 'Computer maintenance', hash:'/maintenance', sub: 'Repair your laptops' },
     { label: 'About Us', hash:'/about', sub: 'Our story and mission' },
+    { label: 'Contact Us', hash:'/reach-us', sub: 'Reach out to our team' },
   ];
 
   const categories = [
@@ -801,6 +802,9 @@ const CoursePage = () => {
             <a href="/maintenance" className="hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px]  after:bg-white after:transition-all after:duration-300">
               Maintenance
             </a>
+            <a href="/reach-us" className="hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all after:duration-300">
+              Contact Us
+            </a>
             <a href="/store" className="px-4 py-2 bg-white/10 hover:bg-white hover:text-[#01056d] rounded-lg text-white border border-white/10 transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg">
               Shop Laptops →
             </a>
@@ -1109,7 +1113,7 @@ const CoursePage = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="https://wa.me/1234567890" className="w-full sm:w-auto px-10 h-16 bg-white text-[#01065d] rounded-xl font-black text-lg flex items-center justify-center shadow-2xl smooth-button">
+                <a href="https://wa.me/2347066965486" className="w-full sm:w-auto px-10 h-16 bg-white text-[#01065d] rounded-xl font-black text-lg flex items-center justify-center shadow-2xl smooth-button">
                   Talk to Our Advisor
                 </a>
                 <a href="/contact" className="w-full sm:w-auto text-white px-10 h-16 bg-white/10 hover:bg-white/20 border-2 border-white/30 rounded-xl font-bold text-lg flex items-center justify-center smooth-button backdrop-blur-sm">

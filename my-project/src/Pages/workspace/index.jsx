@@ -110,6 +110,7 @@ const WorkspacePage = () => {
     { label: 'Courses', hash: '/courses', sub: 'Scale yourself with the right courses' },
     { label: 'WorkSpace', hash: '/workspace', sub: 'Work with ease' },
     { label: 'About Us', hash: '/about', sub: 'Our story and mission' },
+    { label: 'Contact Us', hash: '/reach-us', sub: 'Reach out to our team' },
   ];
 
   const styles = `
@@ -261,6 +262,9 @@ const WorkspacePage = () => {
             <a href="/maintenance" className="hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px]  after:bg-white after:transition-all after:duration-300">
               Maintenance
             </a>
+            <a href="/reach-us" className="hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all after:duration-300">
+              Contact Us
+            </a>
             <a href="/store" className="px-4 py-2 bg-white/10 hover:bg-white hover:text-[#01056d] rounded-lg text-white border border-white/10 transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg">
               Shop Laptops →
             </a>
@@ -328,7 +332,7 @@ const WorkspacePage = () => {
             <a href="#spaces" className="w-full sm:w-auto px-10 h-16 bg-white text-[#01056d] rounded-xl font-black text-lg flex items-center justify-center shadow-2xl smooth-button">
               View Spaces
             </a>
-            <a href="https://wa.me/1234567890" className="w-full sm:w-auto text-white px-10 h-16 bg-white/10 hover:bg-white/20 border-2 border-white/30 rounded-xl font-bold text-lg flex items-center justify-center smooth-button backdrop-blur-sm">
+            <a href="https://wa.me/2347066965486" className="w-full sm:w-auto text-white px-10 h-16 bg-white/10 hover:bg-white/20 border-2 border-white/30 rounded-xl font-bold text-lg flex items-center justify-center smooth-button backdrop-blur-sm">
               Book a Tour
             </a>
           </div>
@@ -365,7 +369,7 @@ const WorkspacePage = () => {
                     </div>
 
                     <div className="mt-auto pt-6 border-t border-white/10 flex items-end justify-center">
-                      <a href="https://wa.me/1234567890" className="px-6 h-14 bg-white text-[#01056d] hover:bg-[#01056d] hover:text-white font-black rounded-xl smooth-button flex items-center justify-center gap-2 shadow-lg group/btn text-base shimmer-wrap">
+                      <a href="https://wa.me/2347066965486" className="px-6 h-14 bg-white text-[#01056d] hover:bg-[#01056d] hover:text-white font-black rounded-xl smooth-button flex items-center justify-center gap-2 shadow-lg group/btn text-base shimmer-wrap">
                         <span>Get Started</span>
                         <span className="fa-solid fa-arrow-right group-hover/btn:translate-x-1 smooth-transition"></span>
                       </a>

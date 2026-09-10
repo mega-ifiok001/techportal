@@ -232,7 +232,7 @@ const styles = `
 
 const TYPED_TEXT = "Learn tech, share space, and get the best tools.";
 const TYPE_SPEED = 45;
-const WHATSAPP_NUMBER = "234XXXXXXXXXX";
+const WHATSAPP_NUMBER = "2347066965486";
 
 export default function TechPortalLanding() {
   const [activeService, setActiveService] = useState(0);
@@ -333,33 +333,33 @@ const handleMobileNav = useCallback((e, path) => {
     {
       title: "Digital Education & Automation",
       description:
-        "Master AI automation, faceless YouTube systems, web & app development, and digital marketing, Cyber Security through real-world projects and guided mentorship.",
+        "Master AI, web & app development, digital marketing and cyber security through real-world projects.",
       tag: "Learn & Automate",
       metric: "1,200+ Students",
       icon: "fa-solid fa-brain",
       cta: "Start Learning",
       ctaType: "link",
       ctaText:
-        "Hi, I'm interested in your Digital Education programs (AI, Web Dev, Marketing, YouTube Automation). I'd like more details.",
+        "Hi, I'm interested in your Digital Education programs.",
       link:'/courses'
     },
     {
       title: "Innovation Co-Working Spaces",
       description:
-        "A modern workspace built for developers, freelancers, and startups with high-speed internet, quiet zones, and collaboration areas.",
+        "Modern workspaces with high-speed internet, quiet zones and collaboration areas.",
       tag: "Work & Build",
       metric: "24/7 Access",
       icon: "fa-solid fa-building",
       cta: "Enquire Now",
       ctaType: "link",
       ctaText:
-        "Hi, I want to enquire about your Co-Working Space (pricing, availability, and facilities).",
+        "Hi, I want to enquire about your Co-Working Space.",
         link:'/workspace'
     },
     {
       title: "Sales of Laptop & Maintenance",
       description:
-        "Performance-tested laptops and tech gear optimized for developers and creators, backed with warranty and support.",
+        "Performance-tested laptops and tech gear, backed with warranty and support.",
       tag: "Build & Buy",
       metric: "Warranty Included",
       icon: "fa-solid fa-laptop",
@@ -370,9 +370,9 @@ const handleMobileNav = useCallback((e, path) => {
   ];
 
   const testimonials = [
-    { name: "Sarah Joshua", role: "Software Engineer", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&h=150&q=80", text: "Tech Portal changed my life. I learned coding here, bought my first developer laptop from their store, and now I work from their co-working space!" },
-    { name: "David Okafor", role: "Fullstack Student", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80", text: "The internet is blazing fast and the mentors genuinely care. It is the perfect place if you want to get serious about learning technology." },
-    { name: "Blessing Umar", role: "UI/UX Designer", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80", text: "I love the community here. The blend of learning space, networking events, and access to good laptops is something you can't find anywhere else." }
+    { name: "Sarah Joshua", role: "Software Engineer", image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&h=150&q=80", text: "I learned to code, got my first laptop here, and now I work from their co-working space!" },
+    { name: "David Okafor", role: "Fullstack Student", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80", text: "Blazing internet and mentors who genuinely care. The perfect place to get serious about tech." },
+    { name: "Blessing Umar", role: "UI/UX Designer", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80", text: "Learning space, networking events, and good laptops — you can't find this anywhere else." }
   ];
 
   const mobileLinks = [
@@ -381,6 +381,7 @@ const handleMobileNav = useCallback((e, path) => {
     { label: 'WorkSpace', hash:'/workspace', sub: 'Work with ease' },
     { label: 'Computer maintenance', hash:'/maintenance', sub: 'Repair your laptops' },
     { label: 'About Us', hash:'/about', sub: 'Our story and mission' },
+    { label: 'Contact Us', hash:'/reach-us', sub: 'Reach out to our team' },
   ];
 
   return (
@@ -418,6 +419,9 @@ const handleMobileNav = useCallback((e, path) => {
             </a>
             <a href="/maintenance" className="hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px]  after:bg-white after:transition-all after:duration-300">
               Maintenance
+            </a>
+            <a href="/reach-us" className="hover:text-white transition-all duration-300 relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 hover:after:w-full after:bg-white after:transition-all after:duration-300">
+              Contact Us
             </a>
             <a href="/store" className="px-4 py-2 bg-white/10 hover:bg-white hover:text-[#01056d] rounded-lg text-white border border-white/10 transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg">
               Shop Laptops →
@@ -514,7 +518,7 @@ const handleMobileNav = useCallback((e, path) => {
       <section id="services" className="max-w-7xl mx-auto px-6 py-20">
         <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
           <h2 className="reveal rv-fade-up text-3xl font-bold tracking-tight text-white heading-line">What We Offer</h2>
-          <p className="reveal rv-fade-up text-sm text-white/60 font-light" style={{ transitionDelay: '120ms' }}>Click below to see how our different systems serve you under one roof.</p>
+          <p className="reveal rv-fade-up text-sm text-white/60 font-light" style={{ transitionDelay: '120ms' }}>One platform for learning, workspace, and gear.</p>
         </div>
         <div className="grid lg:grid-cols-12 gap-8 items-stretch">
           <div className="lg:col-span-5 flex flex-col !cursor-pointer justify-center space-y-3">
@@ -638,7 +642,7 @@ const handleMobileNav = useCallback((e, path) => {
       <section id="testimonials" className="max-w-7xl mx-auto px-6 py-20">
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-2">
           <h2 className="reveal rv-fade-up text-3xl font-bold tracking-tight heading-line">Loved by Students & Engineers</h2>
-          <p className="reveal rv-fade-up text-sm text-white/60" style={{ transitionDelay: '120ms' }}>Read true stories from real people growing inside our hub.</p>
+          <p className="reveal rv-fade-up text-sm text-white/60" style={{ transitionDelay: '120ms' }}>Real stories from our community.</p>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
           {testimonials.map((t, idx) => (
@@ -672,7 +676,7 @@ const handleMobileNav = useCallback((e, path) => {
           <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           <div className="space-y-1 relative z-10">
             <h4 className="text-xl font-bold">Ready to upgrade or buy your first computer?</h4>
-            <p className="text-xs text-white/60 max-w-md font-light">Our laptop catalog is online and ready. Pick up at our co-working office or get free delivery.</p>
+            <p className="text-xs text-white/60 max-w-md font-light">Verified laptops online — pick up or get free delivery.</p>
           </div>
           <a href="/store" className="w-full md:w-auto px-6 h-12 bg-white text-[#01065d] font-bold text-xs rounded-xl flex items-center justify-center hover:bg-indigo-50 shadow-md hover:scale-105 active:scale-95 transition-all whitespace-nowrap relative z-10">
             Enter Laptop Store
