@@ -17,7 +17,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { IoIosLogOut, IoMdHeartEmpty } from 'react-icons/io';
 import { fetchDataFromApi } from '../../utils/api';
 import { HiOutlineMenu } from 'react-icons/hi';
-import logo from '../../assets/logo_offical.png';
+import logo from '../../assets/logo_white.png';
 
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -88,7 +88,7 @@ const Header = () => {
                 </div>
             </div>
 
-            <div className='header py-2 lg:py-4 border-t-[1px] border-gray-250 border-b-[1px] '>
+            <div className='header py-2 lg:py-4 border-t-[1px] bg-[#01065d] border-white border-b-[1px] '>
                 <div className='container flex items-center justify-between'>
                     {
                         context?.windowWidth < 922 && 
@@ -97,9 +97,9 @@ const Header = () => {
                         >
                         <HiOutlineMenu size={22} /></Button>
                     }
-                    <div className='col1 w-[40%] lg:w-[25%]'>
+                    <div className='col1 w-[30%] lg:w-[25%]'>
                         <Link to={"/"}>
-                                    <img src={logo} alt="official logo for tech portal solutions" />
+                                    <img src={logo} width={200} alt="official logo for tech portal solutions" />
 </Link>
                     </div>
 
@@ -113,8 +113,8 @@ const Header = () => {
                             {
                                 context.isLogin=== false && context?.windowWidth > 922 ? (
                                 <li className='list-none'>
-                                <Link to={"/login"} className='link transition text-[15px] font-[500]'>Login</Link> |
-                                <Link to={"/register"} className='link transition text-[15px] font-[500]'>Register</Link>
+                                <Link to={"/login"} className='link transition text-white text-[15px] font-[500]'>Login</Link> |
+                                <Link to={"/register"} className='link transition text-white text-[15px] font-[500]'>Register</Link>
                             </li>
                             ): (
                                 <>
@@ -202,11 +202,11 @@ const Header = () => {
                             {
                                 context?.windowWidth > 922 &&
                                 <li>
-                                    <Tooltip title="Wish List">
+                                    <Tooltip title="Wish List" className="text-white">
                                         <Link to="/my-list">
-                                            <IconButton aria-label="cart">
+                                            <IconButton aria-label="cart" className="text-white">
                                                 <StyledBadge badgeContent={context?.myListData?.length !== 0 ? context?.myListData?.length : 0} color="secondary">
-                                                    <FaRegHeart />
+                                                    <FaRegHeart className="text-white" />
                                                 </StyledBadge>
                                             </IconButton>
                                         </Link>
@@ -218,7 +218,7 @@ const Header = () => {
                                 <Tooltip title="Cart">
                                 <IconButton aria-label="cart" onClick={() => context.setOpenCartPanel(true)}>
                                     <StyledBadge badgeContent={context?.cartData?.length !== 0 ? context?.cartData?.length : 0} color="secondary">
-                                        <ShoppingCartIcon />
+                                        <ShoppingCartIcon className="text-white" />
                                     </StyledBadge>
                                 </IconButton>
                                 </Tooltip>
